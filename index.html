@@ -1,287 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
 
-
-        body {
-            background-color: #0d0d0d;
-            color: #fff;
-            line-height: 1.6;
- 
-        }
-
-   
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background: #343333;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        header .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        header span {
-            color: cyan;
-        }
-
-        header nav a {
-            text-decoration: none;
-            color: white;
-            margin-left: 15px;
-            transition: color 0.3s ease;
-        }
-
-        header nav a:hover {
-            color: cyan;
-        }
-
-
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 50px 10%;
-            min-height: 80vh;
-            text-align: left;
-        }
-
-        .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-
-        .hero-content .neon-text {
-            color: cyan;
-            text-shadow: 0 0 50px rgb(254, 254, 254), 0 0 20px cyan;
-            color: greenyellow;
-            font-size: 70px;
-            font-weight: bolder;
-        }
-
-        .hero-image {
-            width: 300px;
-            height: 300px;
-            background: url(images/manlogo.jpeg) no-repeat center;
-            background-size: cover;
-            border-radius: 50%;
-            box-shadow: 0 0 30px cyan;
-        }
-
-
-        .btn {
-            display: inline-block;
-            margin: 10px 5px;
-            padding: 10px 20px;
-            background-color: cyan;
-            color: #111;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            background: white;
-            color: #000;
-        }
-
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin: 30px 0;
-            text-shadow: 0 0 10px cyan;
-        }
-
-
-        .service-cards,
-        .testimonial-boxes {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .card,
-        .testimonial {
-            background: #222;
-            padding: 20px;
-            margin: 10px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px cyan;
-            transition: transform 0.3s;
-            text-align: center;
-        }
-
-        .card:hover,
-        .testimonial:hover {
-            transform: scale(1.05);
-        }
-
-
-        .timeline {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-
-        .edu-item {
-            background: #222;
-            padding: 15px;
-            margin: 10px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px cyan;
-        }
-
-
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        form input,
-        form textarea {
-            width: 50%;
-            margin: 10px 0;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            outline: none;
-        }
-
-        form button {
-            margin-top: 10px;
-        }
-
-
-
-
-
-
-        .typing-effect {
-            font-size: 2.3rem;
-            color: rgb(6, 169, 6);
-            display: flex;
-            align-items: center;
-            font-weight: bolder;
-        }
-
-        .im {
-            font-size: 2rem;
-            color: white;
-
-
-        }
-
-        .cursor {
-            background-color: #bca3a3;
-            width: 2px;
-            height: 1.2em;
-    
-           
-        }
-        p{
-            font-family:Verdana, Geneva, Tahoma, sans-serif;
-            font-weight: bold;
-            color: rgb(151, 132, 247);
-        }
-    </style>
-
-
+    <title>Portfolio - Aman Sharma</title>
 </head>
-
 <body>
-
-    <header>
-        <div class="logo">Aman <span>Sharma</span></div>
-    </header>
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Hi, It's <span class="neon-text">Aman</span></h1>
-
-
-
-            <div class="typing-effect">
-                <span class="im">I'm</span>&nbsp<span id="text"></span><span class="cursor"></span>
-            </div>
-
-
-
-
-
-            <p>I'm a passionate coder dedicated to crafting innovative solutions and <br>constantly exploring new technologies to bring ideas <br>to life.</p>
-            <div class="buttons">
-                <a href="#contact" class="btn">About Me</a>
-                <a href="#services" class="btn">Connect</a>
-            </div>
+   <div class="container">
+    <!----------------- HEADER ----------------->
+      <nav id="header">
+        <div class="nav-logo">
+            <p class="nav-name">Portfolio</p>
+            <span> </span>
+        </div> 
+        <div class="nav-menu" id="myNavMenu">
+            <ul class="nav_menu_list">
+                <li class="nav_list">
+                    <a href="#home" class="nav-link active-link">Home</a>
+                    <div class="circle"></div>
+                </li>
+                <li class="nav_list">
+                    <a href="#about" class="nav-link">About</a>
+                    <div class="circle"></div>
+                </li>
+                <li class="nav_list">
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <div class="circle"></div>
+                </li>
+                <li class="nav_list">
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <div class="circle"></div>
+                </li>
+            </ul>
         </div>
-        <div class="hero-image"></div>
-    </section>
-    
-    
-    <section id="contact">
-        <h2 class="section-title">Contact Me</h2>
-        <form>
-            <input type="text" placeholder="Name" required>
-            <input type="email" placeholder="Email" required>
-            <textarea placeholder="Message"></textarea>
-            <button type="submit" class="btn">Send</button>
-        </form>
-    </section>
+        <div></div>
+        <!-- <div class="nav-button">
+            <button class="btn"onclick="pdf()" >Download CV <i class="uil uil-file-alt"></i></button>
+        </div> -->
+        <div class="nav-menu-btn">
+            <i class="uil uil-bars" onclick="myMenuFunction()"></i>
+        </div>
+      </nav>
+    <!-- -------------- MAIN ---------------- -->
+    <main class="wrapper">
+       <!-- -------------- FEATURED BOX ---------------- -->
+       <section class="featured-box" id="home">
+          <div class="featured-text">
+            <div class="featured-text-card">
+                <span>Aman Sharma</span>
+            </div>
+            <div class="featured-name">
+                <p>I'm <span class="typedText"></span></p>
+            </div>
+            <div class="featured-text-info">
+                <p>I'm a passionate coder dedicated to crafting innovative solutions and
+                    constantly exploring new technologies to bring ideas
+                    to life.
+                </p>
+            </div>
+            <div class="featured-text-btn">
+                <button class="btn" onclick="pdf()" >Download CV <i class="uil uil-file-alt"></i></button>
+                <script>
+                    function pdf() {
+                        window.open('assets/Resume.pdf', '_blank');
+                    }
+                </script>
+            </div>
+            <div class="social_icons">
+                <div class="icon"><a href="https://www.instagram.com/_ar.sharma/" target="_blank"><i class="uil uil-instagram"></i></a></div>
+                <div class="icon"><a href="https://www.linkedin.com/in/techamansharma/" target="_blank"><i class="uil uil-linkedin-alt"></i></a></div>
+                <!-- <div class="icon"><a href="https://www.instagram.com/_ar.sharma/" target="_blank"><i class="uil uil-dribbble"></i></a></div> -->
+                <div class="icon"><a href="https://github.com/techamansharma" target="_blank"><i class="uil uil-github-alt"></i></a></div>
+            </div>
+          </div>
+          <div class="featured-image">
+            <div class="image">
+                <img src="images/my-pic.jpg" alt="avatar">
+            </div>
+          </div>
+          <div class="scroll-icon-box">
+          </div>
+
+       </section>
+       <!-- -------------- ABOUT BOX ---------------- -->
+       <section class="section" id="about">
+          <div class="top-header">
+            <h1>About Me</h1>
+          </div>
+          <div class="row">
+            <div class="col">
+                <div class="about-info">
+                    <h3>My introduction</h3>
+                    <p>I am well-versed in HTML & CSS and other cutting edge
+                       frameworks and libraries, which allows me to implement interactive features.
+                       Additionally, I have experirence in Sketching Portraits.
+                    </p>
+
+                </div>
+            </div>
+            <div class="col">
+                <div class="skills-box">
+                    <div class="skills-header">
+                        <h3>Frontend</h3>
+                    </div>
+                    <div class="skills-list">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>Bootstrap</span>
+
+
+
+
+                    </div>
+                </div>
+                <div class="skills-box">
+                    <div class="skills-header">
+                        <h3>Backend</h3>
+                    </div>
+                    <div class="skills-list">
+                        <span>Still Learning</span>
+
+
+
+
+                    </div>
+                </div>
+                <div class="skills-box">
+                    <div class="skills-header">
+                        <h3>Database</h3>
+                    </div>
+                    <div class="skills-list">
+                        <span>Still Learning</span>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+          </div>
+       </section>
+
+       <!-- -------------- PROJECT BOX ---------------- -->
+
+       <section class="section" id="projects">
+          <div class="top-header">
+              <h1>Projects</h1>
+          </div>
+          <div class="project-container">
+            <div class="project-box">
+                <i class="uil uil-briefcase-alt"></i>
+                <h3>Completed</h3>
+                <label>5+ Finished Projects</label>
+            </div>
+            <div class="project-box">
+                <i class="uil uil-users-alt"></i>
+                <h3>Team</h3>
+                <label>Worked as a Leader</label>
+            </div>
+            <div class="project-box">
+                <i class="uil uil-award"></i>
+                <h3>Experience</h3>
+                <label>2+ Years in the HTML</label>
+            </div>
+          </div>
+       </section>
+
+       <!-- -------------- CONTACT BOX ---------------- -->
+
+       <section class="section" id="contact">
+          <div class="top-header">
+            <h1>Get in touch</h1>
+            <span>Do you have a project in your mind, contact me here</span>
+          </div>
+          <div class="row">
+             <div class="col">
+                <div class="contact-info">
+                    <h2>Find Me <i class="uil uil-corner-right-down"></i></h2>
+                    <p><i class="uil uil-envelope"></i> Email: amanxrishi@icloud.com</p>
+                    <p>or</p>
+                    <p><i class="uil uil-envelope"></i> Email: amanxrishi@gmail.com</p>
+                    <p><i class="uil uil-phone"></i> Tel: +91xxxxxxxxxx</p>
+                </div>
+             </div>
+             <div class="col">
+                <div class="form-control">
+                    <div class="form-inputs">
+                        <input type="text" class="input-field" placeholder="Name">
+                        <input type="text" class="input-field" placeholder="Email">
+                    </div>
+                    <div class="text-area">
+                        <textarea placeholder="Message"></textarea>
+                    </div>
+                    <div class="form-button">
+                        <button class="btn">Send <i class="uil uil-message"></i></button>
+                    </div>
+                </div>
+             </div>
+          </div>
+       </section>
+
+    </main>
+
+
+    <!-- --------------- FOOTER --------------- -->
+    <footer>
+        <div class="top-footer">
+            <p>Aman Sharma</p>
+        </div>
+        <div class="middle-footer">
+            <ul class="footer-menu">
+                <li class="footer_menu_list">
+                    <a href="#home">Home</a>
+                </li>
+                <li class="footer_menu_list">
+                    <a href="#about">About</a>
+                </li>
+                <li class="footer_menu_list">
+                    <a href="#projects">Projects</a>
+                </li>
+                <li class="footer_menu_list">
+                    <a href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer-social-icons">
+            <div class="icon"><a href="https://www.instagram.com/_ar.sharma/" target="_blank"><i class="uil uil-instagram"></i></a></div>
+                <div class="icon"><a href="https://www.linkedin.com/in/techamansharma/" target="_blank"><i class="uil uil-linkedin-alt"></i></a></div>
+                <!-- <div class="icon"><a href="https://www.instagram.com/_ar.sharma/" target="_blank"><i class="uil uil-dribbble"></i></a></div> -->
+                <div class="icon"><a href="https://github.com/techamansharma" target="_blank"><i class="uil uil-github-alt"></i></a></div>
+        </div>
+        <!-- <div class="bottom-footer">
+            <p>Copyright &copy; <a href="#home" style="text-decoration: none;">Aman Sharma</a> - All rights reserved</p>
+        </div> -->
+    </footer>
+
+    </div>
+
+
+
+
+    <!-- ----- TYPING JS Link ----- -->
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+       <!-- ----- SCROLL REVEAL JS Link----- -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- ----- MAIN JS ----- -->
+    <script src="assets/js/main.js"></script>
 </body>
-
 </html>
-
-
-
-
-
-
-<script>
-    const textElement = document.getElementById("text");
-    const words = ["Developer", "Student", "Competitive Programmer"];
-    let currentWordIndex = 0;
-    let currentCharIndex = 0;
-    let isDeleting = false;
-
-    function typeEffect() {
-        const currentWord = words[currentWordIndex];
-        const displayedText = isDeleting
-            ? currentWord.slice(0, currentCharIndex--)
-            : currentWord.slice(0, currentCharIndex++);
-
-        textElement.textContent = displayedText;
-
-        if (!isDeleting && currentCharIndex === currentWord.length) {
-
-            setTimeout(() => (isDeleting = true), 1000);
-        } else if (isDeleting && currentCharIndex === 0) {
-            isDeleting = false;
-            currentWordIndex = (currentWordIndex + 1) % words.length;
-        }
-
-        const typingSpeed = isDeleting ? 100 : 200;
-        setTimeout(typeEffect, typingSpeed);
-    }
-    typeEffect();
-
-</script>
