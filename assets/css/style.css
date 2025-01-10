@@ -662,6 +662,10 @@ footer{
     .footer_menu_list a{
         margin-inline: 10px;
     }
+    .top-header h1{
+
+        font-size: 2rem;
+    }
 }
 
 
