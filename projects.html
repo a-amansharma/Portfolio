@@ -14,11 +14,11 @@
         body {
             background: #f5f7fb;
         }
-
+    
         .projects-section {
             padding: 60px 8%;
         }
-
+    
         /* Project Box */
         .project-container {
             background: #ffffff;
@@ -27,46 +27,45 @@
             border-radius: 18px;
             box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
         }
-
+    
         .project-container h2 {
             font-size: 26px;
             margin-bottom: 8px;
         }
-
+    
         .project-desc {
             color: #666;
             margin-bottom: 25px;
         }
-
+    
         /* Responsive Flex Row */
         .project-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
         }
-
+    
         .project-card {
             position: relative;
             overflow: hidden;
             border-radius: 15px;
             flex: 1 1 calc(33.333% - 20px);
             min-width: 250px;
-            height: auto;
             cursor: pointer;
         }
-
+    
         .project-card img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;              /* keep ratio */
+            object-fit: contain;       /* no crop */
             transition: all 0.4s ease;
         }
-
+    
         .project-card:hover img {
-            filter: blur(3px);
+            filter: blur(1px);
             transform: scale(1.05);
         }
-
+    
         /* Overlay Animation */
         .overlay {
             position: absolute;
@@ -79,19 +78,19 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 20px;
+            padding: 30px;
             transition: all 0.4s ease;
         }
-
+    
         .overlay p {
             font-size: 14px;
             line-height: 1.4;
         }
-
+    
         .project-card:hover .overlay {
             bottom: 0;
         }
-
+    
         /* More Projects Box */
         .more-projects {
             text-align: center;
@@ -100,26 +99,49 @@
             border-radius: 18px;
             background: #fff;
         }
-
+    
         .more-projects h2 {
             font-size: 28px;
         }
-
+    
         .more-projects p {
             color: #777;
         }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
+    
+        /* =============================== */
+        /* SMARTPHONE ONLY – IMAGE SMALLER */
+        /* =============================== */
+        @media screen and (max-width: 768px) {
+            .overlay {
+            padding: 10px;
+        }
+            .project-grid {
+                gap: 12px;
+            }
+            .overlay p {
+            font-size: 10px;
+            line-height: 1.4;
+        }
+    
             .project-card {
-                flex: 1 1 100%;
+                flex: 0 0 calc(50% - 12px); /* 2 per row */
+                min-width: auto;
+                border-radius: 10px;
+            }
+    
+            .project-card img {
+                width: 100%;
+                height: auto;
+                border-radius: 10px;
+            /* 🔥 makes image smaller */
             }
         }
-
+    
         h2 {
             padding-top: 9%;
         }
     </style>
+    
 </head>
 
 <body>
