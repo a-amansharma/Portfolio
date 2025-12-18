@@ -378,6 +378,8 @@ h3{
 .project-box{
     position: relative;
     display: flex;
+    cursor: pointer;
+    transition: 0.4s;
     justify-content: center;
     align-items: center;
     flex-direction: column;
