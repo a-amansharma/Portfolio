@@ -20,7 +20,7 @@
         /* Project Box */
         .project-container {
             background: #ffffff;
-            padding: 20px;
+            padding: 40px;
             margin-bottom: 50px;
             border-radius: 18px;
             box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
@@ -57,13 +57,14 @@
             height: auto;
             /* keep ratio */
             object-fit: contain;
+            transform: scale(1.05);
             /* no crop */
             transition: all 0.4s ease;
         }
 
         .project-card:hover img {
             filter: blur(1px);
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
         /* Overlay Animation */
@@ -83,7 +84,7 @@
         }
 
         .overlay p {
-            font-size: 14px;
+            font-size: 30px;
             line-height: 1.4;
         }
 
@@ -108,13 +109,12 @@
             color: #777;
         }
 
-        /* =============================== */
-        /* SMARTPHONE ONLY – IMAGE SMALLER */
-        /* =============================== */
+
         @media screen and (max-width: 768px) {
             .projects-section {
-            padding: 20px 8%;
-        }
+                padding: 20px 8%;
+            }
+
             .project-container h2 {
                 font-size: 20px;
                 margin-bottom: 8px;
@@ -136,7 +136,7 @@
             }
 
             .overlay p {
-                font-size: 10px;
+                font-size: 8px;
                 line-height: 1.3;
             }
 
@@ -153,23 +153,32 @@
                 border-radius: 10px;
                 /* 🔥 makes image smaller */
             }
+
+            .nav-name {
+                font-size: 30px;
+            }
+        }
+        .home{
+            transition: 0.3s;
         }
 
-        h2 {
-            padding-top: 9%;
+        .home:hover {
+            transition: 0.4s;
+            transform: scale(1.2);
         }
     </style>
-
 </head>
 
 <body>
-
     <div class="container">
 
         <!-- HEADER -->
         <nav id="header">
             <div class="nav-logo">
-                <p class="nav-name">Robotics </p>
+                <p class="nav-name">Robotics</p>
+            </div>
+            <div class="home">
+                <a href="index.html" style="text-decoration: none;">Home</a>
             </div>
         </nav>
         <!-- PROJECTS -->
@@ -218,6 +227,44 @@
                     </div>
                 </div>
             </div>
+
+            <div class="featured-text-btn">
+                <a href="https://www.linkedin.com/posts/a-amansharma_robotics-innovation-teamwork-activity-7379071790259810304-VtCJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMR2VIBzWcU732Hl1HiRdej_YmWsRI29oo"
+                    target="_blank" class="btn">
+                    <i class="uil uil-linkedin"></i> View LinkedIn Post
+                </a>
+            </div>
+            <style>
+                .featured-text-btn .btn {
+                    text-decoration: none;
+                    /* remove underline */
+                    color: #ffffff;
+                    /* text color */
+                    background-color: #0a66c2;
+                    /* LinkedIn blue */
+                    padding: 12px 22px;
+                    border-radius: 30px;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-weight: 600;
+                    transition: all 0.3s ease;
+                }
+
+                /* Icon size */
+                .featured-text-btn .btn i {
+                    font-size: 18px;
+                }
+
+                /* Hover effect */
+                .featured-text-btn .btn:hover {
+                    background-color: #004182;
+                    /* darker blue */
+                    color: #ffffff;
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 15px rgba(10, 102, 194, 0.3);
+                }
+            </style>
     </div>
 
     <!-- PROJECT 2 -->

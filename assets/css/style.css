@@ -94,6 +94,7 @@ nav {
     background-color: rgb(223, 223, 255);
     transition: 1s;
     z-index: 100;
+    
 }
 .nav-logo{
    position: relative;
@@ -639,7 +640,7 @@ footer{
         font-size: 35px;}
 
     .featured-name{
-        font-size: 30px;
+        font-size: 25px;
     }
     .project-box{
         width: 100%;
@@ -669,10 +670,14 @@ footer{
         font-size: 2rem;
     }
 }
-
-
 @media only screen and (max-width: 400px){
     .featured-text{
         margin-top: 90px;
     }
+}
+
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
 }
