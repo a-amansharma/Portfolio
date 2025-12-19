@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-    <title>Portfolio - Projects - Designs</title>
+    <title>Portfolio - Projects - Sketches</title>
     <style>
         body {
             background: #f5f7fb;
@@ -133,6 +133,20 @@
             cursor: zoom-in;
         }
 
+        .home {
+            transition: 0.3s;
+            color: lightblue;
+        }
+
+        .home:hover {
+            transition: 0.4s;
+            transform: scale(1.2);
+        }
+
+        .home a {
+            color: rgb(8, 132, 173);
+        }
+
         @media screen and (max-width: 768px) {
             .projects-section {
                 padding: 30px 3%;
@@ -181,7 +195,8 @@
                 padding: 0px;
                 margin: 10px;
             }
-            .nav-name{
+
+            .nav-name {
                 font-size: 25px;
             }
 
@@ -196,6 +211,9 @@
         <nav id="header">
             <div class="nav-logo">
                 <p class="nav-name">Sketches</p>
+            </div>
+            <div class="home">
+                <a href="index.html" style="text-decoration: none;">Home</a>
             </div>
         </nav>
         <!-- PROJECTS -->
@@ -240,8 +258,51 @@
                         <div class="overlay"> Click to view full image</div>
                     </div>
                 </div>
-            </div>
+                <div class="featured-text-btn">
+                    <a href="https://www.instagram.com/p/DPtu0WDkva7/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                        target="_blank" class="btn">
+                        <i class="uil uil-instagram"></i> View Instagran Post
+                    </a>
+                </div>
 
+
+
+            </div>
+            <style>
+                .featured-text-btn .btn {
+                    text-decoration: none;
+                    /* remove underline */
+                    color: #ffffff;
+                    /* text color */
+                    background: linear-gradient(45deg,
+                            #f58529,
+                            #dd2a7b,
+                            #8134af,
+                            #515bd4);
+                    /* Instagram gradient */
+                    padding: 12px 22px;
+                    border-radius: 30px;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-weight: 600;
+                    transition: all 0.3s ease;
+                }
+
+                /* Icon size */
+                .featured-text-btn .btn i {
+                    font-size: 18px;
+                }
+
+                /* Hover effect */
+                .featured-text-btn .btn:hover {
+                    filter: brightness(1.1);
+                    /* subtle pop */
+                    color: #ffffff;
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 15px rgba(221, 42, 123, 0.4);
+                }
+            </style>
             <!-- Fullscreen Image Viewer -->
             <div id="imageViewer" onclick="closeImage()">
                 <img id="fullImage">
@@ -290,6 +351,12 @@
                         <img src="images/sketches/stranger/9.jpeg" onclick="openImage(this.src)">
                         <div class="overlay"> Click to view full image</div>
                     </div>
+                </div>
+                <div class="featured-text-btn">
+                    <a href="https://www.instagram.com/p/DRe_vyGEn91/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                        target="_blank" class="btn">
+                        <i class="uil uil-instagram"></i> View Instagran Post
+                    </a>
                 </div>
             </div>
             <!-- MORE PROJECTS -->

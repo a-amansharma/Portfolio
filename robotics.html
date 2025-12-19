@@ -109,6 +109,26 @@
             color: #777;
         }
 
+        .home {
+            transition: 0.3s;
+            color: lightblue;
+        }
+
+        .home:hover {
+            transition: 0.4s;
+            transform: scale(1.2);
+        }
+
+        .home a {
+            color: rgb(8, 132, 173);
+        }
+
+        @media screen and (max-width: 1300px) {
+            .overlay p {
+                font-size: 18px;
+                line-height: 1.4;
+            }
+        }
 
         @media screen and (max-width: 768px) {
             .projects-section {
@@ -116,8 +136,8 @@
             }
 
             .project-container h2 {
-                font-size: 20px;
-                margin-bottom: 8px;
+                font-size: 18px;
+                margin-bottom: 0px;
                 margin-top: 0px;
                 padding-top: 10px;
             }
@@ -125,6 +145,7 @@
             .project-desc {
                 color: #666;
                 margin-bottom: 10px;
+                font-size: 14px;
             }
 
             .overlay {
@@ -136,7 +157,7 @@
             }
 
             .overlay p {
-                font-size: 8px;
+                font-size: 10px;
                 line-height: 1.3;
             }
 
@@ -157,14 +178,6 @@
             .nav-name {
                 font-size: 30px;
             }
-        }
-        .home{
-            transition: 0.3s;
-        }
-
-        .home:hover {
-            transition: 0.4s;
-            transform: scale(1.2);
         }
     </style>
 </head>
@@ -231,9 +244,17 @@
             <div class="featured-text-btn">
                 <a href="https://www.linkedin.com/posts/a-amansharma_robotics-innovation-teamwork-activity-7379071790259810304-VtCJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMR2VIBzWcU732Hl1HiRdej_YmWsRI29oo"
                     target="_blank" class="btn">
-                    <i class="uil uil-linkedin"></i> View LinkedIn Post
+                    <i class="uil uil-linkedin"></i>View LinkedIn Post
                 </a>
             </div>
+            <div class="featured-text-btn">
+                <a href="https://www.linkedin.com/posts/a-amansharma_iitpatna-iitpatna-robotics-activity-7379076855976513536-J4EJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMR2VIBzWcU732Hl1HiRdej_YmWsRI29oo"
+                    target="_blank" class="btn">
+                    <i class="uil uil-linkedin"></i> View Video Post
+                </a>
+            </div>
+
+
             <style>
                 .featured-text-btn .btn {
                     text-decoration: none;

@@ -8,7 +8,6 @@ function myMenuFunction(){
     menuBtn.className = "nav-menu";
   }
 }
-
 /* ----- ADD SHADOW ON NAVIGATION BAR WHILE SCROLLING ----- */
 window.onscroll = function() {headerShadow()};
 
@@ -29,14 +28,12 @@ function headerShadow() {
 
   }
 }
-
-
 /* ----- TYPING EFFECT ----- */
 var typingEffect = new Typed(".typedText",{
-  strings : ["    ","Student","Sketch Artist","Developer","Programmer"],
+  strings : ["    ","Robotics Enthusiast","Student","Sketch Artist","Developer"],
   loop : true,
-  typeSpeed : 80, 
-  backSpeed : 30,
+  typeSpeed : 70, 
+  backSpeed : 20,
   backDelay : 1000
 })
 
@@ -113,5 +110,4 @@ sections.forEach(current =>{
   }
 })
 }
-
 window.addEventListener('scroll', scrollActive)
