@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+
+    <title>Portfolio - Projects - Designs</title>
+
+    <style>
+        body {
+            background: #f5f7fb;
+        }
+
+        .projects-section{
+            padding: 50px 8%;
+        }
+
+        /* Project Box */
+        .project-container {
+            background: #ffffff;
+            padding: 30px;
+            margin-bottom: 60px;
+            border-radius: 18px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-container h2 {
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .project-desc {
+            color: #666;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        /* Responsive Flex Row */
+        .project-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            flex: 1 1 calc(33.333% - 20px);
+            min-width: 200px;
+            cursor: pointer;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: auto;
+            transform: scale(1.05);
+            /* keep ratio */
+            object-fit: contain;
+            /* no crop */
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.2);
+        }
+
+        /* Overlay Animation */
+        .overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            transition: all 0.4s ease;
+        }
+
+        .overlay p {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .project-card:hover .overlay {
+            bottom: 0;
+        }
+
+        /* More Projects Box */
+        .more-projects {
+            text-align: center;
+            padding: 50px;
+            border: 2px dashed #ccc;
+            border-radius: 18px;
+            background: #fff;
+        }
+
+        .more-projects h2 {
+            font-size: 28px;
+        }
+
+        .more-projects p {
+            color: #777;
+        }
+
+        #imageViewer {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            cursor: zoom-out;
+        }
+
+        #imageViewer img {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .project-card img {
+            cursor: zoom-in;
+        }
+
+        @media screen and (max-width: 768px) {
+            .projects-section {
+                padding: 30px 3%;
+            }
+
+            /* Project Box */
+            .project-container {
+                background: #ffffff;
+                padding-top: 30px;
+                margin-bottom: 30px;
+                border-radius: 18px;
+                box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+            }
+
+            .project-container h2 {
+                font-size: 20px;
+                margin-bottom: 0px;
+            }
+
+            .project-desc {
+                color: #666;
+                margin-bottom: 2px;
+                display: flex;
+                align-items: center;
+                margin-top: 1px;
+            }
+
+            /* Responsive Flex Row */
+            .project-grid {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .project-card {
+                position: relative;
+                overflow: hidden;
+                border-radius: 15px;
+                flex: 1 1 calc(33.333% - 20px);
+                min-width: 150px;
+                cursor: pointer;
+            }
+            .overlay{
+                font-size: 10px;
+                padding: 0px;
+                margin: 10px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- HEADER -->
+        <nav id="header">
+            <div class="nav-logo">
+                <p class="nav-name" style="font-size: 25px;">Graphic Designs</p>
+            </div>
+        </nav>
+
+        <!-- PROJECTS -->
+        <section class="projects-section">
+
+            <!-- PROJECT 1 -->
+            <div class="project-container" style="margin-top: 100px;">
+                <h2>La Casa De Papel</h2>
+                <p class="project-desc">Sketches from Money Heist</p>
+
+                <div class="project-grid">
+                    <div class="project-card">
+                        <img src="images/sketches/money/1.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/money/2.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/money/3.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/money/4.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/money/1a.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/money/2a.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/money/3a.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/money/4a.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fullscreen Image Viewer -->
+            <div id="imageViewer" onclick="closeImage()">
+                <img id="fullImage">
+            </div>
+
+
+            <!-- PROJECT 2 -->
+            <div class="project-container" style="margin-top: 100px;">
+                <h2>Stranger Things</h2>
+                <p class="project-desc">Friends Don't Lie</p>
+
+                <div class="project-grid">
+                    <div class="project-card">
+                        <img src="images/sketches/stranger/1.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/stranger/2.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/stranger/3.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/stranger/4.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/stranger/5.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/stranger/6.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/stranger/7.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/stranger/8.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/stranger/9.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                </div>
+            </div>
+            <!-- MORE PROJECTS -->
+            <div class="more-projects">
+                <h2>More Sketches</h2>
+                <p>Coming soon...</p>
+            </div>
+
+        </section>
+    </div>
+
+</body>
+<script>
+    function openImage(src) {
+        document.getElementById("fullImage").src = src;
+        document.getElementById("imageViewer").style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeImage() {
+        document.getElementById("imageViewer").style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+</script>
+</html>
