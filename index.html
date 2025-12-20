@@ -208,25 +208,26 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="form-control">
+                        <form class="form-control" id="contact-form">
                             <div class="form-inputs">
-                                <input type="text" class="input-field" placeholder="Name">
-                                <input type="text" class="input-field" placeholder="Email">
+                                <input type="text" name="name" class="input-field" placeholder="Name" required>
+                                <input type="email" name="email" class="input-field" placeholder="Email" required>
                             </div>
                             <div class="text-area">
-                                <textarea placeholder="Message"></textarea>
+                                <textarea name="message" placeholder="Message" required></textarea>
                             </div>
                             <div class="form-button">
-                                <button class="btn">Send <i class="uil uil-message"></i></button>
+                                <button type="submit" class="btn">
+                                    Send <i class="uil uil-message"></i>
+                                </button>
                             </div>
-                        </div>
+                        </form>
                     </div>
+
                 </div>
             </section>
 
         </main>
-
-
         <!-- --------------- FOOTER --------------- -->
         <footer>
             <div class="top-footer">
@@ -273,6 +274,31 @@
 
     <!-- ----- MAIN JS ----- -->
     <script src="assets/js/main.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function () {
+            //your Public Key
+            emailjs.init("huPgUFXz_fgm1ONG9");
+        })();
+
+        // Attach submit event to the form
+        document.getElementById("contact-form").addEventListener("submit", function (e) {
+            e.preventDefault(); // prevent page reload
+
+            emailjs.sendForm(
+                "service_smfvkky",      // Your Service ID
+                "template_ttio5xw",      // Your Template ID
+                this                     // The form element
+            ).then(function () {
+                alert("Message sent successfully!");
+                document.getElementById("contact-form").reset(); // clear form
+            }, function (error) {
+                alert("Failed to send message!");
+                console.log(error);
+            });
+        });
+    </script>
 </body>
 
 </html>
