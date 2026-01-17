@@ -123,6 +123,37 @@
             color: rgb(8, 132, 173);
         }
 
+        .featured-text-btn .btn {
+            text-decoration: none;
+            /* remove underline */
+            color: #ffffff;
+            /* text color */
+            background-color: #0a66c2;
+            /* LinkedIn blue */
+            padding: 12px 22px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        /* Icon size */
+        .featured-text-btn .btn i {
+            font-size: 18px;
+        }
+
+        /* Hover effect */
+        .featured-text-btn .btn:hover {
+            background-color: #004182;
+            /* darker blue */
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(10, 102, 194, 0.3);
+        }
+
+
         @media screen and (max-width: 1300px) {
             .overlay p {
                 font-size: 18px;
@@ -193,8 +224,8 @@
 </head>
 
 <body>
+    
     <div class="container">
-
         <!-- HEADER -->
         <nav id="header">
             <div class="nav-logo">
@@ -205,100 +236,177 @@
             </div>
         </nav>
         <!-- PROJECTS -->
-        <section class="projects-section"">
+        <section class="projects-section">
+
 
             <!-- PROJECT 1 -->
+            <div class="project-container" style="margin-top: 100px;">
+                <h2>Quadruped Robot for Surveillance & Defence Support</h2>
+                <p class="project-desc">
+                    A self-initiated defence-oriented quadruped robotics prototype focused on mechanical design,
+                    hardware integration, and basic locomotion. The robot was built completely from scratch and
+                    successfully tested for forward and backward walking gaits using a microcontroller-based
+                    control system.
+                </p>
+
+                <div class="project-grid">
+
+                    <div class="project-card">
+                        <img src="images/robotics/quadruped/1.png">
+                        <div class="overlay">
+                            <p>PVC pipes were manually cut using a hand hexablade to prepare structural components.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="images/robotics/quadruped/2.png">
+                        <div class="overlay">
+                            <p>All PVC leg segments arranged along with metal-geared servo motors for actuation.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="images/robotics/quadruped/3.png">
+                        <div class="overlay">
+                            <p>Four handmade legs constructed using water pipes and 0.5W night bulbs as joint supports.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="images/robotics/quadruped/4.png">
+                        <div class="overlay">
+                            <p>Battery connections being soldered to ensure reliable power supply.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="images/robotics/quadruped/5.png">
+                        <div class="overlay">
+                            <p>Initial skeleton frame built using aluminum rods for lightweight structural strength.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="images/robotics/quadruped/6.png">
+                        <div class="overlay">
+                            <p>Complete mechanical structure assembled and prepared for locomotion testing.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="images/robotics/quadruped/7.png">
+                        <div class="overlay">
+                            <p>Close-up view of the front leg highlighting joint alignment and servo placement.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="images/robotics/quadruped/8.png">
+                        <div class="overlay">
+                            <p>Three-quarter view of the quadruped body showing overall proportions and design.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="images/robotics/quadruped/9.png">
+                        <div class="overlay">
+                            <p>Fully assembled body integrated with a laptop box used as electronics housing.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="images/robotics/quadruped/10.png">
+                        <div class="overlay">
+                            <p>Final physical prototype reinforced using hard cardboard for added stability.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="images/robotics/quadruped/11.png">
+                        <div class="overlay">
+                            <p>Concept blueprint showing a defence-oriented setup with a mounted gun and rear drone for
+                                surveillance.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="images/robotics/quadruped/12.png">
+                        <div class="overlay">
+                            <p>Future visual concept showing the final colored design and expected appearance.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="featured-text-btn">
+                    <a href="https://www.linkedin.com/posts/a-amansharma_robotics-quadrupedrobot-defencetechnology-activity-7412072099575623680-b7em?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMR2VIBzWcU732Hl1HiRdej_YmWsRI29oo"
+                        target="_blank" class="btn">
+                        <i class="uil uil-linkedin"></i> View Video Post
+                    </a>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 2 -->
             <div class=" project-container" style="margin-top: 100px;">
-            <h2>Human Gesture Replicating Robotic Hand </h2>
-            <p class="project-desc">
-                A gesture-controlled robotic hand that detects human finger movements and replicates them in real
-                time.
-                Designed using servo mechanisms and sensors for accurate and responsive motion control.
-            </p>
+                <h2>Human Gesture Replicating Robotic Hand </h2>
+                <p class="project-desc">
+                    A gesture-controlled robotic hand that detects human finger movements and replicates them in real
+                    time.
+                    Designed using servo mechanisms and sensors for accurate and responsive motion control.
+                </p>
 
-            <div class="project-grid">
-                <div class="project-card"><img src="images/robotics/hand/1.jpg">
-                    <div class="overlay">
-                        <p>PVC pipes were selected to form a lightweight and durable mechanical hand structure.</p>
+                <div class="project-grid">
+                    <div class="project-card"><img src="images/robotics/hand/1.jpg">
+                        <div class="overlay">
+                            <p>PVC pipes were selected to form a lightweight and durable mechanical hand structure.</p>
+                        </div>
+                    </div>
+                    <div class="project-card"><img src="images/robotics/hand/2.jpg">
+                        <div class="overlay">
+                            <p>Wiring and hardware components were installed to connect all mechanical parts
+                                efficiently.</p>
+                        </div>
+                    </div>
+                    <div class="project-card"><img src="images/robotics/hand/3.jpg">
+                        <div class="overlay">
+                            <p>Metal-geared servo motors were installed for precise and reliable finger movements.</p>
+                        </div>
+                    </div>
+                    <div class="project-card"><img src="images/robotics/hand/4.jpg">
+                        <div class="overlay">
+                            <p>Nylon threads efficiently transferred servo motion to each finger mechanism.</p>
+                        </div>
+                    </div>
+                    <div class="project-card"><img src="images/robotics/hand/5.jpg">
+                        <div class="overlay">
+                            <p>The fully assembled robotic hand was tested for alignment, strength, and responsiveness.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="project-card"><img src="images/robotics/hand/6.gif">
+                        <div class="overlay">
+                            <p>The working model successfully replicated real-time finger gestures and finger count.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="project-card"><img src="images/robotics/hand/2.jpg">
-                    <div class="overlay">
-                        <p>Wiring and hardware components were installed to connect all mechanical parts
-                            efficiently.</p>
-                    </div>
+                <div class="featured-text-btn">
+                    <a href="https://www.linkedin.com/posts/a-amansharma_robotics-innovation-teamwork-activity-7379071790259810304-VtCJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMR2VIBzWcU732Hl1HiRdej_YmWsRI29oo"
+                        target="_blank" class="btn">
+                        <i class="uil uil-linkedin"></i>View LinkedIn Post
+                    </a>
                 </div>
-                <div class="project-card"><img src="images/robotics/hand/3.jpg">
-                    <div class="overlay">
-                        <p>Metal-geared servo motors were installed for precise and reliable finger movements.</p>
-                    </div>
+                <div class="featured-text-btn">
+                    <a href="https://www.linkedin.com/posts/a-amansharma_iitpatna-iitpatna-robotics-activity-7379076855976513536-J4EJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMR2VIBzWcU732Hl1HiRdej_YmWsRI29oo"
+                        target="_blank" class="btn">
+                        <i class="uil uil-linkedin"></i> View Video Post
+                    </a>
                 </div>
-                <div class="project-card"><img src="images/robotics/hand/4.jpg">
-                    <div class="overlay">
-                        <p>Nylon threads efficiently transferred servo motion to each finger mechanism.</p>
-                    </div>
-                </div>
-                <div class="project-card"><img src="images/robotics/hand/5.jpg">
-                    <div class="overlay">
-                        <p>The fully assembled robotic hand was tested for alignment, strength, and responsiveness.
-                        </p>
-                    </div>
-                </div>
-                <div class="project-card"><img src="images/robotics/hand/6.gif">
-                    <div class="overlay">
-                        <p>The working model successfully replicated real-time finger gestures and finger count.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="featured-text-btn">
-                <a href="https://www.linkedin.com/posts/a-amansharma_robotics-innovation-teamwork-activity-7379071790259810304-VtCJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMR2VIBzWcU732Hl1HiRdej_YmWsRI29oo"
-                    target="_blank" class="btn">
-                    <i class="uil uil-linkedin"></i>View LinkedIn Post
-                </a>
-            </div>
-            <div class="featured-text-btn">
-                <a href="https://www.linkedin.com/posts/a-amansharma_iitpatna-iitpatna-robotics-activity-7379076855976513536-J4EJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMR2VIBzWcU732Hl1HiRdej_YmWsRI29oo"
-                    target="_blank" class="btn">
-                    <i class="uil uil-linkedin"></i> View Video Post
-                </a>
-            </div>
-
-
-            <style>
-                .featured-text-btn .btn {
-                    text-decoration: none;
-                    /* remove underline */
-                    color: #ffffff;
-                    /* text color */
-                    background-color: #0a66c2;
-                    /* LinkedIn blue */
-                    padding: 12px 22px;
-                    border-radius: 30px;
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 8px;
-                    font-weight: 600;
-                    transition: all 0.3s ease;
-                }
-
-                /* Icon size */
-                .featured-text-btn .btn i {
-                    font-size: 18px;
-                }
-
-                /* Hover effect */
-                .featured-text-btn .btn:hover {
-                    background-color: #004182;
-                    /* darker blue */
-                    color: #ffffff;
-                    transform: translateY(-2px);
-                    box-shadow: 0 6px 15px rgba(10, 102, 194, 0.3);
-                }
-            </style>
+        </section>
     </div>
 
-    <!-- PROJECT 2 -->
+    <!-- PROJECT 3 -->
     <div class="project-container">
         <h2>Scale Model of F-22 Raptor</h2>
         <p class="project-desc">
@@ -344,7 +452,7 @@
         </div>
     </div>
 
-    <!-- PROJECT 3 -->
+    <!-- PROJECT 4 -->
     <div class="project-container">
         <h2>Custom Carbon-Fiber Drone with Aerial Filming Capability</h2>
         <p class="project-desc">
@@ -426,11 +534,11 @@
                 <li class="footer_menu_list">
                     <a href="index.html#home">Home</a>
                 </li>
-                
+
                 <li class="footer_menu_list">
                     <a href="index.html#about">About</a>
                 </li>
-                
+
                 <li class="footer_menu_list">
                     <a href="index.html#projects">Projects</a>
                 </li>
@@ -438,7 +546,7 @@
                 <li class="footer_menu_list">
                     <a href="index.html#contact">Contact</a>
                 </li>
-                
+
             </ul>
         </div>
         <div class="footer-social-icons">
