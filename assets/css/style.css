@@ -689,13 +689,13 @@ body {
     display: flex;
     align-items: center;
     text-align: center;
+    gap: 0px;
 }
 
 .posts a {
     transition: 0.3s;
     text-decoration: none;
-    color: var(--text-color-second);
-}
+    color: var(--text-color-second);}
 
 .posts p {
     font-size: 20px;
@@ -703,7 +703,8 @@ body {
 }
 .posts a img{
     transition: 0.3s;
-    border-radius: 6px;
+    border-radius: 3px;
+    width: 50%;
 }
 
 .posts a img:hover {
@@ -804,9 +805,15 @@ body {
     .project-box {
         width: 80%;
     }
+    .posts{
+        gap: 40px;
+    }
 
     .posts p {
         font-size: 12px;
+    }
+    .posts a img{
+        width: 90%;
     }
 
 }
@@ -867,6 +874,9 @@ body {
 
     .posts p {
         font-size: 11px;
+    }
+    .posts a img{
+        width: 110%;
     }
 }
 
