@@ -199,6 +199,7 @@
             .nav-name {
                 font-size: 25px;
             }
+
         }
     </style>
 </head>
@@ -209,37 +210,77 @@
         <!-- HEADER -->
         <nav id="header">
             <div class="nav-logo">
-                <p class="nav-name">Graphic Designs</p>
+                <p class="nav-name">Designs</p>
             </div>
             <div class="home">
                 <a href="index.html" style="text-decoration: none;">Home</a>
             </div>
         </nav>
-
-
-
         <!-- PROJECTS -->
         <section class="projects-section">
 
             <!-- PROJECT 1 -->
             <div class="project-container" style="margin-top: 100px;">
                 <h2>Canva</h2>
-                <p class="project-desc">Designs will be added soon...</p>
+                <p class="project-desc">Canva designs created during internship</p>
 
                 <div class="project-grid">
                     <div class="project-card">
-                        <img src"images/designs/canva1.png" onclick="openImage(this.src)">
+                        <img src="images/designs/canva1.png" onclick="openImage(this.src)">
                         <div class="overlay"> Click to view full image</div>
                     </div>
-
-
-
-
-
-
+                    <div class="project-card">
+                        <img src="images/designs/camva2.png" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/designs/canva3.png" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/designs/canva4.png" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                </div>
+                <div class="featured-text-btn">
+                    All designs were created for live company projects during my internship, comprising 60+ completed design creatives.
                 </div>
             </div>
+            <style>
+                .featured-text-btn .btn {
+                    text-decoration: none;
+                    /* remove underline */
+                    color: #ffffff;
+                    /* text color */
+                    background: linear-gradient(45deg,
+                            #f58529,
+                            #dd2a7b,
+                            #8134af,
+                            #515bd4);
+                    /* Instagram gradient */
+                    padding: 12px 22px;
+                    border-radius: 30px;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-weight: 600;
+                    transition: all 0.3s ease;
+                }
 
+                /* Icon size */
+                .featured-text-btn .btn i {
+                    font-size: 18px;
+                }
+
+                /* Hover effect */
+                .featured-text-btn .btn:hover {
+                    filter: brightness(1.1);
+                    /* subtle pop */
+                    color: #ffffff;
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 15px rgba(221, 42, 123, 0.4);
+                }
+            </style>
             <!-- Fullscreen Image Viewer -->
             <div id="imageViewer" onclick="closeImage()">
                 <img id="fullImage">
@@ -248,30 +289,63 @@
 
             <!-- PROJECT 2 -->
             <div class="project-container" style="margin-top: 100px;">
-                <h2>Inkscape</h2>
-                <p class="project-desc">Designs will be added soon...</p>
+                <h2>Stranger Things</h2>
+                <p class="project-desc">Friends Don't Lie</p>
 
                 <div class="project-grid">
                     <div class="project-card">
-                        <img src"images/sketches/stranger/.jpeg" onclick="openImage(this.src)">
+                        <img src="images/sketches/stranger/1.jpeg" onclick="openImage(this.src)">
                         <div class="overlay"> Click to view full image</div>
                     </div>
-
-
-
-
-
-
+                    <div class="project-card">
+                        <img src="images/sketches/stranger/2.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/stranger/3.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/stranger/4.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/stranger/5.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/stranger/6.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/stranger/7.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/stranger/8.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                    <div class="project-card">
+                        <img src="images/sketches/stranger/9.jpeg" onclick="openImage(this.src)">
+                        <div class="overlay"> Click to view full image</div>
+                    </div>
+                </div>
+                <div class="featured-text-btn">
+                    <a href="https://www.instagram.com/p/DRe_vyGEn91/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                        target="_blank" class="btn">
+                        <i class="uil uil-instagram"></i> View Instagran Post
+                    </a>
                 </div>
             </div>
-            <!-- MORE Designs -->
+            <!-- MORE PROJECTS -->
             <div class="more-projects">
-                <h2>More Designs</h2>
+                <h2>More Sketches</h2>
                 <p>Coming soon...</p>
             </div>
 
         </section>
     </div>
+
     <!-- --------------- FOOTER --------------- -->
     <footer>
         <div class="top-footer">
@@ -282,11 +356,11 @@
                 <li class="footer_menu_list">
                     <a href="index.html#home">Home</a>
                 </li>
-
+                
                 <li class="footer_menu_list">
                     <a href="index.html#about">About</a>
                 </li>
-
+                
                 <li class="footer_menu_list">
                     <a href="index.html#projects">Projects</a>
                 </li>
@@ -294,7 +368,7 @@
                 <li class="footer_menu_list">
                     <a href="index.html#contact">Contact</a>
                 </li>
-
+                
             </ul>
         </div>
         <div class="footer-social-icons">
@@ -310,7 +384,6 @@
             <p>Copyright &copy; <a href="#home" style="text-decoration: none;">Aman Sharma</a> - All rights reserved</p>
             </div> -->
     </footer>
-
 
 </body>
 <script>
