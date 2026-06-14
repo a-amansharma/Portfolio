@@ -18,8 +18,7 @@
       --muted: #666666;
       --primary: #1e9fab;
       --nav-bg: rgb(223, 223, 255);
-      --shadow: rgba(0, 0, 0, 0.12);
-      --radius: 12px;
+      --radius: 11px;
       --linkedin: #0a66c2;
     }
 
@@ -50,25 +49,12 @@
       color: inherit;
     }
 
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #f1f1f1;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #cfcfcf;
-      border-radius: 30px;
-    }
-
     nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 82px;
+      height: 80px;
       padding: 0 8%;
       background: var(--nav-bg);
       display: flex;
@@ -97,42 +83,41 @@
     }
 
     .projects-section {
-      padding: 120px 8% 55px;
+      padding: 112px 8% 50px;
     }
 
     .project-block {
       background: var(--white);
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       border-radius: var(--radius);
       box-shadow:
-        0 14px 35px rgba(0, 0, 0, 0.10),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        0 12px 30px rgba(0, 0, 0, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85);
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.8);
     }
 
     .project-summary {
-      list-style: none;
+      width: 100%;
+      border: none;
+      background: transparent;
       cursor: pointer;
-      padding: 17px;
+      padding: 14px;
       display: grid;
-      grid-template-columns: 135px 1fr auto;
-      gap: 18px;
+      grid-template-columns: 105px 1fr auto;
+      gap: 16px;
       align-items: center;
-    }
-
-    .project-summary::-webkit-details-marker {
-      display: none;
+      text-align: left;
     }
 
     .thumb-box {
-      width: 135px;
-      aspect-ratio: 4 / 3;
-      border-radius: 10px;
+      width: 105px;
+      aspect-ratio: 3 / 4;
+      border-radius: 9px;
       overflow: hidden;
       background: #eef1f7;
       box-shadow:
-        0 12px 24px rgba(0, 0, 0, 0.16),
+        0 10px 22px rgba(0, 0, 0, 0.15),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
@@ -143,7 +128,7 @@
     }
 
     .project-title h2 {
-      font-size: clamp(17px, 2.2vw, 24px);
+      font-size: clamp(16px, 2vw, 22px);
       line-height: 1.25;
       font-weight: 650;
       color: var(--text);
@@ -151,14 +136,14 @@
 
     .project-title span {
       display: inline-block;
-      margin-top: 6px;
+      margin-top: 5px;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12.5px;
     }
 
     .drop-icon {
-      width: 42px;
-      height: 42px;
+      width: 39px;
+      height: 39px;
       border-radius: 50%;
       background: #eef7ff;
       display: grid;
@@ -170,58 +155,52 @@
     }
 
     .drop-icon i {
-      font-size: 25px;
-      transition: 0.3s ease;
+      font-size: 24px;
+      transition: 0.35s ease;
     }
 
-    details[open] .drop-icon {
+    .project-block.open .drop-icon {
       background: var(--primary);
       color: white;
     }
 
-    details[open] .drop-icon i {
+    .project-block.open .drop-icon i {
       transform: rotate(180deg);
     }
 
     .project-content {
-      display: grid;
-      grid-template-rows: 0fr;
-      transition: grid-template-rows 0.45s ease;
-    }
-
-    details[open] .project-content {
-      grid-template-rows: 1fr;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.55s ease;
     }
 
     .project-content-inner {
-      overflow: hidden;
-      padding: 0 17px;
+      padding: 0 14px 20px;
       opacity: 0;
-      transform: translateY(-8px);
-      transition: 0.35s ease;
+      transform: translateY(-10px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
     }
 
-    details[open] .project-content-inner {
+    .project-block.open .project-content-inner {
       opacity: 1;
       transform: translateY(0);
-      padding-bottom: 24px;
     }
 
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
     }
 
     .project-card {
       position: relative;
       overflow: hidden;
-      border-radius: 10px;
-      aspect-ratio: 4 / 3;
+      border-radius: 9px;
+      aspect-ratio: 3 / 4;
       background: #eef1f7;
       cursor: zoom-in;
       box-shadow:
-        0 14px 28px rgba(0, 0, 0, 0.17),
+        0 13px 27px rgba(0, 0, 0, 0.16),
         0 4px 8px rgba(0, 0, 0, 0.08),
         inset 0 1px 0 rgba(255,255,255,0.8);
       transition: 0.35s ease;
@@ -249,7 +228,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 22px;
+      margin-top: 20px;
     }
 
     .linkedin-btn {
@@ -285,7 +264,7 @@
       border-radius: var(--radius);
       background: var(--white);
       box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-      margin-top: 28px;
+      margin-top: 24px;
     }
 
     .more-projects h2 {
@@ -439,96 +418,98 @@
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.28);
     }
 
-    @media (max-width: 950px) {
+    @media (max-width: 1100px) {
+      .project-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 850px) {
       nav {
-        height: 76px;
+        height: 74px;
         padding: 0 6%;
       }
 
       .projects-section {
-        padding: 108px 5% 42px;
+        padding: 100px 5% 40px;
       }
 
       .project-summary {
-        grid-template-columns: 118px 1fr auto;
-        gap: 14px;
+        grid-template-columns: 92px 1fr auto;
+        gap: 12px;
       }
 
       .thumb-box {
-        width: 118px;
+        width: 92px;
       }
 
       .project-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
+        gap: 12px;
       }
     }
 
     @media (max-width: 620px) {
       nav {
-        height: 70px;
+        height: 68px;
       }
 
       .projects-section {
-        padding: 95px 4% 35px;
+        padding: 88px 4% 34px;
       }
 
       .project-block {
-        margin-bottom: 18px;
+        margin-bottom: 12px;
       }
 
       .project-summary {
-        grid-template-columns: 82px 1fr auto;
-        padding: 12px;
-        gap: 10px;
+        grid-template-columns: 72px 1fr auto;
+        padding: 10px;
+        gap: 9px;
       }
 
       .thumb-box {
-        width: 82px;
+        width: 72px;
         border-radius: 8px;
       }
 
       .project-title h2 {
-        font-size: 14.5px;
-        line-height: 1.25;
+        font-size: 13.5px;
+        line-height: 1.23;
       }
 
       .project-title span {
-        font-size: 11.5px;
-        margin-top: 4px;
+        font-size: 11px;
+        margin-top: 3px;
       }
 
       .drop-icon {
-        width: 34px;
-        height: 34px;
+        width: 32px;
+        height: 32px;
       }
 
       .drop-icon i {
-        font-size: 21px;
+        font-size: 20px;
       }
 
       .project-content-inner {
-        padding: 0 12px;
-      }
-
-      details[open] .project-content-inner {
-        padding-bottom: 18px;
+        padding: 0 10px 16px;
       }
 
       .project-grid {
-        grid-template-columns: 1fr;
-        gap: 13px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
       }
 
       .post-buttons {
         flex-direction: column;
-        margin-top: 18px;
+        margin-top: 16px;
       }
 
       .linkedin-btn {
         width: 100%;
-        font-size: 13.5px;
-        padding: 12px 15px;
+        font-size: 13px;
+        padding: 12px 14px;
       }
 
       .footer-menu {
@@ -563,8 +544,8 @@
 
   <main class="projects-section">
 
-    <details class="project-block">
-      <summary class="project-summary">
+    <section class="project-block">
+      <button class="project-summary" type="button">
         <div class="thumb-box">
           <img src="../images/robotics/quadruped/12.webp" alt="Quadruped Robot Thumbnail">
         </div>
@@ -577,7 +558,7 @@
         <div class="drop-icon">
           <i class="uil uil-angle-down"></i>
         </div>
-      </summary>
+      </button>
 
       <div class="project-content">
         <div class="project-content-inner">
@@ -603,10 +584,10 @@
           </div>
         </div>
       </div>
-    </details>
+    </section>
 
-    <details class="project-block">
-      <summary class="project-summary">
+    <section class="project-block">
+      <button class="project-summary" type="button">
         <div class="thumb-box">
           <img src="../images/robotics/hand/6.webp" alt="Robotic Hand Thumbnail">
         </div>
@@ -619,7 +600,7 @@
         <div class="drop-icon">
           <i class="uil uil-angle-down"></i>
         </div>
-      </summary>
+      </button>
 
       <div class="project-content">
         <div class="project-content-inner">
@@ -643,10 +624,10 @@
           </div>
         </div>
       </div>
-    </details>
+    </section>
 
-    <details class="project-block">
-      <summary class="project-summary">
+    <section class="project-block">
+      <button class="project-summary" type="button">
         <div class="thumb-box">
           <img src="../images/robotics/raptor/5.webp" alt="F-22 Raptor Thumbnail">
         </div>
@@ -659,7 +640,7 @@
         <div class="drop-icon">
           <i class="uil uil-angle-down"></i>
         </div>
-      </summary>
+      </button>
 
       <div class="project-content">
         <div class="project-content-inner">
@@ -672,10 +653,10 @@
           </div>
         </div>
       </div>
-    </details>
+    </section>
 
-    <details class="project-block">
-      <summary class="project-summary">
+    <section class="project-block">
+      <button class="project-summary" type="button">
         <div class="thumb-box">
           <img src="../images/robotics/drone/7.webp" alt="Drone Thumbnail">
         </div>
@@ -688,7 +669,7 @@
         <div class="drop-icon">
           <i class="uil uil-angle-down"></i>
         </div>
-      </summary>
+      </button>
 
       <div class="project-content">
         <div class="project-content-inner">
@@ -703,7 +684,7 @@
           </div>
         </div>
       </div>
-    </details>
+    </section>
 
     <section class="more-projects">
       <h2>+2 More Projects</h2>
@@ -764,6 +745,37 @@
     let startY = 0;
     let modalOpen = false;
     let pushedHistory = false;
+
+    document.querySelectorAll(".project-summary").forEach((button) => {
+      button.addEventListener("click", () => {
+        const block = button.closest(".project-block");
+        const content = block.querySelector(".project-content");
+
+        if (block.classList.contains("open")) {
+          content.style.maxHeight = content.scrollHeight + "px";
+
+          requestAnimationFrame(() => {
+            content.style.maxHeight = "0px";
+            block.classList.remove("open");
+          });
+        } else {
+          block.classList.add("open");
+          content.style.maxHeight = content.scrollHeight + "px";
+
+          setTimeout(() => {
+            if (block.classList.contains("open")) {
+              content.style.maxHeight = "none";
+            }
+          }, 560);
+        }
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      document.querySelectorAll(".project-block.open .project-content").forEach((content) => {
+        content.style.maxHeight = "none";
+      });
+    });
 
     function updateImageTransform() {
       fullImage.style.transform = `translate(${posX}px, ${posY}px) scale(${scale})`;
