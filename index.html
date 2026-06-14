@@ -1432,59 +1432,56 @@
       }
 
 
-      .project-box {
-        min-height: 130px;
-        align-items: center;
-        justify-content: flex-start;
-        flex-direction: row;
-        text-align: left;
-        padding: 16px 16px;
-        gap: 14px;
-      }
+      @media only screen and (max-width: 640px) {
+        .project-box {
+          min-height: 135px;
+          align-items: center;
+          justify-content: flex-start;
+          flex-direction: row;
+          text-align: left;
+          padding: 16px;
+          gap: 16px;
+        }
 
-      .project-box>i {
-        flex: 0 0 54px;
-        width: 54px;
-        height: 54px;
-        display: grid;
-        place-items: center;
-        font-size: 38px;
-        margin: 0;
-        border-radius: 16px;
-        background: rgba(0, 181, 231, 0.1);
-      }
+        .project-box>i {
+          flex: 0 0 34%;
+          width: 34%;
+          height: 100%;
+          min-height: 95px;
+          display: grid;
+          place-items: center;
+          font-size: 64px;
+          margin: 0;
+          border-radius: 18px;
+          background: rgba(0, 181, 231, 0.1);
+        }
 
-      .project-box h3,
-      .project-box label,
-      .project-box .project-tag,
-      .project-box .project-cta {
-        margin-left: 0;
-      }
+        .project-text {
+          width: 66%;
+          align-items: flex-start;
+          justify-content: center;
+        }
 
-      .project-text {
-        align-items: flex-start;
-        min-width: 0;
-      }
+        .project-box h3 {
+          font-size: 20px;
+          margin-bottom: 5px;
+        }
 
-      .project-box h3 {
-        font-size: 17px;
-        margin-bottom: 4px;
-      }
+        .project-box label {
+          font-size: 13px;
+          margin-bottom: 5px;
+        }
 
-      .project-box label {
-        font-size: 12px;
-        margin-bottom: 4px;
-      }
+        .project-tag {
+          font-size: 11px;
+          margin-bottom: 0;
+        }
 
-      .project-tag {
-        font-size: 10px;
-        margin-bottom: 0;
-      }
-
-      .project-cta {
-        font-size: 11px;
-        padding: 5px 9px;
-        margin-top: 6px;
+        .project-cta {
+          font-size: 12px;
+          padding: 6px 10px;
+          margin-top: 7px;
+        }
       }
 
       .posts {
@@ -1596,12 +1593,51 @@
         gap: 12px;
       }
 
-      .project-box>i {
-        flex-basis: 48px;
-        width: 48px;
-        height: 48px;
-        font-size: 34px;
-      }
+.project-box {
+  min-height: 125px;
+  padding: 12px;
+  gap: 10px;
+}
+
+.project-box > i {
+  flex: 0 0 34%;
+  width: 34%;
+  min-height: 82px;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 52px;
+  margin: 0;
+  border-radius: 14px;
+}
+
+.project-text {
+  width: 66%;
+  min-width: 0;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.project-box h3 {
+  font-size: 17px;
+  margin-bottom: 3px;
+}
+
+.project-box label {
+  font-size: 11px;
+  margin-bottom: 3px;
+  line-height: 1.3;
+}
+
+.project-tag {
+  font-size: 9px;
+}
+
+.project-cta {
+  font-size: 10px;
+  padding: 4px 8px;
+  margin-top: 5px;
+}
 
       .skills-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1903,8 +1939,6 @@
               </div>
             </details>
           </div>
-
-
         </div>
 
         <div class="featured-image">
@@ -1914,38 +1948,6 @@
         </div>
       </section>
 
-      <section class="section" id="about">
-        <div class="top-header">
-          <h1>About Me</h1>
-        </div>
-
-        <div class="row">
-          <div class="col">
-            <div class="about-info">
-              <h3>My introduction</h3>
-              <p>
-                My journey began with a curiosity for machines and how they work, which led me into the
-                world of robotics. Along the way, I discovered a love for creativity — exploring marketing
-                on-site, designing visuals, and telling stories through graphic design. Sketching has always
-                been where my ideas first take shape. Today, I blend technology and creativity, building ideas
-                that work well and feel meaningful.
-              </p>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="about-info">
-              <h3>What I build</h3>
-              <p>
-                I work on handmade robots, humanoid robot ideas, robotic arms, control systems,
-                web dashboards, creative visuals, and project documentation. I build from scratch with a
-                strong focus on clean design, accurate detailing, strong working, real prototypes, and
-                continuous improvement through testing.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section class="section" id="projects">
         <div class="top-header">
@@ -1981,6 +1983,38 @@
               <label>Creative Digital Media</label>
               <span class="project-tag">Canva • Inkscape • Visuals</span>
               <span class="project-cta">Click to see details</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="about">
+        <div class="top-header">
+          <h1>About Me</h1>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="about-info">
+              <h3>My introduction</h3>
+              <p>
+                My journey began with a curiosity for machines and how they work, which led me into the
+                world of robotics. Along the way, I discovered a love for creativity — exploring marketing
+                on-site, designing visuals, and telling stories through graphic design. Sketching has always
+                been where my ideas first take shape. Today, I blend technology and creativity, building ideas
+                that work well and feel meaningful.
+              </p>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="about-info">
+              <h3>What I build</h3>
+              <p>
+                I work on handmade robots, humanoid robot ideas, robotic arms, control systems,
+                web dashboards, creative visuals, and project documentation. I build from scratch with a
+                strong focus on clean design, accurate detailing, strong working, real prototypes, and
+                continuous improvement through testing.
+              </p>
             </div>
           </div>
         </div>
