@@ -1,1319 +1,877 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="shortcut icon" href="images/manlogo.jpeg" type="image/x-icon">
-    <title>Portfolio - Projects - Sketches</title>
-    <style>
-        /* ----- POPPINS FONT Link ----- */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
-/* ----- VARIABLES ----- */
-:root {
-    --body-color: rgb(250, 250, 250);
-    --color-white: rgb(255, 255, 255);
-
-    --text-color-second: rgb(68, 68, 68);
-    --text-color-third: rgb(30, 159, 171);
-
-    --first-color: rgb(110, 87, 224);
-    --first-color-hover: rgb(40, 91, 212);
-
-    --second-color: rgb(0, 201, 255);
-    --third-color: rgb(192, 166, 49);
-    --first-shadow-color: rgba(0, 0, 0, 0.1);
-
-}
-
-/* ----- BASE ----- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* ----- SMOOTH SCROLL ----- */
-html {
-    scroll-behavior: smooth;
-}
-
-/* ----- CHANGE THE SCROLL BAR DESIGN ----- */
-::-webkit-scrollbar {
-    width: 10px;
-    border-radius: 25px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 30px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #bbb;
-}
-
-
-/* ---##-- REUSABLE CSS --##--- */
-
-/* ----- GLOBAL BUTTON DESIGN ----- */
-.btn {
-    font-weight: 600;
-    padding: 12px 20px;
-    background: #e5e5e5;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: .3s;
-}
-
-.btn>i {
-    margin-left: 10px;
-}
-
-.btn:hover {
-    background: rgb(114, 114, 249);
-    color: var(--color-white);
-}
-
-/* ----- GLOBAL ICONS DESIGN ----- */
-i {
-    font-size: 20px;
-}
-
-/* ------- BASE -------- */
-body {
-    background: var(--body-color);
-}
-
-.container {
-    width: 100%;
-    position: relative;
-}
-
-/* ----- NAVIGATION BAR ----- */
-nav {
-    position: fixed;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 90px;
-    line-height: 90px;
-    padding-inline: 10vw;
-    background-color: rgb(223, 223, 255);
-    transition: 1s;
-    z-index: 100;
-
-}
-
-.nav-logo {
-    position: relative;
-}
-
-.nav-name {
-    font-size: 40px;
-    font-weight: 600;
-    color: var(--text-color-third);
-}
-
-.nav-logo span {
-    position: absolute;
-    top: -15px;
-    right: -20px;
-    font-size: 5em;
-    color: var(--text-color-second);
-}
-
-.nav-menu,
-.nav_menu_list {
-    display: flex;
-}
-
-.nav-menu .nav_list {
-    list-style: none;
-    position: relative;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: var(--text-color-second);
-    font-weight: 500;
-    padding-inline: 15px;
-    margin-inline: 20px;
-}
-
-.nav-menu-btn {
-    display: none;
-}
-
-.nav-menu-btn i {
-    font-size: 28px;
-    cursor: pointer;
-}
-
-.active-link {
-    position: relative;
-    color: var(--first-color);
-    transition: .3;
-}
-
-.active-link::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: -15px;
-    transform: translate(-50%, -50%);
-    width: 5px;
-    height: 5px;
-    background: var(--first-color);
-    border-radius: 50%;
-}
-
-
-/* ----- WRAPPER DESIGN ----- */
-.wrapper {
-    padding-inline: 10vw;
-}
-
-/* ----- FEATURED BOX ----- */
-.featured-box {
-    position: relative;
-    display: flex;
-    height: 100vh;
-    min-height: 700px;
-}
-
-/* ----- FEATURED TEXT BOX ----- */
-.featured-text {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    min-height: 80vh;
-    flex-direction: column;
-    width: 50%;
-    padding-left: 20px;
-}
-
-.featured-text-card span {
-    background: var(--third-color);
-    color: var(--color-white);
-    padding: 7px 14px;
-    font-size: 30px;
-    font-weight: 400;
-    border-radius: 10px;
-}
-
-.featured-name {
-    font-size: 40px;
-    font-weight: 600;
-    color: var(--text-color-second);
-    margin-block: 10px;
-    margin-top: 30px;
-}
-
-.typedText {
-    text-transform: capitalize;
-    color: rgb(81, 81, 255);
-}
-
-.featured-text-info {
-    font-size: 15px;
-    margin-bottom: 30px;
-    color: var(--text-color-second);
-}
-
-.featured-text-btn {
-    display: flex;
-    gap: 20px;
-}
-
-.featured-text-btn>.blue-btn {
-    background: var(--first-color);
-    color: var(--color-white);
-}
-
-.featured-text-btn>.blue-btn:hover {
-    background: var(--first-color-hover);
-}
-
-
-
-.social_icons {
-    display: flex;
-    margin-top: 6em;
-    gap: 30px;
-}
-
-/* ICON BASE */
-.icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        background 0.3s ease;
-    cursor: pointer;
-}
-
-/* LINK RESET */
-.icon a {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-}
-
-/* ICON */
-.icon i {
-    font-size: 1.4rem;
-    color: #fff;
-}
-
-/* 🌈 APP COLORS */
-.icon:nth-child(1) {
-    background: linear-gradient(135deg, #feda75, #d62976, #962fbf, #4f5bd5);
-}
-
-.icon:nth-child(2) {
-    background: #0077b5;
-}
-
-.icon:nth-child(3) {
-    background: #24292e;
-}
-
-/* ✨ HOVER EFFECT */
-.icon:hover {
-    transform: scale(1.15);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
-    filter: brightness(1.15);
-}
-
-.contact-info a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.contact-info a:hover {
-    color: inherit;
-}
-
-
-/* ----- FEATURED IMAGE BOX ----- */
-.featured-image {
-    display: flex;
-    justify-content: right;
-    align-content: center;
-    min-height: 80vh;
-    width: 50%;
-}
-
-.image {
-    margin: auto 0;
-    width: 400px;
-    height: 400px;
-    border-radius: 65% 55% 65% 55%;
-    overflow: hidden;
-    animation: imgFloat 4s ease-in-out infinite;
-}
-
-.image img {
-    width: 400px;
-    height: 400px;
-    object-fit: cover;
-
-}
-
-label~h3 {
-    font-size: 16px;
-}
-
-@keyframes imgFloat {
-    50% {
-        transform: translateY(15px);
-        border-radius: 55% 65% 55% 65%;
-    }
-}
-
-/* .scroll-btn{
-   position: absolute;
-   bottom: 0;
-   left: 50%;
-   translate: -50%;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   width: 150px;
-   height: 50px;
-   gap: 5px;
-   text-decoration: none;
-   color: var(--text-color-second);
-   background: var(--color-white);
-   border-radius: 30px;
-   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
-} */
-.scroll-btn i {
-    font-size: 20px;
-}
-
-/* ----- MAIN BOX ----- */
-.section {
-    padding-block: 5em;
-}
-
-.row {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    gap: 50px;
-}
-
-.col {
-    display: flex;
-    width: 50%;
-}
-
-/* -- ## --- RESUABLE CSS -- ## -- */
-.top-header {
-    text-align: center;
-    margin-bottom: 5em;
-}
-
-.top-header h1 {
-    font-weight: 600;
-    font-size: 3rem;
-    color: var(--text-color-second);
-    margin-bottom: 10px;
-}
-
-.top-header span {
-    color: #999;
-}
-
-h3 {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--text-color-second);
-    margin-bottom: 15px;
-}
-
-/* ----- ABOUT INFO ----- */
-.about-info {
-    position: relative;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding-block: 30px 70px;
-    padding-inline: 20px;
-    width: 100%;
-    background: var(--color-white);
-    box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
-    border-radius: 20px;
-}
-
-.about-info p {
-    text-align: center;
-    font-size: 15px;
-    color: #777;
-}
-
-.about-btn button {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    background: var(--first-color);
-    color: var(--color-white);
-    border-radius: 30px;
-}
-
-.about-btn button:hover {
-    background: var(--first-color-hover);
-}
-
-/* ----- ABOUT / SKILLS BOX ----- */
-.skills-box {
-    margin: 10px;
-}
-
-.skills-header {
-    margin-bottom: 30px;
-}
-
-.skills-list {
-    display: grid;
-    flex-wrap: wrap;
-    gap: 5px;
-}
-
-.skills-list span {
-    font-size: 14px;
-    background: var(--first-color);
-    color: var(--color-white);
-    padding: 2px 10px;
-    border-radius: 5px;
-}
-
-/* ----- PROJECTS BOX ----- */
-.project-container {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.project-box {
-    position: relative;
-    display: flex;
-    cursor: pointer;
-    transition: 0.4s;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 30%;
-    height: 250px;
-    background: var(--color-white);
-    border-radius: 20px;
-    box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
-    overflow: hidden;
-}
-
-.project-box>i {
-    font-size: 70px;
-    color: #00B5E7;
-    margin-bottom: 25px;
-}
-
-.project-box label {
-    font-size: 15px;
-    color: #777;
-}
-
-.project-box::after,
-.contact-info::after {
-    content: "";
-    position: absolute;
-    bottom: -100%;
-    background: var(--second-color);
-    width: 100%;
-    height: 100%;
-    transition: .4s;
-    z-index: 1;
-}
-
-.project-box:hover.project-box::after,
-.contact-info:hover.contact-info::after {
-    bottom: 0;
-}
-
-.project-box:hover.project-box i,
-.project-box:hover.project-box>h3,
-.project-box:hover.project-box>label {
-    color: var(--color-white);
-    z-index: 2;
-}
-
-/* ----- CONTACT BOX ----- */
-.contact-info {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 30px;
-    width: 100%;
-    height: 315px;
-    background: var(--second-color);
-    border-radius: 10px;
-    box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
-    overflow: hidden;
-}
-
-.contact-info>h2 {
-    color: var(--color-white);
-    margin-bottom: 20px;
-}
-
-.contact-info>p {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--color-white);
-    margin-block: 5px;
-}
-
-.contact-info p>i {
-    font-size: 18px;
-}
-
-.contact-info::after {
-    background: var(--color-white);
-}
-
-.contact-info:hover.contact-info h2,
-.contact-info:hover.contact-info p,
-.contact-info:hover.contact-info i {
-    color: #777;
-    z-index: 2;
-}
-
-/* ----- CONTACT FORM ----- */
-.form-control {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-}
-
-.form-inputs {
-    display: flex;
-    gap: 10px;
-    width: 100%;
-}
-
-.input-field {
-    width: 50%;
-    height: 55px;
-    background: transparent;
-    border: 2px solid #AAA;
-    border-radius: 10px;
-    padding-inline: 20px;
-    outline: none;
-}
-
-textarea {
-    width: 100%;
-    height: 250px;
-    background: transparent;
-    border: 2px solid #AAA;
-    border-radius: 10px;
-    padding: 15px 20px;
-    outline: none;
-    resize: none;
-}
-
-.form-button>.btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--second-color);
-    color: var(--color-white);
-}
-
-.form-button>.btn:hover {
-    background: #00B5E7;
-}
-
-.form-button i {
-    font-size: 18px;
-    rotate: -45deg;
-}
-
-/* ----- FOOTER BOX ----- */
-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    row-gap: 20px;
-    background: #f4eeff;
-    padding-block: 40px 40px;
-}
-
-.top-footer p {
-    font-size: 35px;
-    font-weight: 600;
-}
-
-.middle-footer .footer-menu {
-    display: flex;
-}
-
-.footer_menu_list {
-    list-style: none;
-    transition: 0.2s;
-
-}
-
-.footer_menu_list a {
-    text-decoration: none;
-    color: var(--text-color-second);
-    font-weight: 500;
-    margin-inline: 30px;
-}
-
-.footer_menu_list:hover {
-    transition: 0.4s;
-    transform: scale(1.1);
-}
-
-.footer-social-icons {
-    display: flex;
-    gap: 30px;
-}
-
-.bottom-footer {
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-
-/* ----- MEDIA QUERY == 1024px / RESPONSIVE ----- */
-@media only screen and (max-width: 1024px) {
-    .featured-text {
-        padding: 0;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio - Sketches</title>
+
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <link rel="shortcut icon" href="../images/manlogo.webp" type="image/webp">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+    :root {
+      --bg: #f5f7fb;
+      --white: #ffffff;
+      --text: #333333;
+      --muted: #666666;
+      --primary: #1e9fab;
+      --nav-bg: rgb(223, 223, 255);
+      --radius: 11px;
     }
 
-    .image,
-    .image img {
-        width: 420px;
-        height: 420px;
-    }
-}
-
-
-
-
-html,
-body {
-    width: 100%;
-    overflow-x: hidden;
-}
-
-.posts {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    gap: 0px;
-}
-
-.posts a {
-    transition: 0.3s;
-    text-decoration: none;
-    color: var(--text-color-second);}
-
-.posts p {
-    font-size: 20px;
-    padding-top: 20px;
-}
-.posts a img{
-    transition: 0.3s;
-    border-radius: 3px;
-    width: 50%;
-}
-
-.posts a img:hover {
-    transition: 0.4s;
-    transform: scale(1.04);
-    box-shadow: 0px 0px 20px gray;
-}
-
-
-
-
-/* ----- MEDIA QUERY == 900px / RESPONSIVE ----- */
-@media only screen and (max-width: 900px) {
-
-    .nav-menu.responsive {
-        left: 0;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
 
-    .nav-menu {
-        position: fixed;
-        top: 80px;
-        left: -100%;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(20px);
-        width: 100%;
-        min-height: 450px;
-        height: 90vh;
-        transition: .3s;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .nav_menu_list {
-        flex-direction: column;
+    body {
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
     }
 
-    .nav-menu-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    img {
+      display: block;
+      max-width: 100%;
     }
 
-    .featured-box {
-        flex-direction: column;
-        justify-content: center;
-        height: 100vh;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
-    .featured-text {
-        width: 100%;
-        order: 2;
-        justify-content: center;
-        align-content: flex-start;
-        min-height: 60vh;
-    }
-
-    .social_icons {
-        margin-top: 2em;
-    }
-
-    .featured-image {
-        order: 1;
-        justify-content: center;
-        min-height: 150px;
-        width: 100%;
-        margin-top: 120px;
-    }
-
-    .image,
-    .image img {
-        width: 250px;
-        height: 250px;
-    }
-
-    .row {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 50px;
-    }
-
-    .col {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-    }
-
-    .about-info,
-    .contact-info {
-        width: 100%;
-    }
-
-    .project-container {
-        justify-content: center;
-    }
-
-    .project-box {
-        width: 80%;
-    }
-    .posts{
-        gap: 40px;
-    }
-
-    .posts p {
-        font-size: 12px;
-    }
-    .posts a img{
-        width: 90%;
-    }
-
-}
-
-/* ----- MEDIA QUERY == 540px / RESPONSIVE ----- */
-
-@media only screen and (max-width: 540px) {
-    .featured-text-card span {
-        font-size: 1rem;
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      padding: 0 8%;
+      background: var(--nav-bg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+      box-shadow: 0 7px 22px rgba(0, 0, 0, 0.07);
     }
 
     .nav-name {
-        font-size: 35px;
+      font-size: clamp(25px, 4vw, 38px);
+      font-weight: 700;
+      color: var(--primary);
     }
 
-    .featured-name {
-        font-size: 25px;
+    .home-link {
+      font-size: 16px;
+      font-weight: 600;
+      color: rgb(8, 132, 173);
+      transition: 0.3s ease;
     }
 
-    .project-box {
-        width: 100%;
+    .home-link:hover {
+      transform: scale(1.08);
+      color: #006f8d;
     }
 
-    .form-inputs {
-        flex-direction: column;
+    .projects-section {
+      padding: 112px 8% 50px;
     }
 
-    .input-field {
-        width: 100%;
+    .project-block {
+      background: var(--white);
+      margin-bottom: 16px;
+      border-radius: var(--radius);
+      box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.8);
     }
 
-    .featured-image {
-        margin-top: 100px;
+    .project-summary {
+      width: 100%;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      padding: 14px;
+      display: grid;
+      grid-template-columns: 105px 1fr auto;
+      gap: 16px;
+      align-items: center;
+      text-align: left;
     }
 
-    .image {
-        width: 200px;
-        height: 200px;
+    .thumb-box {
+      width: 105px;
+      aspect-ratio: 3 / 4;
+      border-radius: 9px;
+      overflow: hidden;
+      background: #eef1f7;
+      box-shadow:
+        0 10px 22px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
-    .image img {
-        width: 200px;
-        height: 200px;
+    .thumb-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-title h2 {
+      font-size: clamp(16px, 2vw, 22px);
+      line-height: 1.25;
+      font-weight: 650;
+      color: var(--text);
+    }
+
+    .project-title span {
+      display: inline-block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+
+    .drop-icon {
+      width: 39px;
+      height: 39px;
+      border-radius: 50%;
+      background: #eef7ff;
+      display: grid;
+      place-items: center;
+      color: var(--primary);
+      transition: 0.3s ease;
+      flex-shrink: 0;
+      box-shadow: inset 0 1px 3px rgba(255,255,255,0.8), 0 7px 14px rgba(0,0,0,0.08);
+    }
+
+    .drop-icon i {
+      font-size: 24px;
+      transition: 0.35s ease;
+    }
+
+    .project-block.open .drop-icon {
+      background: var(--primary);
+      color: white;
+    }
+
+    .project-block.open .drop-icon i {
+      transform: rotate(180deg);
+    }
+
+    .project-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.55s ease;
+    }
+
+    .project-content-inner {
+      padding: 0 14px 20px;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .project-block.open .project-content-inner {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 9px;
+      aspect-ratio: 3 / 4;
+      background: #eef1f7;
+      cursor: zoom-in;
+      box-shadow:
+        0 13px 27px rgba(0, 0, 0, 0.16),
+        0 4px 8px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+      transition: 0.35s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 18px 34px rgba(0, 0, 0, 0.20),
+        0 6px 12px rgba(0, 0, 0, 0.10);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.4s ease;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .post-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .instagram-btn {
+      color: white;
+      padding: 12px 19px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      font-weight: 600;
+      font-size: 14px;
+      min-height: 47px;
+      transition: 0.3s ease;
+      background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+      box-shadow: 0 9px 21px rgba(221, 42, 123, 0.30);
+    }
+
+    .instagram-btn i {
+      font-size: 20px;
+    }
+
+    .instagram-btn:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+      box-shadow: 0 13px 27px rgba(221, 42, 123, 0.40);
+    }
+
+    .more-projects {
+      text-align: center;
+      padding: clamp(32px, 5vw, 48px);
+      border: 2px dashed #cfcfcf;
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      margin-top: 24px;
+    }
+
+    .more-projects h2 {
+      font-size: clamp(22px, 4vw, 28px);
+      margin-bottom: 8px;
+    }
+
+    .more-projects p {
+      color: #777;
+    }
+
+    #imageViewer {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.93);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 45px 18px 22px;
+      overflow: hidden;
+    }
+
+    #imageViewer.active {
+      display: flex;
+    }
+
+    #fullImage {
+      max-width: 96vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 10px;
+      cursor: grab;
+      user-select: none;
+      touch-action: none;
+      transform: scale(0.92);
+      opacity: 0;
+      transition: transform 0.28s ease, opacity 0.28s ease;
+      box-shadow: 0 0 36px rgba(255,255,255,0.12);
+    }
+
+    #imageViewer.active #fullImage {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    #fullImage:active {
+      cursor: grabbing;
+    }
+
+    .close-viewer {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+      font-size: 28px;
+      line-height: 42px;
+      cursor: pointer;
+      z-index: 10000;
+      transition: 0.25s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .close-viewer:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.05);
+    }
+
+    footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 22px;
+      background: #f4eeff;
+      padding: 42px 8%;
+      text-align: center;
+    }
+
+    .top-footer p {
+      font-size: clamp(26px, 4vw, 35px);
+      font-weight: 700;
+    }
+
+    .footer-menu {
+      display: flex;
+      gap: 35px;
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .footer_menu_list a {
-        margin-inline: 10px;
+      color: var(--text);
+      font-weight: 500;
+      transition: 0.3s ease;
     }
 
-    .top-header h1 {
-
-        font-size: 2rem;
+    .footer_menu_list a:hover {
+      color: var(--primary);
     }
 
-    label~h3 {
-        font-size: 15px;
+    .footer-social-icons {
+      display: flex;
+      gap: 26px;
     }
 
-    .posts p {
+    .icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.3s ease;
+      overflow: hidden;
+    }
+
+    .icon a {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .icon i {
+      font-size: 1.4rem;
+      color: #fff;
+    }
+
+    .icon:nth-child(1) {
+      background: linear-gradient(135deg, #feda75, #d62976, #962fbf, #4f5bd5);
+    }
+
+    .icon:nth-child(2) {
+      background: #0077b5;
+    }
+
+    .icon:nth-child(3) {
+      background: #24292e;
+    }
+
+    .icon:hover {
+      transform: scale(1.12) translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.28);
+    }
+
+    @media (max-width: 1100px) {
+      .project-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 850px) {
+      nav {
+        height: 74px;
+        padding: 0 6%;
+      }
+
+      .projects-section {
+        padding: 100px 5% 40px;
+      }
+
+      .project-summary {
+        grid-template-columns: 92px 1fr auto;
+        gap: 12px;
+      }
+
+      .thumb-box {
+        width: 92px;
+      }
+
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      nav {
+        height: 68px;
+      }
+
+      .projects-section {
+        padding: 88px 4% 34px;
+      }
+
+      .project-block {
+        margin-bottom: 12px;
+      }
+
+      .project-summary {
+        grid-template-columns: 72px 1fr auto;
+        padding: 10px;
+        gap: 9px;
+      }
+
+      .thumb-box {
+        width: 72px;
+        border-radius: 8px;
+      }
+
+      .project-title h2 {
+        font-size: 13.5px;
+        line-height: 1.23;
+      }
+
+      .project-title span {
         font-size: 11px;
+        margin-top: 3px;
+      }
+
+      .drop-icon {
+        width: 32px;
+        height: 32px;
+      }
+
+      .drop-icon i {
+        font-size: 20px;
+      }
+
+      .project-content-inner {
+        padding: 0 10px 16px;
+      }
+
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .post-buttons {
+        flex-direction: column;
+        margin-top: 16px;
+      }
+
+      .instagram-btn {
+        width: 100%;
+        font-size: 13px;
+        padding: 12px 14px;
+      }
+
+      .footer-menu {
+        gap: 18px;
+      }
+
+      .icon {
+        width: 45px;
+        height: 45px;
+      }
+
+      .close-viewer {
+        width: 38px;
+        height: 38px;
+        line-height: 38px;
+        top: 14px;
+        right: 14px;
+      }
     }
-    .posts a img{
-        width: 110%;
-    }
-}
-
-@media only screen and (max-width: 400px) {
-    .featured-text {
-        margin-top: 90px;
-    }
-
-    label~h3 {
-        font-size: 15px;
-    }
-
-    .posts p {
-        font-size: 10px;
-    }
-}
-        body {
-            background: #f5f7fb;
-        }
-
-        .projects-section {
-            padding: 50px 8%;
-        }
-
-        /* Project Box */
-        .project-container {
-            background: #ffffff;
-            padding: 30px;
-            margin-bottom: 60px;
-            border-radius: 18px;
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-        }
-
-        .project-container h2 {
-            font-size: 30px;
-            margin-bottom: 8px;
-        }
-
-        .project-desc {
-            color: #666;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-        }
-
-        /* Responsive Flex Row */
-        .project-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .project-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            flex: 1 1 calc(33.333% - 20px);
-            min-width: 200px;
-            box-shadow: 1px 2px 10px gray;
-            cursor: pointer;
-        }
-
-        .project-card img {
-            width: 100%;
-            height: auto;
-            transform: scale(1.05);
-            /* keep ratio */
-            object-fit: contain;
-            /* no crop */
-            transition: all 0.4s ease;
-        }
-
-        .project-card:hover img {
-            transform: scale(1.2);
-        }
-
-        /* Overlay Animation */
-        .overlay {
-            position: absolute;
-            bottom: -100%;
-            left: 0;
-            width: 100%;
-            height: 20px;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px;
-            transition: all 0.4s ease;
-        }
-
-        .overlay p {
-            font-size: 14px;
-            line-height: 1.4;
-        }
-
-        .project-card:hover .overlay {
-            bottom: 0;
-        }
-
-        /* More Projects Box */
-        .more-projects {
-            text-align: center;
-            padding: 50px;
-            border: 2px dashed #ccc;
-            border-radius: 18px;
-            background: #fff;
-        }
-
-        .more-projects h2 {
-            font-size: 28px;
-        }
-
-        .more-projects p {
-            color: #777;
-        }
-
-        #imageViewer {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.9);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            cursor: zoom-out;
-        }
-
-        #imageViewer img {
-            max-width: 95%;
-            max-height: 95%;
-            object-fit: contain;
-            border-radius: 10px;
-        }
-
-        .project-card img {
-            cursor: zoom-in;
-        }
-
-        .home {
-            transition: 0.3s;
-            color: lightblue;
-        }
-
-        .home:hover {
-            transition: 0.4s;
-            transform: scale(1.2);
-        }
-
-        .home a {
-            color: rgb(8, 132, 173);
-        }
-
-        @media screen and (max-width: 768px) {
-            .projects-section {
-                padding: 30px 3%;
-            }
-
-            /* Project Box */
-            .project-container {
-                background: #ffffff;
-                padding-top: 30px;
-                margin-bottom: 30px;
-                border-radius: 18px;
-                box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-            }
-
-            .project-container h2 {
-                font-size: 20px;
-                margin-bottom: 0px;
-            }
-
-            .project-desc {
-                color: #666;
-                margin-bottom: 2px;
-                display: flex;
-                align-items: center;
-                margin-top: 1px;
-            }
-
-            /* Responsive Flex Row */
-            .project-grid {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 15px;
-            }
-
-            .project-card {
-                position: relative;
-                overflow: hidden;
-                border-radius: 15px;
-                flex: 1 1 calc(33.333% - 20px);
-                min-width: 150px;
-                cursor: pointer;
-            }
-
-            .overlay {
-                font-size: 10px;
-                padding: 0px;
-                margin: 10px;
-            }
-
-            .nav-name {
-                font-size: 25px;
-            }
-
-        }
-    </style>
+  </style>
 </head>
 
 <body>
-    <div class="container">
 
-        <!-- HEADER -->
-        <nav id="header">
-            <div class="nav-logo">
-                <p class="nav-name">Sketches</p>
-            </div>
-            <div class="home">
-                <a href="index.html" style="text-decoration: none;">Home</a>
-            </div>
-        </nav>
-        <!-- PROJECTS -->
-        <section class="projects-section">
-
-            <!-- PROJECT 1 -->
-            <div class="project-container" style="margin-top: 100px;">
-                <h2>La Casa De Papel</h2>
-                <p class="project-desc">Sketches from Money Heist</p>
-
-                <div class="project-grid">
-                    <div class="project-card">
-                        <img src="images/sketches/money/1.jpeg" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/sketches/money/2.jpeg" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/sketches/money/3.jpeg" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/sketches/money/4.jpeg" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/sketches/money/1a.jpeg" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/sketches/money/2a.jpeg" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/sketches/money/3a.jpeg" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/sketches/money/4a.jpeg" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                </div>
-                <div class="featured-text-btn">
-                    <a href="https://www.instagram.com/p/DPtu0WDkva7/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-                        target="_blank" class="btn">
-                        <i class="uil uil-instagram"></i> View Instagran Post
-                    </a>
-                </div>
-
-
-
-            </div>
-            <style>
-                .featured-text-btn .btn {
-                    text-decoration: none;
-                    /* remove underline */
-                    color: #ffffff;
-                    /* text color */
-                    background: linear-gradient(45deg,
-                            #f58529,
-                            #dd2a7b,
-                            #8134af,
-                            #515bd4);
-                    /* Instagram gradient */
-                    padding: 12px 22px;
-                    border-radius: 30px;
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 8px;
-                    font-weight: 600;
-                    transition: all 0.3s ease;
-                }
-
-                /* Icon size */
-                .featured-text-btn .btn i {
-                    font-size: 18px;
-                }
-
-                /* Hover effect */
-                .featured-text-btn .btn:hover {
-                    filter: brightness(1.1);
-                    /* subtle pop */
-                    color: #ffffff;
-                    transform: translateY(-2px);
-                    box-shadow: 0 6px 15px rgba(221, 42, 123, 0.4);
-                }
-            </style>
-            <!-- Fullscreen Image Viewer -->
-            <div id="imageViewer" onclick="closeImage()">
-                <img id="fullImage">
-            </div>
-
-
-            <!-- PROJECT 2 -->
-            <div class="project-container" style="margin-top: 100px;">
-                <h2>Stranger Things</h2>
-                <p class="project-desc">Friends Don't Lie</p>
-
-                <div class="project-grid">
-                    <div class="project-card">
-                        <img src="images/sketches/stranger/1.jpeg" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/sketches/stranger/2.jpeg" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/sketches/stranger/3.jpeg" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/sketches/stranger/4.jpeg" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/sketches/stranger/5.jpeg" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/sketches/stranger/6.jpeg" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/sketches/stranger/7.jpeg" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/sketches/stranger/8.jpeg" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/sketches/stranger/9.jpeg" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                </div>
-                <div class="featured-text-btn">
-                    <a href="https://www.instagram.com/p/DRe_vyGEn91/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-                        target="_blank" class="btn">
-                        <i class="uil uil-instagram"></i> View Instagran Post
-                    </a>
-                </div>
-            </div>
-            <!-- MORE PROJECTS -->
-            <div class="more-projects">
-                <h2>More Sketches</h2>
-                <p>Coming soon...</p>
-            </div>
-
-        </section>
+  <nav>
+    <div class="nav-logo">
+      <p class="nav-name">Sketches</p>
     </div>
 
-    <!-- --------------- FOOTER --------------- -->
-    <footer>
-        <div class="top-footer">
-            <p>Aman Sharma</p>
-        </div>
-        <div class="middle-footer">
-            <ul class="footer-menu">
-                <li class="footer_menu_list">
-                    <a href="index.html#home">Home</a>
-                </li>
-                
-                <li class="footer_menu_list">
-                    <a href="index.html#about">About</a>
-                </li>
-                
-                <li class="footer_menu_list">
-                    <a href="index.html#projects">Projects</a>
-                </li>
+    <a class="home-link" href="../index.html">Home</a>
+  </nav>
 
-                <li class="footer_menu_list">
-                    <a href="index.html#contact">Contact</a>
-                </li>
-                
-            </ul>
+  <main class="projects-section">
+
+    <section class="project-block">
+      <button class="project-summary" type="button">
+        <div class="thumb-box">
+          <img src="../images/sketches/money/3.webp" alt="La Casa De Papel Thumbnail">
         </div>
-        <div class="footer-social-icons">
-            <div class="icon"><a href="https://www.instagram.com/_ar.sharma/" target="_blank"><i
-                        class="uil uil-instagram"></i></a></div>
-            <div class="icon"><a href="https://www.linkedin.com/in/a-amansharma/" target="_blank"><i
-                        class="uil uil-linkedin-alt"></i></a></div>
-            <!-- <div class="icon"><a href="https://www.instagram.com/_ar.sharma/" target="_blank"><i class="uil uil-dribbble"></i></a></div> -->
-            <div class="icon"><a href="https://github.com/a-amansharma" target="_blank"><i
-                        class="uil uil-github-alt"></i></a></div>
+
+        <div class="project-title">
+          <h2>La Casa De Papel</h2>
+          <span>Click to see all sketches</span>
         </div>
-        <!-- <div class="bottom-footer">
-            <p>Copyright &copy; <a href="#home" style="text-decoration: none;">Aman Sharma</a> - All rights reserved</p>
-            </div> -->
-    </footer>
+
+        <div class="drop-icon">
+          <i class="uil uil-angle-down"></i>
+        </div>
+      </button>
+
+      <div class="project-content">
+        <div class="project-content-inner">
+          <div class="project-grid">
+            <div class="project-card"><img src="../images/sketches/money/1.webp" alt="Money Heist Sketch 1" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/money/2.webp" alt="Money Heist Sketch 2" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/money/3.webp" alt="Money Heist Sketch 3" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/money/4.webp" alt="Money Heist Sketch 4" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/money/1a.webp" alt="Money Heist Sketch 1A" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/money/2a.webp" alt="Money Heist Sketch 2A" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/money/3a.webp" alt="Money Heist Sketch 3A" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/money/4a.webp" alt="Money Heist Sketch 4A" onclick="openImage(this.src)"></div>
+          </div>
+
+          <div class="post-buttons">
+            <a href="https://www.instagram.com/p/DPtu0WDkva7/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="instagram-btn">
+              <i class="uil uil-instagram"></i> View Instagram Post
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-block">
+      <button class="project-summary" type="button">
+        <div class="thumb-box">
+          <img src="../images/sketches/stranger/6.webp" alt="Stranger Things Thumbnail">
+        </div>
+
+        <div class="project-title">
+          <h2>Stranger Things</h2>
+          <span>Click to see details</span>
+        </div>
+
+        <div class="drop-icon">
+          <i class="uil uil-angle-down"></i>
+        </div>
+      </button>
+
+      <div class="project-content">
+        <div class="project-content-inner">
+          <div class="project-grid">
+            <div class="project-card"><img src="../images/sketches/stranger/1.webp" alt="Stranger Things Sketch 1" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/stranger/2.webp" alt="Stranger Things Sketch 2" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/stranger/3.webp" alt="Stranger Things Sketch 3" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/stranger/4.webp" alt="Stranger Things Sketch 4" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/stranger/5.webp" alt="Stranger Things Sketch 5" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/stranger/6.webp" alt="Stranger Things Sketch 6" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/stranger/7.webp" alt="Stranger Things Sketch 7" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/stranger/8.webp" alt="Stranger Things Sketch 8" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/stranger/9.webp" alt="Stranger Things Sketch 9" onclick="openImage(this.src)"></div>
+          </div>
+
+          <div class="post-buttons">
+            <a href="https://www.instagram.com/p/DRe_vyGEn91/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="instagram-btn">
+              <i class="uil uil-instagram"></i> View Instagram Post
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="more-projects">
+      <h2>More Sketches</h2>
+      <p>Coming soon...</p>
+    </section>
+
+  </main>
+
+  <div id="imageViewer">
+    <button class="close-viewer" onclick="closeImage()">×</button>
+    <img id="fullImage" alt="Full Preview">
+  </div>
+
+  <footer>
+    <div class="top-footer">
+      <p>Aman Sharma</p>
+    </div>
+
+    <div class="middle-footer">
+      <ul class="footer-menu">
+        <li class="footer_menu_list"><a href="../index.html#home">Home</a></li>
+        <li class="footer_menu_list"><a href="../index.html#about">About</a></li>
+        <li class="footer_menu_list"><a href="../index.html#projects">Projects</a></li>
+        <li class="footer_menu_list"><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-social-icons">
+      <div class="icon">
+        <a href="https://www.instagram.com/_ar.sharma/" target="_blank">
+          <i class="uil uil-instagram"></i>
+        </a>
+      </div>
+
+      <div class="icon">
+        <a href="https://www.linkedin.com/in/a-amansharma/" target="_blank">
+          <i class="uil uil-linkedin-alt"></i>
+        </a>
+      </div>
+
+      <div class="icon">
+        <a href="https://github.com/a-amansharma" target="_blank">
+          <i class="uil uil-github-alt"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const viewer = document.getElementById("imageViewer");
+    const fullImage = document.getElementById("fullImage");
+
+    let scale = 1;
+    let posX = 0;
+    let posY = 0;
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let modalOpen = false;
+    let pushedHistory = false;
+
+    document.querySelectorAll(".project-summary").forEach((button) => {
+      button.addEventListener("click", () => {
+        const block = button.closest(".project-block");
+        const content = block.querySelector(".project-content");
+
+        if (block.classList.contains("open")) {
+          content.style.maxHeight = content.scrollHeight + "px";
+
+          requestAnimationFrame(() => {
+            content.style.maxHeight = "0px";
+            block.classList.remove("open");
+          });
+        } else {
+          block.classList.add("open");
+          content.style.maxHeight = content.scrollHeight + "px";
+
+          setTimeout(() => {
+            if (block.classList.contains("open")) {
+              content.style.maxHeight = "none";
+            }
+          }, 560);
+        }
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      document.querySelectorAll(".project-block.open .project-content").forEach((content) => {
+        content.style.maxHeight = "none";
+      });
+    });
+
+    function updateImageTransform() {
+      fullImage.style.transform = `translate(${posX}px, ${posY}px) scale(${scale})`;
+    }
+
+    function resetZoom() {
+      scale = 1;
+      posX = 0;
+      posY = 0;
+      updateImageTransform();
+    }
+
+    function openImage(src) {
+      modalOpen = true;
+      resetZoom();
+
+      fullImage.src = src;
+      viewer.classList.add("active");
+      document.body.style.overflow = "hidden";
+
+      if (!pushedHistory) {
+        history.pushState({ imageOpen: true }, "");
+        pushedHistory = true;
+      }
+    }
+
+    function closeImage(fromPopState = false) {
+      if (!modalOpen) return;
+
+      viewer.classList.remove("active");
+      document.body.style.overflow = "auto";
+
+      setTimeout(() => {
+        fullImage.src = "";
+        resetZoom();
+      }, 220);
+
+      modalOpen = false;
+
+      if (!fromPopState && pushedHistory) {
+        pushedHistory = false;
+        history.back();
+      } else {
+        pushedHistory = false;
+      }
+    }
+
+    viewer.addEventListener("click", function (e) {
+      if (e.target === viewer) {
+        closeImage();
+      }
+    });
+
+    fullImage.addEventListener("click", function (e) {
+      e.stopPropagation();
+
+      if (scale === 1) {
+        scale = 1.8;
+      } else {
+        resetZoom();
+        return;
+      }
+
+      updateImageTransform();
+    });
+
+    fullImage.addEventListener("wheel", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const zoomAmount = e.deltaY < 0 ? 0.15 : -0.15;
+      scale = Math.min(Math.max(1, scale + zoomAmount), 4);
+
+      if (scale === 1) {
+        posX = 0;
+        posY = 0;
+      }
+
+      updateImageTransform();
+    }, { passive: false });
+
+    fullImage.addEventListener("mousedown", function (e) {
+      if (scale <= 1) return;
+
+      isDragging = true;
+      startX = e.clientX - posX;
+      startY = e.clientY - posY;
+      e.preventDefault();
+      e.stopPropagation();
+    });
+
+    window.addEventListener("mousemove", function (e) {
+      if (!isDragging) return;
+
+      posX = e.clientX - startX;
+      posY = e.clientY - startY;
+      updateImageTransform();
+    });
+
+    window.addEventListener("mouseup", function () {
+      isDragging = false;
+    });
+
+    let touchStartDistance = 0;
+    let startScale = 1;
+
+    fullImage.addEventListener("touchstart", function (e) {
+      e.stopPropagation();
+
+      if (e.touches.length === 2) {
+        touchStartDistance = getTouchDistance(e.touches[0], e.touches[1]);
+        startScale = scale;
+      } else if (e.touches.length === 1 && scale > 1) {
+        isDragging = true;
+        startX = e.touches[0].clientX - posX;
+        startY = e.touches[0].clientY - posY;
+      }
+    }, { passive: false });
+
+    fullImage.addEventListener("touchmove", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (e.touches.length === 2) {
+        const currentDistance = getTouchDistance(e.touches[0], e.touches[1]);
+        scale = Math.min(Math.max(1, startScale * (currentDistance / touchStartDistance)), 4);
+        updateImageTransform();
+      } else if (e.touches.length === 1 && isDragging && scale > 1) {
+        posX = e.touches[0].clientX - startX;
+        posY = e.touches[0].clientY - startY;
+        updateImageTransform();
+      }
+    }, { passive: false });
+
+    fullImage.addEventListener("touchend", function () {
+      isDragging = false;
+
+      if (scale === 1) {
+        posX = 0;
+        posY = 0;
+        updateImageTransform();
+      }
+    });
+
+    function getTouchDistance(touch1, touch2) {
+      const dx = touch1.clientX - touch2.clientX;
+      const dy = touch1.clientY - touch2.clientY;
+      return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    document.addEventListener("keydown", function () {
+      if (modalOpen) {
+        closeImage();
+      }
+    });
+
+    window.addEventListener("popstate", function () {
+      if (modalOpen) {
+        closeImage(true);
+      }
+    });
+  </script>
 
 </body>
-<script>
-    function openImage(src) {
-        document.getElementById("fullImage").src = src;
-        document.getElementById("imageViewer").style.display = "flex";
-        document.body.style.overflow = "hidden";
-    }
-
-    function closeImage() {
-        document.getElementById("imageViewer").style.display = "none";
-        document.body.style.overflow = "auto";
-    }
-</script>
-
 </html>
