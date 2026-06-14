@@ -340,7 +340,7 @@
 
     .home-updates {
       width: 100%;
-      max-width: 620px;
+      max-width: 660px;
       margin-top: 28px;
     }
 
@@ -350,7 +350,7 @@
     }
 
     .home-updates .posts {
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     }
 
     .updates-header {
@@ -360,11 +360,27 @@
     .updates-dropdown {
       width: min(100%, 980px);
       margin: 0 auto;
-      background: var(--color-white);
-      border-radius: 22px;
-      box-shadow: 1px 8px 24px 2px var(--first-shadow-color);
+      position: relative;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 24px;
+      box-shadow: 0 16px 38px rgba(110, 87, 224, 0.16), 0 6px 18px rgba(0, 201, 255, 0.12);
       overflow: hidden;
-      border: 1px solid rgba(110, 87, 224, 0.12);
+      border: 1px solid rgba(110, 87, 224, 0.18);
+      isolation: isolate;
+    }
+
+    .updates-dropdown::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 1px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(0, 201, 255, 0.7), rgba(110, 87, 224, 0.65), rgba(192, 166, 49, 0.55));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: 2;
     }
 
     .updates-dropdown summary {
@@ -373,40 +389,86 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      padding: 20px 24px;
+      gap: 18px;
+      padding: 18px 22px;
       font-weight: 700;
       color: var(--text-color-second);
-      background: linear-gradient(135deg, #ffffff, #f0efff);
+      background: radial-gradient(circle at top left, rgba(0, 201, 255, 0.16), transparent 34%), linear-gradient(135deg, #ffffff, #f0efff);
     }
 
     .updates-dropdown summary::-webkit-details-marker {
       display: none;
     }
 
-    .updates-dropdown summary span {
-      font-size: 15px;
-      font-weight: 500;
-      color: #777;
+    .updates-title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 10px;
+      font-size: 17px;
+      line-height: 1.25;
     }
 
-    .updates-dropdown summary i {
+    .updates-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--second-color), var(--first-color));
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      box-shadow: 0 6px 14px rgba(110, 87, 224, 0.24);
+    }
+
+    .updates-subtitle {
+      display: block;
+      width: 100%;
+      margin-top: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #666;
+    }
+
+    .updates-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(110, 87, 224, 0.1);
+      transition: 0.3s ease;
+    }
+
+    .updates-arrow i {
       font-size: 28px;
       color: var(--first-color);
       transition: 0.3s ease;
     }
 
-    .updates-dropdown[open] summary i {
+    .updates-dropdown:hover .updates-arrow {
+      transform: translateY(-2px);
+      background: rgba(110, 87, 224, 0.16);
+    }
+
+    .updates-dropdown[open] .updates-arrow i {
       transform: rotate(180deg);
     }
 
     .posts {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 18px;
       width: 100%;
+      max-height: min(72vh, 760px);
+      overflow-y: auto;
       padding: 20px;
-      background: #fbfbff;
+      background: linear-gradient(180deg, #fbfbff, #f6fbff);
     }
 
     .linkedin-card {
@@ -416,26 +478,31 @@
       text-decoration: none;
       color: var(--text-color-second);
       background: var(--color-white);
-      border-radius: 16px;
+      border-radius: 18px;
       box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
       transition: 0.3s ease;
       min-height: 100%;
+      border: 1px solid rgba(0, 201, 255, 0.14);
     }
 
     .linkedin-card:hover {
       transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.16);
+      border-color: rgba(110, 87, 224, 0.25);
     }
 
     .linkedin-card img {
       width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
+      height: clamp(150px, 22vw, 260px);
+      object-fit: contain;
+      object-position: center;
       display: block;
+      background: linear-gradient(135deg, #eef7ff, #f7f3ff);
+      padding: 8px;
     }
 
     .linkedin-card-content {
-      padding: 14px;
+      padding: 13px 14px 14px;
       text-align: center;
       background: linear-gradient(135deg, #ffffff, #f6f5ff);
     }
@@ -443,8 +510,16 @@
     .linkedin-card-content p {
       font-size: 14px;
       line-height: 1.4;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--text-color-second);
+    }
+
+    .linkedin-card-content span {
+      display: inline-flex;
+      margin-top: 7px;
+      color: var(--first-color);
+      font-size: 12px;
+      font-weight: 700;
     }
 
     .row {
@@ -956,6 +1031,15 @@
         flex-direction: column;
       }
 
+      .updates-arrow {
+        width: 38px;
+        height: 38px;
+      }
+
+      .linkedin-card img {
+        height: clamp(170px, 58vw, 340px);
+      }
+
       .form-inputs {
         flex-direction: column;
       }
@@ -1045,6 +1129,59 @@
       .social_icons {
         margin-top: 1.2em;
       }
+
+      .home-updates {
+        max-width: 100%;
+        margin-top: 14px;
+      }
+
+      .updates-dropdown summary {
+        padding: 12px 14px;
+        gap: 10px;
+      }
+
+      .updates-title {
+        font-size: 14px;
+      }
+
+      .updates-subtitle {
+        font-size: 11px;
+        margin-top: 4px;
+      }
+
+      .updates-badge {
+        font-size: 9px;
+        padding: 3px 7px;
+      }
+
+      .updates-arrow {
+        width: 34px;
+        height: 34px;
+      }
+
+      .posts {
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 12px;
+        padding: 12px;
+        max-height: 52vh;
+      }
+
+      .linkedin-card img {
+        height: 160px;
+        padding: 6px;
+      }
+
+      .linkedin-card-content {
+        padding: 9px 10px;
+      }
+
+      .linkedin-card-content p {
+        font-size: 12px;
+      }
+
+      .linkedin-card-content span {
+        font-size: 10px;
+      }
     }
   </style>
 </head>
@@ -1100,31 +1237,36 @@
             <div class="icon"><a href="https://github.com/a-amansharma" target="_blank"><i class="uil uil-github-alt"></i></a></div>
           </div>
           <div class="home-updates" id="updates">
-        <details class="updates-dropdown">
-          <summary>
-            <div>
-              View LinkedIn Project Updates
-              <span>Small thumbnails kept clean for future updates</span>
-            </div>
-            <i class="uil uil-angle-down"></i>
-          </summary>
+            <details class="updates-dropdown">
+              <summary>
+                <div>
+                  <div class="updates-title">
+                    <span class="updates-badge">New</span>
+                    Project Updates & Build Logs
+                  </div>
+                  <span class="updates-subtitle">Tap here to view real screenshots and LinkedIn progress posts</span>
+                </div>
+                <span class="updates-arrow"><i class="uil uil-angle-down"></i></span>
+              </summary>
 
-          <div class="posts">
-            <a href="https://www.linkedin.com/posts/a-amansharma_robotics-quadrupedrobot-defencetechnology-activity-7412072099575623680-b7em?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMR2VIBzWcU732Hl1HiRdej_YmWsRI29oo" target="_blank" class="linkedin-card">
-              <img src="images/quad-post.webp" alt="Quadruped robot LinkedIn post" />
-              <div class="linkedin-card-content">
-                <p>Quadruped Robot Update</p>
-              </div>
-            </a>
+              <div class="posts">
+                <a href="https://www.linkedin.com/posts/a-amansharma_robotics-quadrupedrobot-defencetechnology-activity-7412072099575623680-b7em?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMR2VIBzWcU732Hl1HiRdej_YmWsRI29oo" target="_blank" class="linkedin-card">
+                  <img src="images/quad-post.webp" alt="Quadruped robot LinkedIn post" />
+                  <div class="linkedin-card-content">
+                    <p>Quadruped Robot Update</p>
+                    <span>Open LinkedIn Post →</span>
+                  </div>
+                </a>
 
-            <a href="https://www.linkedin.com/posts/a-amansharma_robotics-innovation-teamwork-activity-7379071790259810304-VtCJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMR2VIBzWcU732Hl1HiRdej_YmWsRI29oo" target="_blank" class="linkedin-card">
-              <img src="images/hand-post.webp" alt="Robotic hand LinkedIn post" />
-              <div class="linkedin-card-content">
-                <p>Robotic Hand Update</p>
+                <a href="https://www.linkedin.com/posts/a-amansharma_robotics-innovation-teamwork-activity-7379071790259810304-VtCJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMR2VIBzWcU732Hl1HiRdej_YmWsRI29oo" target="_blank" class="linkedin-card">
+                  <img src="images/hand-post.webp" alt="Robotic hand LinkedIn post" />
+                  <div class="linkedin-card-content">
+                    <p>Robotic Hand Update</p>
+                    <span>Open LinkedIn Post →</span>
+                  </div>
+                </a>
               </div>
-            </a>
-          </div>
-        </details>
+            </details>
           </div>
 
 

@@ -8,13 +8,9 @@ const TRACK_FILE = path.join(ROOT_FOLDER, ".optimized-images.json");
 
 const QUALITY = 80;
 
-// Direct images inside /images → index.html → keep original ratio, no crop
 const INDEX_MAX_WIDTH = 1600;
-
-// images/designs → keep original ratio, no crop
 const DESIGN_MAX_WIDTH = 1600;
 
-// images/robotics + images/sketches → portrait 3:4
 const PORTRAIT_WIDTH = 900;
 const PORTRAIT_HEIGHT = 1200;
 
@@ -38,6 +34,10 @@ function isImage(filePath) {
   return allowedExtensions.includes(path.extname(filePath).toLowerCase());
 }
 
+function isInsideOriginalFolder(filePath) {
+  return filePath.split(path.sep).includes("original");
+}
+
 function getSignature(filePath) {
   const stat = fs.statSync(filePath);
   return `${stat.size}-${stat.mtimeMs}`;
@@ -52,21 +52,41 @@ function isDirectIndexImage(filePath) {
   return path.dirname(filePath) === ROOT_FOLDER;
 }
 
+function getUniqueBackupPath(originalFolder, fileName) {
+  let backupPath = path.join(originalFolder, fileName);
+
+  if (!fs.existsSync(backupPath)) return backupPath;
+
+  const ext = path.extname(fileName);
+  const base = path.basename(fileName, ext);
+  let count = 1;
+
+  while (fs.existsSync(backupPath)) {
+    backupPath = path.join(originalFolder, `${base}-${count}${ext}`);
+    count++;
+  }
+
+  return backupPath;
+}
+
 async function optimizeImage(filePath) {
   if (!isImage(filePath)) return;
   if (!fs.existsSync(filePath)) return;
+  if (isInsideOriginalFolder(filePath)) return;
   if (path.basename(filePath) === ".optimized-images.json") return;
 
   const ext = path.extname(filePath).toLowerCase();
   const folder = path.dirname(filePath);
   const fileName = path.basename(filePath, ext);
+
   const outputPath = path.join(folder, `${fileName}.webp`);
   const tempPath = path.join(folder, `${fileName}.temp.webp`);
+  const originalFolder = path.join(folder, "original");
 
   const relativeOutput = path.relative(ROOT_FOLDER, outputPath);
   const currentSignature = getSignature(filePath);
 
-  if (optimizedMap[relativeOutput] === currentSignature) {
+  if (optimizedMap[relativeOutput] === currentSignature && fs.existsSync(outputPath)) {
     console.log(`⏭ Already optimized: ${outputPath}`);
     return;
   }
@@ -98,13 +118,22 @@ async function optimizeImage(filePath) {
     }
 
     await image.webp({ quality: QUALITY }).toFile(tempPath);
+
     fs.renameSync(tempPath, outputPath);
+
+    if (!fs.existsSync(originalFolder)) {
+      fs.mkdirSync(originalFolder);
+    }
+
+    const backupPath = getUniqueBackupPath(originalFolder, path.basename(filePath));
+    fs.renameSync(filePath, backupPath);
 
     const newSignature = getSignature(outputPath);
     optimizedMap[relativeOutput] = newSignature;
     saveTrackFile();
 
-    console.log(`✅ Saved WebP: ${outputPath}`);
+    console.log(`📦 Original moved to: ${backupPath}`);
+    console.log(`✅ WebP placed at: ${outputPath}`);
   } catch (error) {
     console.log(`❌ Error: ${filePath}`);
     console.log(error.message);
@@ -122,6 +151,7 @@ async function scanExistingImages(folder) {
     const fullPath = path.join(folder, item.name);
 
     if (item.isDirectory()) {
+      if (item.name === "original") continue;
       await scanExistingImages(fullPath);
     } else {
       await optimizeImage(fullPath);
@@ -141,6 +171,7 @@ console.log("👀 Watching for new images...");
 
 chokidar
   .watch(`${ROOT_FOLDER}/**/*.{jpg,jpeg,png,webp}`, {
+    ignored: /(^|[/\\])original([/\\]|$)/,
     ignoreInitial: true,
     awaitWriteFinish: {
       stabilityThreshold: 1000,
