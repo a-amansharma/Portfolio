@@ -131,6 +131,7 @@
       line-height: 1.25;
       font-weight: 650;
       color: var(--text);
+      transition: font-size 0.35s ease, transform 0.35s ease;
     }
 
     .project-title span {
@@ -138,11 +139,70 @@
       margin-top: 5px;
       color: var(--muted);
       font-size: 12.5px;
+      opacity: 1;
+      transform: translateY(0);
+      max-height: 22px;
+      overflow: hidden;
+      transition: opacity 0.25s ease, transform 0.25s ease, max-height 0.25s ease, margin 0.25s ease;
+    }
+
+    .project-block.open .project-title h2 {
+      font-size: clamp(18px, 2.25vw, 25px);
+      transform: translateY(2px);
+    }
+
+    .project-block.open .project-title span {
+      opacity: 0;
+      transform: translateY(-4px);
+      max-height: 0;
+      margin-top: 0;
+    }
+
+    .summary-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 11px;
+      flex-shrink: 0;
+    }
+
+    .summary-post-btn {
+      color: white;
+      min-height: 44px;
+      padding: 10px 17px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: 650;
+      font-size: 13px;
+      white-space: nowrap;
+      transition: 0.3s ease;
+      background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+      box-shadow: 0 9px 21px rgba(221, 42, 123, 0.28);
+    }
+
+    .summary-post-btn i {
+      font-size: 18px;
+    }
+
+    .summary-post-btn:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+      box-shadow: 0 13px 27px rgba(221, 42, 123, 0.38);
+    }
+
+    .project-block.open .summary-post-btn {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px) scale(0.96);
+      pointer-events: none;
     }
 
     .drop-icon {
-      width: 39px;
-      height: 39px;
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
       background: #eef7ff;
       display: grid;
@@ -150,12 +210,21 @@
       color: var(--primary);
       transition: 0.3s ease;
       flex-shrink: 0;
-      box-shadow: inset 0 1px 3px rgba(255,255,255,0.8), 0 7px 14px rgba(0,0,0,0.08);
+      box-shadow:
+        inset 0 1px 3px rgba(255,255,255,0.9),
+        0 9px 18px rgba(0,0,0,0.10);
     }
 
     .drop-icon i {
-      font-size: 24px;
+      font-size: 28px;
       transition: 0.35s ease;
+    }
+
+    .drop-icon:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        inset 0 1px 3px rgba(255,255,255,0.9),
+        0 13px 24px rgba(0,0,0,0.14);
     }
 
     .project-block.open .drop-icon {
@@ -254,6 +323,44 @@
       filter: brightness(1.1);
       transform: translateY(-2px);
       box-shadow: 0 13px 27px rgba(221, 42, 123, 0.40);
+    }
+
+    .bottom-close-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 22px;
+    }
+
+    .bottom-close-btn {
+      border: none;
+      cursor: pointer;
+      color: white;
+      min-width: 150px;
+      min-height: 48px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      font-weight: 650;
+      font-size: 14px;
+      background: linear-gradient(135deg, #23b4c2, #147a91);
+      box-shadow:
+        0 12px 25px rgba(30, 159, 171, 0.30),
+        inset 0 1px 0 rgba(255,255,255,0.45);
+      transition: 0.3s ease;
+    }
+
+    .bottom-close-btn i {
+      font-size: 22px;
+    }
+
+    .bottom-close-btn:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 16px 32px rgba(30, 159, 171, 0.38),
+        inset 0 1px 0 rgba(255,255,255,0.55);
     }
 
     .more-projects {
@@ -438,6 +545,21 @@
         gap: 12px;
       }
 
+      .summary-post-btn {
+        min-height: 42px;
+        padding: 9px 14px;
+        font-size: 12.5px;
+      }
+
+      .drop-icon {
+        width: 43px;
+        height: 43px;
+      }
+
+      .drop-icon i {
+        font-size: 26px;
+      }
+
       .thumb-box {
         width: 92px;
       }
@@ -467,6 +589,20 @@
         gap: 9px;
       }
 
+      .summary-actions {
+        gap: 7px;
+      }
+
+      .summary-post-btn {
+        min-height: 38px;
+        padding: 8px 11px;
+        font-size: 0;
+      }
+
+      .summary-post-btn i {
+        font-size: 18px;
+      }
+
       .thumb-box {
         width: 72px;
         border-radius: 8px;
@@ -477,18 +613,22 @@
         line-height: 1.23;
       }
 
+      .project-block.open .project-title h2 {
+        font-size: 15px;
+      }
+
       .project-title span {
         font-size: 11px;
         margin-top: 3px;
       }
 
       .drop-icon {
-        width: 32px;
-        height: 32px;
+        width: 38px;
+        height: 38px;
       }
 
       .drop-icon i {
-        font-size: 20px;
+        font-size: 24px;
       }
 
       .project-content-inner {
@@ -544,7 +684,7 @@
   <main class="projects-section">
 
     <section class="project-block">
-      <button class="project-summary" type="button">
+      <div class="project-summary" role="button" tabindex="0">
         <div class="thumb-box">
           <img src="../images/sketches/money/3.webp" alt="La Casa De Papel Thumbnail">
         </div>
@@ -554,10 +694,16 @@
           <span>Click to see all sketches</span>
         </div>
 
-        <div class="drop-icon">
-          <i class="uil uil-angle-down"></i>
+        <div class="summary-actions">
+          <a href="https://www.instagram.com/p/DPtu0WDkva7/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="summary-post-btn" aria-label="View Instagram Post">
+            <i class="uil uil-instagram"></i> Instagram Post
+          </a>
+
+          <div class="drop-icon">
+            <i class="uil uil-angle-down"></i>
+          </div>
         </div>
-      </button>
+      </div>
 
       <div class="project-content">
         <div class="project-content-inner">
@@ -577,12 +723,18 @@
               <i class="uil uil-instagram"></i> View Instagram Post
             </a>
           </div>
+
+          <div class="bottom-close-wrap">
+            <button class="bottom-close-btn" type="button">
+              <i class="uil uil-angle-up"></i> Close Section
+            </button>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="project-block">
-      <button class="project-summary" type="button">
+      <div class="project-summary" role="button" tabindex="0">
         <div class="thumb-box">
           <img src="../images/sketches/stranger/6.webp" alt="Stranger Things Thumbnail">
         </div>
@@ -592,10 +744,16 @@
           <span>Click to see details</span>
         </div>
 
-        <div class="drop-icon">
-          <i class="uil uil-angle-down"></i>
+        <div class="summary-actions">
+          <a href="https://www.instagram.com/p/DRe_vyGEn91/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="summary-post-btn" aria-label="View Instagram Post">
+            <i class="uil uil-instagram"></i> Instagram Post
+          </a>
+
+          <div class="drop-icon">
+            <i class="uil uil-angle-down"></i>
+          </div>
         </div>
-      </button>
+      </div>
 
       <div class="project-content">
         <div class="project-content-inner">
@@ -615,6 +773,12 @@
             <a href="https://www.instagram.com/p/DRe_vyGEn91/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="instagram-btn">
               <i class="uil uil-instagram"></i> View Instagram Post
             </a>
+          </div>
+
+          <div class="bottom-close-wrap">
+            <button class="bottom-close-btn" type="button">
+              <i class="uil uil-angle-up"></i> Close Section
+            </button>
           </div>
         </div>
       </div>
@@ -680,28 +844,47 @@
     let modalOpen = false;
     let pushedHistory = false;
 
-    document.querySelectorAll(".project-summary").forEach((button) => {
+    function toggleProject(block) {
+      const content = block.querySelector(".project-content");
+
+      if (block.classList.contains("open")) {
+        content.style.maxHeight = content.scrollHeight + "px";
+
+        requestAnimationFrame(() => {
+          content.style.maxHeight = "0px";
+          block.classList.remove("open");
+        });
+      } else {
+        block.classList.add("open");
+        content.style.maxHeight = content.scrollHeight + "px";
+
+        setTimeout(() => {
+          if (block.classList.contains("open")) {
+            content.style.maxHeight = "none";
+          }
+        }, 560);
+      }
+    }
+
+    document.querySelectorAll(".project-summary").forEach((summary) => {
+      summary.addEventListener("click", (e) => {
+        if (e.target.closest("a")) return;
+        toggleProject(summary.closest(".project-block"));
+      });
+
+      summary.addEventListener("keydown", (e) => {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (e.target.closest("a")) return;
+        e.preventDefault();
+        toggleProject(summary.closest(".project-block"));
+      });
+    });
+
+    document.querySelectorAll(".bottom-close-btn").forEach((button) => {
       button.addEventListener("click", () => {
         const block = button.closest(".project-block");
-        const content = block.querySelector(".project-content");
-
-        if (block.classList.contains("open")) {
-          content.style.maxHeight = content.scrollHeight + "px";
-
-          requestAnimationFrame(() => {
-            content.style.maxHeight = "0px";
-            block.classList.remove("open");
-          });
-        } else {
-          block.classList.add("open");
-          content.style.maxHeight = content.scrollHeight + "px";
-
-          setTimeout(() => {
-            if (block.classList.contains("open")) {
-              content.style.maxHeight = "none";
-            }
-          }, 560);
-        }
+        toggleProject(block);
+        block.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
 

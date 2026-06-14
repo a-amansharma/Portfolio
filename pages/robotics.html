@@ -108,6 +108,7 @@
       gap: 16px;
       align-items: center;
       text-align: left;
+      transition: 0.38s ease;
     }
 
     .thumb-box {
@@ -119,6 +120,7 @@
       box-shadow:
         0 10px 22px rgba(0, 0, 0, 0.15),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      transition: opacity 0.38s ease, transform 0.38s ease, width 0.38s ease;
     }
 
     .thumb-box img {
@@ -127,11 +129,16 @@
       object-fit: cover;
     }
 
+    .project-title {
+      transition: transform 0.38s ease, text-align 0.38s ease;
+    }
+
     .project-title h2 {
       font-size: clamp(16px, 2vw, 22px);
       line-height: 1.25;
       font-weight: 650;
       color: var(--text);
+      transition: font-size 0.38s ease, transform 0.38s ease;
     }
 
     .project-title span {
@@ -139,11 +146,45 @@
       margin-top: 5px;
       color: var(--muted);
       font-size: 12.5px;
+      transition: opacity 0.25s ease, transform 0.25s ease;
     }
 
-    .drop-icon {
-      width: 39px;
-      height: 39px;
+    .summary-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .summary-linkedin-btn {
+      background: var(--linkedin);
+      color: white;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: 0.3s ease;
+      box-shadow: 0 8px 17px rgba(10, 102, 194, 0.25);
+    }
+
+    .summary-linkedin-btn i {
+      font-size: 23px;
+    }
+
+    .summary-linkedin-btn:hover {
+      background: #004182;
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 12px 24px rgba(10, 102, 194, 0.35);
+    }
+
+    .drop-icon,
+    .bottom-drop-icon {
+      width: 48px;
+      height: 48px;
+      border: none;
       border-radius: 50%;
       background: #eef7ff;
       display: grid;
@@ -151,11 +192,13 @@
       color: var(--primary);
       transition: 0.3s ease;
       flex-shrink: 0;
+      cursor: pointer;
       box-shadow: inset 0 1px 3px rgba(255,255,255,0.8), 0 7px 14px rgba(0,0,0,0.08);
     }
 
-    .drop-icon i {
-      font-size: 24px;
+    .drop-icon i,
+    .bottom-drop-icon i {
+      font-size: 30px;
       transition: 0.35s ease;
     }
 
@@ -166,6 +209,59 @@
 
     .project-block.open .drop-icon i {
       transform: rotate(180deg);
+    }
+
+    .project-block.open .project-title span {
+      opacity: 0;
+      transform: translateY(-6px);
+      pointer-events: none;
+      height: 0;
+      margin-top: 0;
+      overflow: hidden;
+    }
+
+    .project-block.open .summary-linkedin-btn {
+      opacity: 0;
+      transform: scale(0.75);
+      pointer-events: none;
+      width: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .bottom-close-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 26px;
+    }
+
+    .bottom-drop-icon {
+      width: 58px;
+      height: 58px;
+      background: linear-gradient(145deg, #22b8c7, #147f8a);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      box-shadow:
+        0 15px 30px rgba(30, 159, 171, 0.34),
+        inset 0 1px 0 rgba(255, 255, 255, 0.65),
+        inset 0 -8px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .bottom-drop-icon i {
+      font-size: 34px;
+      transform: rotate(180deg);
+    }
+
+    .bottom-drop-icon:hover,
+    .drop-icon:hover {
+      transform: translateY(-2px) scale(1.06);
+    }
+
+    .bottom-drop-icon:hover {
+      box-shadow:
+        0 18px 36px rgba(30, 159, 171, 0.42),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7),
+        inset 0 -8px 16px rgba(0, 0, 0, 0.13);
     }
 
     .project-content {
@@ -418,6 +514,23 @@
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.28);
     }
 
+
+    @media (min-width: 1000px) {
+      .summary-linkedin-btn,
+      .drop-icon {
+        width: 50px;
+        height: 50px;
+      }
+
+      .summary-linkedin-btn i {
+        font-size: 24px;
+      }
+
+      .drop-icon i {
+        font-size: 32px;
+      }
+    }
+
     @media (max-width: 1100px) {
       .project-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -483,13 +596,31 @@
         margin-top: 3px;
       }
 
-      .drop-icon {
-        width: 32px;
-        height: 32px;
+      .drop-icon,
+      .summary-linkedin-btn {
+        width: 39px;
+        height: 39px;
       }
 
       .drop-icon i {
+        font-size: 25px;
+      }
+
+      .summary-linkedin-btn i {
         font-size: 20px;
+      }
+
+      .bottom-drop-icon {
+        width: 50px;
+        height: 50px;
+      }
+
+      .bottom-drop-icon i {
+        font-size: 30px;
+      }
+
+      .summary-actions {
+        gap: 8px;
       }
 
       .project-content-inner {
@@ -545,7 +676,7 @@
   <main class="projects-section">
 
     <section class="project-block">
-      <button class="project-summary" type="button">
+      <div class="project-summary" role="button" tabindex="0">
         <div class="thumb-box">
           <img src="../images/robotics/quadruped/12.webp" alt="Quadruped Robot Thumbnail">
         </div>
@@ -555,10 +686,16 @@
           <span>Click to see details</span>
         </div>
 
-        <div class="drop-icon">
-          <i class="uil uil-angle-down"></i>
+        <div class="summary-actions">
+          <a href="https://www.linkedin.com/posts/a-amansharma_robotics-quadrupedrobot-defencetechnology-activity-7412072099575623680-b7em?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMR2VIBzWcU732Hl1HiRdej_YmWsRI29oo" target="_blank" class="summary-linkedin-btn" aria-label="Open LinkedIn post">
+            <i class="uil uil-linkedin"></i>
+          </a>
+
+          <button class="drop-icon" type="button" aria-label="Open project details">
+            <i class="uil uil-angle-down"></i>
+          </button>
         </div>
-      </button>
+      </div>
 
       <div class="project-content">
         <div class="project-content-inner">
@@ -582,12 +719,18 @@
               <i class="uil uil-linkedin"></i> View Video Post
             </a>
           </div>
+
+          <div class="bottom-close-wrap">
+            <button class="bottom-drop-icon" type="button" aria-label="Close project details">
+              <i class="uil uil-angle-down"></i>
+            </button>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="project-block">
-      <button class="project-summary" type="button">
+      <div class="project-summary" role="button" tabindex="0">
         <div class="thumb-box">
           <img src="../images/robotics/hand/6.webp" alt="Robotic Hand Thumbnail">
         </div>
@@ -597,10 +740,20 @@
           <span>Click to see details</span>
         </div>
 
-        <div class="drop-icon">
-          <i class="uil uil-angle-down"></i>
+        <div class="summary-actions">
+          <a href="https://www.linkedin.com/posts/a-amansharma_robotics-innovation-teamwork-activity-7379071790259810304-VtCJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMR2VIBzWcU732Hl1HiRdej_YmWsRI29oo" target="_blank" class="summary-linkedin-btn" aria-label="Open LinkedIn post">
+            <i class="uil uil-linkedin"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/posts/a-amansharma_iitpatna-iitpatna-robotics-activity-7379076855976513536-J4EJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMR2VIBzWcU732Hl1HiRdej_YmWsRI29oo" target="_blank" class="summary-linkedin-btn" aria-label="Open LinkedIn video post">
+            <i class="uil uil-play-circle"></i>
+          </a>
+
+          <button class="drop-icon" type="button" aria-label="Open project details">
+            <i class="uil uil-angle-down"></i>
+          </button>
         </div>
-      </button>
+      </div>
 
       <div class="project-content">
         <div class="project-content-inner">
@@ -622,12 +775,18 @@
               <i class="uil uil-linkedin"></i> View Video Post
             </a>
           </div>
+
+          <div class="bottom-close-wrap">
+            <button class="bottom-drop-icon" type="button" aria-label="Close project details">
+              <i class="uil uil-angle-down"></i>
+            </button>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="project-block">
-      <button class="project-summary" type="button">
+      <div class="project-summary" role="button" tabindex="0">
         <div class="thumb-box">
           <img src="../images/robotics/raptor/5.webp" alt="F-22 Raptor Thumbnail">
         </div>
@@ -637,10 +796,12 @@
           <span>Click to see details</span>
         </div>
 
-        <div class="drop-icon">
-          <i class="uil uil-angle-down"></i>
+        <div class="summary-actions">
+          <button class="drop-icon" type="button" aria-label="Open project details">
+            <i class="uil uil-angle-down"></i>
+          </button>
         </div>
-      </button>
+      </div>
 
       <div class="project-content">
         <div class="project-content-inner">
@@ -651,12 +812,18 @@
             <div class="project-card"><img src="../images/robotics/raptor/4.webp" alt="F-22 Raptor Image 4" onclick="openImage(this.src)"></div>
             <div class="project-card"><img src="../images/robotics/raptor/5.webp" alt="F-22 Raptor Image 5" onclick="openImage(this.src)"></div>
           </div>
+
+          <div class="bottom-close-wrap">
+            <button class="bottom-drop-icon" type="button" aria-label="Close project details">
+              <i class="uil uil-angle-down"></i>
+            </button>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="project-block">
-      <button class="project-summary" type="button">
+      <div class="project-summary" role="button" tabindex="0">
         <div class="thumb-box">
           <img src="../images/robotics/drone/7.webp" alt="Drone Thumbnail">
         </div>
@@ -666,10 +833,12 @@
           <span>Click to see details</span>
         </div>
 
-        <div class="drop-icon">
-          <i class="uil uil-angle-down"></i>
+        <div class="summary-actions">
+          <button class="drop-icon" type="button" aria-label="Open project details">
+            <i class="uil uil-angle-down"></i>
+          </button>
         </div>
-      </button>
+      </div>
 
       <div class="project-content">
         <div class="project-content-inner">
@@ -681,6 +850,12 @@
             <div class="project-card"><img src="../images/robotics/drone/5.webp" alt="Drone Image 5" onclick="openImage(this.src)"></div>
             <div class="project-card"><img src="../images/robotics/drone/6.webp" alt="Drone Image 6" onclick="openImage(this.src)"></div>
             <div class="project-card"><img src="../images/robotics/drone/7.webp" alt="Drone Image 7" onclick="openImage(this.src)"></div>
+          </div>
+
+          <div class="bottom-close-wrap">
+            <button class="bottom-drop-icon" type="button" aria-label="Close project details">
+              <i class="uil uil-angle-down"></i>
+            </button>
           </div>
         </div>
       </div>
@@ -746,28 +921,49 @@
     let modalOpen = false;
     let pushedHistory = false;
 
-    document.querySelectorAll(".project-summary").forEach((button) => {
-      button.addEventListener("click", () => {
-        const block = button.closest(".project-block");
-        const content = block.querySelector(".project-content");
+    function toggleProject(block) {
+      const content = block.querySelector(".project-content");
 
-        if (block.classList.contains("open")) {
-          content.style.maxHeight = content.scrollHeight + "px";
+      if (block.classList.contains("open")) {
+        content.style.maxHeight = content.scrollHeight + "px";
 
-          requestAnimationFrame(() => {
-            content.style.maxHeight = "0px";
-            block.classList.remove("open");
-          });
-        } else {
-          block.classList.add("open");
-          content.style.maxHeight = content.scrollHeight + "px";
+        requestAnimationFrame(() => {
+          content.style.maxHeight = "0px";
+          block.classList.remove("open");
+        });
+      } else {
+        block.classList.add("open");
+        content.style.maxHeight = content.scrollHeight + "px";
 
-          setTimeout(() => {
-            if (block.classList.contains("open")) {
-              content.style.maxHeight = "none";
-            }
-          }, 560);
+        setTimeout(() => {
+          if (block.classList.contains("open")) {
+            content.style.maxHeight = "none";
+          }
+        }, 560);
+      }
+    }
+
+    document.querySelectorAll(".project-summary").forEach((summary) => {
+      summary.addEventListener("click", (e) => {
+        if (e.target.closest("a")) return;
+        toggleProject(summary.closest(".project-block"));
+      });
+
+      summary.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          toggleProject(summary.closest(".project-block"));
         }
+      });
+    });
+
+    document.querySelectorAll(".bottom-drop-icon").forEach((button) => {
+      button.addEventListener("click", () => {
+        toggleProject(button.closest(".project-block"));
+        button.closest(".project-block").scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
       });
     });
 
