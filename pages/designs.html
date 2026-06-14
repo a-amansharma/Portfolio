@@ -1,374 +1,481 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="shortcut icon" href="images/" type="image/x-icon">
-    <title>Portfolio - Projects - Designs</title>
-    <style>
-        body {
-            background: #f5f7fb;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio - Designs</title>
 
-        .projects-section {
-            padding: 50px 8%;
-        }
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <link rel="shortcut icon" href="images/favicon.webp" type="image/webp">
 
-        /* Project Box */
-        .project-container {
-            background: #ffffff;
-            padding: 30px;
-            margin-bottom: 60px;
-            border-radius: 18px;
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-        }
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-        .project-container h2 {
-            font-size: 30px;
-            margin-bottom: 8px;
-        }
+    :root {
+      --bg: #f5f7fb;
+      --white: #ffffff;
+      --text: #333;
+      --muted: #666;
+      --primary: #1e9fab;
+      --nav-bg: rgb(223, 223, 255);
+      --shadow: rgba(0, 0, 0, 0.10);
+      --radius: 18px;
+    }
 
-        .project-desc {
-            color: #666;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-        /* Responsive Flex Row */
-        .project-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .project-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            flex: 1 1 calc(33.333% - 20px);
-            min-width: 200px;
-            box-shadow: 1px 2px 10px gray;
-            cursor: pointer;
-        }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
 
-        .project-card img {
-            width: 100%;
-            height: auto;
-            transform: scale(1.05);
-            /* keep ratio */
-            object-fit: contain;
-            /* no crop */
-            transition: all 0.4s ease;
-        }
+    img {
+      display: block;
+      max-width: 100%;
+    }
 
-        .project-card:hover img {
-            transform: scale(1.2);
-        }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-        /* Overlay Animation */
-        .overlay {
-            position: absolute;
-            bottom: -100%;
-            left: 0;
-            width: 100%;
-            height: 20px;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px;
-            transition: all 0.4s ease;
-        }
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
 
-        .overlay p {
-            font-size: 14px;
-            line-height: 1.4;
-        }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
 
-        .project-card:hover .overlay {
-            bottom: 0;
-        }
+    ::-webkit-scrollbar-thumb {
+      background: #cfcfcf;
+      border-radius: 30px;
+    }
 
-        /* More Projects Box */
-        .more-projects {
-            text-align: center;
-            padding: 50px;
-            border: 2px dashed #ccc;
-            border-radius: 18px;
-            background: #fff;
-        }
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 85px;
+      padding: 0 8%;
+      background: var(--nav-bg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    }
 
-        .more-projects h2 {
-            font-size: 28px;
-        }
+    .nav-name {
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 700;
+      color: var(--primary);
+    }
 
-        .more-projects p {
-            color: #777;
-        }
+    .home-link {
+      font-size: 17px;
+      font-weight: 600;
+      color: rgb(8, 132, 173);
+      transition: 0.3s ease;
+    }
 
-        #imageViewer {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.9);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            cursor: zoom-out;
-        }
+    .home-link:hover {
+      transform: scale(1.08);
+      color: #006f8d;
+    }
 
-        #imageViewer img {
-            max-width: 95%;
-            max-height: 95%;
-            object-fit: contain;
-            border-radius: 10px;
-        }
+    .projects-section {
+      padding: 130px 8% 60px;
+    }
 
-        .project-card img {
-            cursor: zoom-in;
-        }
+    .project-container {
+      background: var(--white);
+      padding: clamp(20px, 4vw, 35px);
+      margin-bottom: 55px;
+      border-radius: var(--radius);
+      box-shadow: 0 12px 35px var(--shadow);
+    }
 
-        .home {
-            transition: 0.3s;
-            color: lightblue;
-        }
+    .project-container h2 {
+      font-size: clamp(24px, 4vw, 34px);
+      margin-bottom: 8px;
+      color: var(--text);
+    }
 
-        .home:hover {
-            transition: 0.4s;
-            transform: scale(1.2);
-        }
+    .project-desc {
+      color: var(--muted);
+      margin-bottom: 28px;
+      font-size: 15px;
+    }
 
-        .home a {
-            color: rgb(8, 132, 173);
-        }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
 
-        @media screen and (max-width: 768px) {
-            .projects-section {
-                padding: 30px 3%;
-            }
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+      aspect-ratio: 4 / 3;
+      background: #eef1f7;
+      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.16);
+      cursor: zoom-in;
+    }
 
-            /* Project Box */
-            .project-container {
-                background: #ffffff;
-                padding-top: 30px;
-                margin-bottom: 30px;
-                border-radius: 18px;
-                box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-            }
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.45s ease;
+    }
 
-            .project-container h2 {
-                font-size: 20px;
-                margin-bottom: 0px;
-            }
+    .project-card:hover img {
+      transform: scale(1.08);
+      filter: brightness(0.78);
+    }
 
-            .project-desc {
-                color: #666;
-                margin-bottom: 2px;
-                display: flex;
-                align-items: center;
-                margin-top: 1px;
-            }
+    .overlay {
+      position: absolute;
+      left: 0;
+      bottom: -100%;
+      width: 100%;
+      padding: 16px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
+      transition: 0.35s ease;
+    }
 
-            /* Responsive Flex Row */
-            .project-grid {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 15px;
-            }
+    .project-card:hover .overlay {
+      bottom: 0;
+    }
 
-            .project-card {
-                position: relative;
-                overflow: hidden;
-                border-radius: 15px;
-                flex: 1 1 calc(33.333% - 20px);
-                min-width: 150px;
-                cursor: pointer;
-            }
+    .project-note {
+      margin-top: 24px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: #f4f6ff;
+      color: #555;
+      font-size: 15px;
+      line-height: 1.7;
+      border-left: 4px solid var(--primary);
+    }
 
-            .overlay {
-                font-size: 10px;
-                padding: 0px;
-                margin: 10px;
-            }
+    .more-projects {
+      text-align: center;
+      padding: clamp(35px, 6vw, 55px);
+      border: 2px dashed #cfcfcf;
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
 
-            .nav-name {
-                font-size: 25px;
-            }
+    .more-projects h2 {
+      font-size: clamp(24px, 4vw, 30px);
+      margin-bottom: 8px;
+    }
 
-        }
-    </style>
+    .more-projects p {
+      color: #777;
+    }
+
+    #imageViewer {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+      cursor: zoom-out;
+    }
+
+    #imageViewer img {
+      max-width: 96%;
+      max-height: 92vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 0 35px rgba(255,255,255,0.12);
+    }
+
+    footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 22px;
+      background: #f4eeff;
+      padding: 42px 8%;
+      text-align: center;
+    }
+
+    .top-footer p {
+      font-size: clamp(26px, 4vw, 35px);
+      font-weight: 700;
+    }
+
+    .footer-menu {
+      display: flex;
+      gap: 35px;
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer_menu_list a {
+      color: var(--text);
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+
+    .footer_menu_list a:hover {
+      color: var(--primary);
+    }
+
+    .footer-social-icons {
+      display: flex;
+      gap: 26px;
+    }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.3s ease;
+      overflow: hidden;
+    }
+
+    .icon a {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .icon i {
+      font-size: 1.4rem;
+      color: #fff;
+    }
+
+    .icon:nth-child(1) {
+      background: linear-gradient(135deg, #feda75, #d62976, #962fbf, #4f5bd5);
+    }
+
+    .icon:nth-child(2) {
+      background: #0077b5;
+    }
+
+    .icon:nth-child(3) {
+      background: #24292e;
+    }
+
+    .icon:hover {
+      transform: scale(1.12) translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.28);
+    }
+
+    @media (max-width: 950px) {
+      nav {
+        height: 78px;
+        padding: 0 6%;
+      }
+
+      .projects-section {
+        padding: 115px 5% 45px;
+      }
+
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      nav {
+        height: 72px;
+      }
+
+      .projects-section {
+        padding: 100px 4% 38px;
+      }
+
+      .project-container {
+        margin-bottom: 35px;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .project-desc,
+      .project-note {
+        font-size: 14px;
+      }
+
+      .footer-menu {
+        gap: 18px;
+      }
+
+      .icon {
+        width: 45px;
+        height: 45px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="container">
 
-        <!-- HEADER -->
-        <nav id="header">
-            <div class="nav-logo">
-                <p class="nav-name">Designs</p>
-            </div>
-            <div class="home">
-                <a href="index.html" style="text-decoration: none;">Home</a>
-            </div>
-        </nav>
-        <!-- PROJECTS -->
-        <section class="projects-section">
-
-            <!-- PROJECT 1 -->
-            <div class="project-container" style="margin-top: 100px;">
-                <h2>Canva</h2>
-                <p class="project-desc">Canva designs created during internship</p>
-
-                <div class="project-grid">
-                    <div class="project-card">
-                        <img src="images/designs/canva1.png" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/designs/camva2.png" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/designs/canva3.png" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/designs/canva4.png" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                </div>
-                <div class="featured-text-btn">
-                    All designs were created for live company projects during my internship, comprising 60+ completed design creatives.
-                </div>
-            </div>
-            <style>
-                .featured-text-btn .btn {
-                    text-decoration: none;
-                    /* remove underline */
-                    color: #ffffff;
-                    /* text color */
-                    background: linear-gradient(45deg,
-                            #f58529,
-                            #dd2a7b,
-                            #8134af,
-                            #515bd4);
-                    /* Instagram gradient */
-                    padding: 12px 22px;
-                    border-radius: 30px;
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 8px;
-                    font-weight: 600;
-                    transition: all 0.3s ease;
-                }
-
-                /* Icon size */
-                .featured-text-btn .btn i {
-                    font-size: 18px;
-                }
-
-                /* Hover effect */
-                .featured-text-btn .btn:hover {
-                    filter: brightness(1.1);
-                    /* subtle pop */
-                    color: #ffffff;
-                    transform: translateY(-2px);
-                    box-shadow: 0 6px 15px rgba(221, 42, 123, 0.4);
-                }
-            </style>
-            <!-- Fullscreen Image Viewer -->
-            <div id="imageViewer" onclick="closeImage()">
-                <img id="fullImage">
-            </div>
-
-
-            <!-- PROJECT 2 -->
-            <div class="project-container" style="margin-top: 100px;">
-                <h2>Inkscape</h2>
-                <p class="project-desc">Large banner and Arduino schematic</p>
-
-                <div class="project-grid">
-                    <div class="project-card">
-                        <img src="images/designs/inkscape1.png" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/designs/inkscape2.png" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                    <div class="project-card">
-                        <img src="images/designs/inkscape3.png" onclick="openImage(this.src)">
-                        <div class="overlay"> Click to view full image</div>
-                    </div>
-                </div>
-                <div class="featured-text-btn">
-                    Created with a strong emphasis on precision, readability, and clean visual structure.
-                </div>
-            </div>
-            <!-- MORE PROJECTS -->
-            <div class="more-projects">
-                <h2>More Projects Ahead</h2>
-                <p>Future work will explore robotics, automation, and innovation.</p>
-            </div>
-        </section>
+  <nav>
+    <div class="nav-logo">
+      <p class="nav-name">Designs</p>
     </div>
 
-    <!-- --------------- FOOTER --------------- -->
-    <footer>
-        <div class="top-footer">
-            <p>Aman Sharma</p>
-        </div>
-        <div class="middle-footer">
-            <ul class="footer-menu">
-                <li class="footer_menu_list">
-                    <a href="index.html#home">Home</a>
-                </li>
-                
-                <li class="footer_menu_list">
-                    <a href="index.html#about">About</a>
-                </li>
-                
-                <li class="footer_menu_list">
-                    <a href="index.html#projects">Projects</a>
-                </li>
+    <a class="home-link" href="index.html">Home</a>
+  </nav>
 
-                <li class="footer_menu_list">
-                    <a href="index.html#contact">Contact</a>
-                </li>
-                
-            </ul>
-        </div>
-        <div class="footer-social-icons">
-            <div class="icon"><a href="https://www.instagram.com/_ar.sharma/" target="_blank"><i
-                        class="uil uil-instagram"></i></a></div>
-            <div class="icon"><a href="https://www.linkedin.com/in/a-amansharma/" target="_blank"><i
-                        class="uil uil-linkedin-alt"></i></a></div>
-            <!-- <div class="icon"><a href="https://www.instagram.com/_ar.sharma/" target="_blank"><i class="uil uil-dribbble"></i></a></div> -->
-            <div class="icon"><a href="https://github.com/a-amansharma" target="_blank"><i
-                        class="uil uil-github-alt"></i></a></div>
-        </div>
-        <!-- <div class="bottom-footer">
-            <p>Copyright &copy; <a href="#home" style="text-decoration: none;">Aman Sharma</a> - All rights reserved</p>
-            </div> -->
-    </footer>
+  <main class="projects-section">
 
-</body>
-<script>
+    <section class="project-container">
+      <h2>Canva</h2>
+      <p class="project-desc">Canva designs created during internship</p>
+
+      <div class="project-grid">
+        <div class="project-card">
+          <img src="../images/designs/canva1.webp" alt="Canva Design 1" onclick="openImage(this.src)">
+          <div class="overlay">Click to view full image</div>
+        </div>
+
+        <div class="project-card">
+          <img src="images/designs/canva2.webp" alt="Canva Design 2" onclick="openImage(this.src)">
+          <div class="overlay">Click to view full image</div>
+        </div>
+
+        <div class="project-card">
+          <img src="images/designs/canva3.webp" alt="Canva Design 3" onclick="openImage(this.src)">
+          <div class="overlay">Click to view full image</div>
+        </div>
+
+        <div class="project-card">
+          <img src="images/designs/canva4.webp" alt="Canva Design 4" onclick="openImage(this.src)">
+          <div class="overlay">Click to view full image</div>
+        </div>
+      </div>
+
+      <div class="project-note">
+        All designs were created for live company projects during my internship, comprising 60+ completed design creatives.
+      </div>
+    </section>
+
+    <section class="project-container">
+      <h2>Inkscape</h2>
+      <p class="project-desc">Large banner and Arduino schematic designs</p>
+
+      <div class="project-grid">
+        <div class="project-card">
+          <img src="images/designs/inkscape1.webp" alt="Inkscape Design 1" onclick="openImage(this.src)">
+          <div class="overlay">Click to view full image</div>
+        </div>
+
+        <div class="project-card">
+          <img src="images/designs/inkscape2.webp" alt="Inkscape Design 2" onclick="openImage(this.src)">
+          <div class="overlay">Click to view full image</div>
+        </div>
+
+        <div class="project-card">
+          <img src="images/designs/inkscape3.webp" alt="Inkscape Design 3" onclick="openImage(this.src)">
+          <div class="overlay">Click to view full image</div>
+        </div>
+      </div>
+
+      <div class="project-note">
+        Created with a strong emphasis on precision, readability, and clean visual structure.
+      </div>
+    </section>
+
+    <section class="more-projects">
+      <h2>More Projects Ahead</h2>
+      <p>Future work will explore robotics, automation, and innovation.</p>
+    </section>
+
+  </main>
+
+  <div id="imageViewer" onclick="closeImage()">
+    <img id="fullImage" alt="Full Preview">
+  </div>
+
+  <footer>
+    <div class="top-footer">
+      <p>Aman Sharma</p>
+    </div>
+
+    <div class="middle-footer">
+      <ul class="footer-menu">
+        <li class="footer_menu_list"><a href="index.html#home">Home</a></li>
+        <li class="footer_menu_list"><a href="index.html#about">About</a></li>
+        <li class="footer_menu_list"><a href="index.html#projects">Projects</a></li>
+        <li class="footer_menu_list"><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-social-icons">
+      <div class="icon">
+        <a href="https://www.instagram.com/_ar.sharma/" target="_blank">
+          <i class="uil uil-instagram"></i>
+        </a>
+      </div>
+
+      <div class="icon">
+        <a href="https://www.linkedin.com/in/a-amansharma/" target="_blank">
+          <i class="uil uil-linkedin-alt"></i>
+        </a>
+      </div>
+
+      <div class="icon">
+        <a href="https://github.com/a-amansharma" target="_blank">
+          <i class="uil uil-github-alt"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
     function openImage(src) {
-        document.getElementById("fullImage").src = src;
-        document.getElementById("imageViewer").style.display = "flex";
-        document.body.style.overflow = "hidden";
+      document.getElementById("fullImage").src = src;
+      document.getElementById("imageViewer").style.display = "flex";
+      document.body.style.overflow = "hidden";
     }
 
     function closeImage() {
-        document.getElementById("imageViewer").style.display = "none";
-        document.body.style.overflow = "auto";
+      document.getElementById("imageViewer").style.display = "none";
+      document.body.style.overflow = "auto";
     }
-</script>
 
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        closeImage();
+      }
+    });
+  </script>
+
+</body>
 </html>
