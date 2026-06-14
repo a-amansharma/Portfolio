@@ -8,8 +8,8 @@ const TRACK_FILE = path.join(ROOT_FOLDER, ".optimized-images.json");
 
 const QUALITY = 80;
 
-// Direct images inside /images → index.html → square 1:1
-const INDEX_SIZE = 1200;
+// Direct images inside /images → index.html → keep original ratio, no crop
+const INDEX_MAX_WIDTH = 1600;
 
 // images/designs → keep original ratio, no crop
 const DESIGN_MAX_WIDTH = 1600;
@@ -75,30 +75,29 @@ async function optimizeImage(filePath) {
     let image = sharp(filePath);
 
     if (isDirectIndexImage(filePath)) {
-      image = image.resize(INDEX_SIZE, INDEX_SIZE, {
-        fit: "cover",
-        position: "center",
+      image = image.resize({
+        width: INDEX_MAX_WIDTH,
+        withoutEnlargement: true,
       });
 
-      console.log(`✅ Index image 1:1 square: ${outputPath}`);
+      console.log(`✅ Index image optimized, original ratio kept: ${outputPath}`);
     } else if (getTopFolder(filePath) === "designs") {
       image = image.resize({
         width: DESIGN_MAX_WIDTH,
         withoutEnlargement: true,
       });
 
-      console.log(`✅ Design image ratio kept: ${outputPath}`);
+      console.log(`✅ Design image optimized, original ratio kept: ${outputPath}`);
     } else {
       image = image.resize(PORTRAIT_WIDTH, PORTRAIT_HEIGHT, {
         fit: "cover",
         position: "center",
       });
 
-      console.log(`✅ Robotics/Sketches portrait 3:4: ${outputPath}`);
+      console.log(`✅ Robotics/Sketches optimized portrait 3:4: ${outputPath}`);
     }
 
     await image.webp({ quality: QUALITY }).toFile(tempPath);
-
     fs.renameSync(tempPath, outputPath);
 
     const newSignature = getSignature(outputPath);
