@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -211,8 +212,8 @@
       transition: 0.3s ease;
       flex-shrink: 0;
       box-shadow:
-        inset 0 1px 3px rgba(255,255,255,0.9),
-        0 9px 18px rgba(0,0,0,0.10);
+        inset 0 1px 3px rgba(255, 255, 255, 0.9),
+        0 9px 18px rgba(0, 0, 0, 0.10);
     }
 
     .drop-icon i {
@@ -223,8 +224,8 @@
     .drop-icon:hover {
       transform: translateY(-2px);
       box-shadow:
-        inset 0 1px 3px rgba(255,255,255,0.9),
-        0 13px 24px rgba(0,0,0,0.14);
+        inset 0 1px 3px rgba(255, 255, 255, 0.9),
+        0 13px 24px rgba(0, 0, 0, 0.14);
     }
 
     .project-block.open .drop-icon {
@@ -270,7 +271,7 @@
       box-shadow:
         0 13px 27px rgba(0, 0, 0, 0.16),
         0 4px 8px rgba(0, 0, 0, 0.08),
-        inset 0 1px 0 rgba(255,255,255,0.8);
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
       transition: 0.35s ease;
     }
 
@@ -298,42 +299,43 @@
       gap: 12px;
       margin-top: 20px;
     }
-    .nav-logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
 
-.back-btn{
-  border:none;
-  background:none;
-  font-size:30px;
-  font-weight:400;
-  cursor:pointer;
-  color:var(--primary);
-  padding:0;
-  line-height:0.8;
-  transition:.25s ease;
-}
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-.back-btn:hover{
-  transform:translateX(-2px);
-}
+    .back-btn {
+      border: none;
+      background: none;
+      font-size: 30px;
+      font-weight: 400;
+      cursor: pointer;
+      color: var(--primary);
+      padding: 0;
+      line-height: 0.8;
+      transition: .25s ease;
+    }
 
-.nav-name{
-  font-size: clamp(25px, 4vw, 38px);
-  font-weight:700;
-  color:var(--primary);
-  cursor:pointer;
-  transition:.25s ease;
-  display:flex;
-  align-items:center;
-  gap:4px;
-}
+    .back-btn:hover {
+      transform: translateX(-2px);
+    }
 
-.nav-name:hover{
-  transform:translateX(-2px);
-}
+    .nav-name {
+      font-size: clamp(25px, 4vw, 38px);
+      font-weight: 700;
+      color: var(--primary);
+      cursor: pointer;
+      transition: .25s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-name:hover {
+      transform: translateX(-2px);
+    }
 
     .instagram-btn {
       color: white;
@@ -385,7 +387,7 @@
       background: linear-gradient(135deg, #23b4c2, #147a91);
       box-shadow:
         0 12px 25px rgba(30, 159, 171, 0.30),
-        inset 0 1px 0 rgba(255,255,255,0.45);
+        inset 0 1px 0 rgba(255, 255, 255, 0.45);
       transition: 0.3s ease;
     }
 
@@ -397,7 +399,7 @@
       transform: translateY(-2px);
       box-shadow:
         0 16px 32px rgba(30, 159, 171, 0.38),
-        inset 0 1px 0 rgba(255,255,255,0.55);
+        inset 0 1px 0 rgba(255, 255, 255, 0.55);
     }
 
     .more-projects {
@@ -406,7 +408,7 @@
       border: 2px dashed #cfcfcf;
       border-radius: var(--radius);
       background: var(--white);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
       margin-top: 24px;
     }
 
@@ -446,7 +448,7 @@
       transform: scale(0.92);
       opacity: 0;
       transition: transform 0.28s ease, opacity 0.28s ease;
-      box-shadow: 0 0 36px rgba(255,255,255,0.12);
+      box-shadow: 0 0 36px rgba(255, 255, 255, 0.12);
     }
 
     #imageViewer.active #fullImage {
@@ -716,16 +718,16 @@
 
 <body>
 
-<nav>
-  <div class="nav-logo">
-    <p class="nav-name" onclick="goBackToPortfolio()">
-      <span class="back-btn">&lt;</span>
-      Sketches
-    </p>
-  </div>
+  <nav>
+    <div class="nav-logo">
+      <p class="nav-name" onclick="goBackToPortfolio()">
+        <span class="back-btn">&lt;</span>
+        Sketches
+      </p>
+    </div>
 
-  <a class="home-link" href="../index.html">Home</a>
-</nav>
+    <a class="home-link" href="../index.html">Home</a>
+  </nav>
 
   <main class="projects-section">
 
@@ -741,7 +743,8 @@
         </div>
 
         <div class="summary-actions">
-          <a href="https://www.instagram.com/p/DPtu0WDkva7/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="summary-post-btn" aria-label="View Instagram Post">
+          <a href="https://www.instagram.com/p/DPtu0WDkva7/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+            target="_blank" class="summary-post-btn" aria-label="View Instagram Post">
             <i class="uil uil-instagram"></i> Instagram Post
           </a>
 
@@ -754,18 +757,27 @@
       <div class="project-content">
         <div class="project-content-inner">
           <div class="project-grid">
-            <div class="project-card"><img src="../images/sketches/money/1.webp" alt="Money Heist Sketch 1" onclick="openImage(this.src)"></div>
-            <div class="project-card"><img src="../images/sketches/money/2.webp" alt="Money Heist Sketch 2" onclick="openImage(this.src)"></div>
-            <div class="project-card"><img src="../images/sketches/money/3.webp" alt="Money Heist Sketch 3" onclick="openImage(this.src)"></div>
-            <div class="project-card"><img src="../images/sketches/money/4.webp" alt="Money Heist Sketch 4" onclick="openImage(this.src)"></div>
-            <div class="project-card"><img src="../images/sketches/money/1a.webp" alt="Money Heist Sketch 1A" onclick="openImage(this.src)"></div>
-            <div class="project-card"><img src="../images/sketches/money/2a.webp" alt="Money Heist Sketch 2A" onclick="openImage(this.src)"></div>
-            <div class="project-card"><img src="../images/sketches/money/3a.webp" alt="Money Heist Sketch 3A" onclick="openImage(this.src)"></div>
-            <div class="project-card"><img src="../images/sketches/money/4a.webp" alt="Money Heist Sketch 4A" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/money/1.webp" alt="Money Heist Sketch 1"
+                onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/money/2.webp" alt="Money Heist Sketch 2"
+                onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/money/3.webp" alt="Money Heist Sketch 3"
+                onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/money/4.webp" alt="Money Heist Sketch 4"
+                onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/money/1a.webp" alt="Money Heist Sketch 1A"
+                onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/money/2a.webp" alt="Money Heist Sketch 2A"
+                onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/money/3a.webp" alt="Money Heist Sketch 3A"
+                onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/money/4a.webp" alt="Money Heist Sketch 4A"
+                onclick="openImage(this.src)"></div>
           </div>
 
           <div class="post-buttons">
-            <a href="https://www.instagram.com/p/DPtu0WDkva7/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="instagram-btn">
+            <a href="https://www.instagram.com/p/DPtu0WDkva7/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+              target="_blank" class="instagram-btn">
               <i class="uil uil-instagram"></i> View Instagram Post
             </a>
           </div>
@@ -791,7 +803,8 @@
         </div>
 
         <div class="summary-actions">
-          <a href="https://www.instagram.com/p/DRe_vyGEn91/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="summary-post-btn" aria-label="View Instagram Post">
+          <a href="https://www.instagram.com/p/DRe_vyGEn91/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+            target="_blank" class="summary-post-btn" aria-label="View Instagram Post">
             <i class="uil uil-instagram"></i> Instagram Post
           </a>
 
@@ -804,19 +817,29 @@
       <div class="project-content">
         <div class="project-content-inner">
           <div class="project-grid">
-            <div class="project-card"><img src="../images/sketches/stranger/1.webp" alt="Stranger Things Sketch 1" onclick="openImage(this.src)"></div>
-            <div class="project-card"><img src="../images/sketches/stranger/2.webp" alt="Stranger Things Sketch 2" onclick="openImage(this.src)"></div>
-            <div class="project-card"><img src="../images/sketches/stranger/3.webp" alt="Stranger Things Sketch 3" onclick="openImage(this.src)"></div>
-            <div class="project-card"><img src="../images/sketches/stranger/4.webp" alt="Stranger Things Sketch 4" onclick="openImage(this.src)"></div>
-            <div class="project-card"><img src="../images/sketches/stranger/5.webp" alt="Stranger Things Sketch 5" onclick="openImage(this.src)"></div>
-            <div class="project-card"><img src="../images/sketches/stranger/6.webp" alt="Stranger Things Sketch 6" onclick="openImage(this.src)"></div>
-            <div class="project-card"><img src="../images/sketches/stranger/7.webp" alt="Stranger Things Sketch 7" onclick="openImage(this.src)"></div>
-            <div class="project-card"><img src="../images/sketches/stranger/8.webp" alt="Stranger Things Sketch 8" onclick="openImage(this.src)"></div>
-            <div class="project-card"><img src="../images/sketches/stranger/9.webp" alt="Stranger Things Sketch 9" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/stranger/1.webp" alt="Stranger Things Sketch 1"
+                onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/stranger/2.webp" alt="Stranger Things Sketch 2"
+                onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/stranger/3.webp" alt="Stranger Things Sketch 3"
+                onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/stranger/4.webp" alt="Stranger Things Sketch 4"
+                onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/stranger/5.webp" alt="Stranger Things Sketch 5"
+                onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/stranger/6.webp" alt="Stranger Things Sketch 6"
+                onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/stranger/7.webp" alt="Stranger Things Sketch 7"
+                onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/stranger/8.webp" alt="Stranger Things Sketch 8"
+                onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/sketches/stranger/9.webp" alt="Stranger Things Sketch 9"
+                onclick="openImage(this.src)"></div>
           </div>
 
           <div class="post-buttons">
-            <a href="https://www.instagram.com/p/DRe_vyGEn91/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="instagram-btn">
+            <a href="https://www.instagram.com/p/DRe_vyGEn91/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+              target="_blank" class="instagram-btn">
               <i class="uil uil-instagram"></i> View Instagram Post
             </a>
           </div>
@@ -1102,17 +1125,18 @@
     });
     function goBackToPortfolio() {
 
-  if (
-    document.referrer &&
-    document.referrer.includes(window.location.hostname)
-  ) {
-    history.back();
-  } else {
-    window.location.href = "../index.html#projects";
-  }
+      if (
+        document.referrer &&
+        document.referrer.includes(window.location.hostname)
+      ) {
+        history.back();
+      } else {
+        window.location.href = "../index.html#projects";
+      }
 
-}
+    }
   </script>
 
 </body>
+
 </html>
