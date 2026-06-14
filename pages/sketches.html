@@ -298,6 +298,42 @@
       gap: 12px;
       margin-top: 20px;
     }
+    .nav-logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.back-btn{
+  border:none;
+  background:none;
+  font-size:30px;
+  font-weight:400;
+  cursor:pointer;
+  color:var(--primary);
+  padding:0;
+  line-height:0.8;
+  transition:.25s ease;
+}
+
+.back-btn:hover{
+  transform:translateX(-2px);
+}
+
+.nav-name{
+  font-size: clamp(25px, 4vw, 38px);
+  font-weight:700;
+  color:var(--primary);
+  cursor:pointer;
+  transition:.25s ease;
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.nav-name:hover{
+  transform:translateX(-2px);
+}
 
     .instagram-btn {
       color: white;
@@ -680,13 +716,16 @@
 
 <body>
 
-  <nav>
-    <div class="nav-logo">
-      <p class="nav-name">Sketches</p>
-    </div>
+<nav>
+  <div class="nav-logo">
+    <p class="nav-name" onclick="goBackToPortfolio()">
+      <span class="back-btn">&lt;</span>
+      Sketches
+    </p>
+  </div>
 
-    <a class="home-link" href="../index.html">Home</a>
-  </nav>
+  <a class="home-link" href="../index.html">Home</a>
+</nav>
 
   <main class="projects-section">
 
@@ -1061,6 +1100,18 @@
         closeImage(true);
       }
     });
+    function goBackToPortfolio() {
+
+  if (
+    document.referrer &&
+    document.referrer.includes(window.location.hostname)
+  ) {
+    history.back();
+  } else {
+    window.location.href = "../index.html#projects";
+  }
+
+}
   </script>
 
 </body>

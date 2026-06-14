@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -81,6 +82,34 @@
       font-size: clamp(26px, 4vw, 40px);
       font-weight: 700;
       color: var(--primary);
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .nav-name:hover {
+      transform: translateX(-2px);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .back-btn {
+      border: none;
+      background: none;
+      font-size: 30px;
+      font-weight: 400;
+      cursor: pointer;
+      color: var(--primary);
+      padding: 0;
+      line-height: 0.8;
+      transition: 0.25s ease;
+    }
+
+    .back-btn:hover {
+      transform: translateX(-2px);
     }
 
     .home-link {
@@ -156,7 +185,7 @@
       color: #fff;
       font-size: 14px;
       font-weight: 500;
-      background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
       transition: 0.35s ease;
     }
 
@@ -181,7 +210,7 @@
       border: 2px dashed #cfcfcf;
       border-radius: var(--radius);
       background: var(--white);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
     }
 
     .more-projects h2 {
@@ -346,9 +375,11 @@
 
   <nav>
     <div class="nav-logo">
-      <p class="nav-name">Designs</p>
+      <button class="back-btn" onclick="goBackToPortfolio()">
+        &lt;
+      </button>
+      <p class="nav-name" onclick="goBackToPortfolio()">Designs</p>
     </div>
-
     <a class="home-link" href="../index.html">Home</a>
   </nav>
 
@@ -381,7 +412,8 @@
       </div>
 
       <div class="project-note">
-        All designs were created for live company projects during my internship, comprising 60+ completed design creatives.
+        All designs were created for live company projects during my internship, comprising 60+ completed design
+        creatives.
       </div>
     </section>
 
@@ -464,6 +496,17 @@
       document.body.style.overflow = "hidden";
     }
 
+    function goBackToPortfolio() {
+      if (
+        document.referrer &&
+        document.referrer.includes(window.location.hostname)
+      ) {
+        history.back();
+      } else {
+        window.location.href = "../index.html#projects";
+      }
+    }
+
     function closeImage() {
       document.getElementById("imageViewer").style.display = "none";
       document.body.style.overflow = "auto";
@@ -477,4 +520,5 @@
   </script>
 
 </body>
+
 </html>
