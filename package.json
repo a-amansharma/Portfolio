@@ -1,0 +1,25 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a-amansharma/Portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/a-amansharma/Portfolio/issues"
+  },
+  "homepage": "https://github.com/a-amansharma/Portfolio#readme",
+  "dependencies": {
+    "chokidar": "^5.0.0",
+    "sharp": "^0.35.1"
+  }
+}
