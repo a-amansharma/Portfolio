@@ -916,9 +916,7 @@
       pointer-events: none;
       overflow: hidden;
       z-index: 0;
-      opacity: 0.72;
-      transform: translate3d(0, var(--robot-bg-shift, 0px), 0);
-      transition: transform 0.18s linear;
+      opacity: 0.58;
     }
 
     .container {
@@ -929,130 +927,37 @@
       position: absolute;
       display: grid;
       place-items: center;
-      color: rgba(70, 70, 86, 0.105);
-      filter: blur(0.1px);
-      animation: bgRobotFloat 12s ease-in-out infinite alternate;
+      width: clamp(26px, 3.3vw, 48px);
+      height: clamp(26px, 3.3vw, 48px);
+      font-size: clamp(20px, 2.7vw, 38px);
+      color: rgba(72, 72, 92, 0.16);
+      filter: grayscale(1) opacity(0.72);
+      transform: translate3d(0, 0, 0);
+      animation: bgSymbolDrift 18s ease-in-out infinite alternate;
       will-change: transform;
     }
 
-    .bot-icon i {
-      font-size: clamp(26px, 4vw, 58px);
-    }
+    .bot-icon.i1 { left: 4%; top: 13%; animation-duration: 19s; animation-delay: -2s; }
+    .bot-icon.i2 { left: 15%; top: 31%; animation-duration: 23s; animation-delay: -8s; }
+    .bot-icon.i3 { left: 30%; top: 12%; animation-duration: 21s; animation-delay: -5s; }
+    .bot-icon.i4 { left: 44%; top: 28%; animation-duration: 25s; animation-delay: -12s; }
+    .bot-icon.i5 { left: 63%; top: 11%; animation-duration: 20s; animation-delay: -6s; }
+    .bot-icon.i6 { left: 81%; top: 22%; animation-duration: 24s; animation-delay: -10s; }
+    .bot-icon.i7 { left: 93%; top: 43%; animation-duration: 22s; animation-delay: -4s; }
+    .bot-icon.i8 { left: 7%; top: 58%; animation-duration: 26s; animation-delay: -14s; }
+    .bot-icon.i9 { left: 22%; top: 76%; animation-duration: 21s; animation-delay: -9s; }
+    .bot-icon.i10 { left: 41%; top: 66%; animation-duration: 27s; animation-delay: -16s; }
+    .bot-icon.i11 { left: 57%; top: 84%; animation-duration: 23s; animation-delay: -7s; }
+    .bot-icon.i12 { left: 74%; top: 61%; animation-duration: 28s; animation-delay: -18s; }
+    .bot-icon.i13 { left: 90%; top: 79%; animation-duration: 24s; animation-delay: -11s; }
+    .bot-icon.i14 { left: 12%; top: 91%; animation-duration: 29s; animation-delay: -19s; }
+    .bot-icon.i15 { left: 51%; top: 45%; animation-duration: 22s; animation-delay: -13s; }
+    .bot-icon.i16 { left: 70%; top: 36%; animation-duration: 30s; animation-delay: -21s; }
 
-    .bot-icon.i1 { left: 4%; top: 14%; animation-duration: 13s; }
-    .bot-icon.i2 { left: 18%; top: 32%; animation-duration: 15s; animation-delay: -2s; }
-    .bot-icon.i3 { left: 35%; top: 10%; animation-duration: 11s; animation-delay: -5s; }
-    .bot-icon.i4 { left: 55%; top: 25%; animation-duration: 16s; animation-delay: -3s; }
-    .bot-icon.i5 { left: 78%; top: 12%; animation-duration: 12s; animation-delay: -6s; }
-    .bot-icon.i6 { left: 91%; top: 42%; animation-duration: 18s; animation-delay: -4s; }
-    .bot-icon.i7 { left: 8%; top: 62%; animation-duration: 14s; animation-delay: -7s; }
-    .bot-icon.i8 { left: 28%; top: 78%; animation-duration: 17s; animation-delay: -1s; }
-    .bot-icon.i9 { left: 48%; top: 58%; animation-duration: 13s; animation-delay: -8s; }
-    .bot-icon.i10 { left: 66%; top: 84%; animation-duration: 15s; animation-delay: -5s; }
-    .bot-icon.i11 { left: 84%; top: 68%; animation-duration: 12s; animation-delay: -2s; }
-    .bot-icon.i12 { left: 96%; top: 88%; animation-duration: 19s; animation-delay: -9s; }
-
-    @keyframes bgRobotFloat {
-      0% { transform: translate3d(-8px, -10px, 0) rotate(-8deg) scale(0.92); }
-      50% { transform: translate3d(14px, 18px, 0) rotate(8deg) scale(1.08); }
-      100% { transform: translate3d(-4px, 28px, 0) rotate(-4deg) scale(1); }
-    }
-
-    .profile-orbit-wrap {
-      position: relative;
-      width: 460px;
-      height: 460px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      perspective: 1100px;
-      transform-style: preserve-3d;
-      transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .featured-box.updates-expanded .profile-orbit-wrap {
-      transform: translateY(34px) scale(0.98);
-    }
-
-    .profile-orbit-wrap .image {
-      position: relative;
-      z-index: 4;
-    }
-
-    .orbit-ring {
-      position: absolute;
-      inset: 0;
-      z-index: 3;
-      transform-style: preserve-3d;
-      pointer-events: none;
-      animation: orbitTilt 7s ease-in-out infinite alternate;
-    }
-
-    .orbit-ring::before {
-      content: "";
-      position: absolute;
-      left: 8%;
-      right: 8%;
-      top: 42%;
-      height: 25%;
-      border: 1px solid rgba(110, 87, 224, 0.11);
-      border-radius: 50%;
-      transform: rotateX(68deg);
-      filter: blur(0.2px);
-    }
-
-    .orbit-ring span {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      margin: -21px;
-      border-radius: 50%;
-      color: rgba(110, 87, 224, 0.26);
-      background: rgba(255, 255, 255, 0.62);
-      box-shadow: 0 8px 20px rgba(110, 87, 224, 0.08);
-      animation: orbitMove 9s linear infinite;
-    }
-
-    .orbit-ring span i {
-      font-size: 22px;
-    }
-
-    .orbit-ring-one span:nth-child(1) { animation-delay: 0s; }
-    .orbit-ring-one span:nth-child(2) { animation-delay: -2.25s; }
-    .orbit-ring-one span:nth-child(3) { animation-delay: -4.5s; }
-    .orbit-ring-one span:nth-child(4) { animation-delay: -6.75s; }
-
-    .orbit-ring-two {
-      transform: rotate(-18deg) scale(0.88);
-      animation-duration: 9s;
-    }
-
-    .orbit-ring-two span {
-      color: rgba(0, 181, 231, 0.23);
-      animation-duration: 11s;
-      animation-direction: reverse;
-    }
-
-    .orbit-ring-two span:nth-child(1) { animation-delay: 0s; }
-    .orbit-ring-two span:nth-child(2) { animation-delay: -3.66s; }
-    .orbit-ring-two span:nth-child(3) { animation-delay: -7.33s; }
-
-    @keyframes orbitTilt {
-      0% { transform: rotateX(61deg) rotateZ(-10deg) translateY(-6px) scale(0.96); }
-      50% { transform: rotateX(72deg) rotateZ(8deg) translateY(6px) scale(1.03); }
-      100% { transform: rotateX(58deg) rotateZ(18deg) translateY(-2px) scale(1); }
-    }
-
-    @keyframes orbitMove {
-      0% { transform: rotate(0deg) translateX(225px) rotate(0deg) translateZ(-32px); opacity: 0.22; z-index: 1; }
-      20% { opacity: 0.58; z-index: 5; }
-      50% { transform: rotate(180deg) translateX(225px) rotate(-180deg) translateZ(48px); opacity: 0.78; z-index: 6; }
-      78% { opacity: 0.42; z-index: 2; }
-      100% { transform: rotate(360deg) translateX(225px) rotate(-360deg) translateZ(-32px); opacity: 0.22; z-index: 1; }
+    @keyframes bgSymbolDrift {
+      0% { transform: translate3d(-8px, -7px, 0) rotate(-7deg) scale(0.96); }
+      50% { transform: translate3d(10px, 9px, 0) rotate(6deg) scale(1.04); }
+      100% { transform: translate3d(-3px, 13px, 0) rotate(-4deg) scale(1); }
     }
 
     .home-updates .posts {
@@ -1423,74 +1328,28 @@
     }
   
 
-    @media only screen and (max-width: 1024px) {
-      .profile-orbit-wrap {
-        width: 410px;
-        height: 410px;
-      }
-
-      @keyframes orbitMove {
-        0% { transform: rotate(0deg) translateX(198px) rotate(0deg) translateZ(-30px); opacity: 0.22; z-index: 1; }
-        20% { opacity: 0.56; z-index: 5; }
-        50% { transform: rotate(180deg) translateX(198px) rotate(-180deg) translateZ(44px); opacity: 0.72; z-index: 6; }
-        78% { opacity: 0.4; z-index: 2; }
-        100% { transform: rotate(360deg) translateX(198px) rotate(-360deg) translateZ(-30px); opacity: 0.22; z-index: 1; }
-      }
-    }
-
-    @media only screen and (max-width: 900px) {
-      .profile-orbit-wrap {
-        width: 300px;
-        height: 300px;
-      }
-
-      .orbit-ring span {
-        width: 34px;
-        height: 34px;
-        margin: -17px;
-      }
-
-      .orbit-ring span i {
-        font-size: 18px;
-      }
-
-      @keyframes orbitMove {
-        0% { transform: rotate(0deg) translateX(142px) rotate(0deg) translateZ(-22px); opacity: 0.2; z-index: 1; }
-        20% { opacity: 0.5; z-index: 5; }
-        50% { transform: rotate(180deg) translateX(142px) rotate(-180deg) translateZ(34px); opacity: 0.68; z-index: 6; }
-        78% { opacity: 0.36; z-index: 2; }
-        100% { transform: rotate(360deg) translateX(142px) rotate(-360deg) translateZ(-22px); opacity: 0.2; z-index: 1; }
-      }
-    }
-
-    @media only screen and (max-height: 520px) and (orientation: landscape) {
-      .profile-orbit-wrap {
-        width: 230px;
-        height: 230px;
-      }
-
-      .featured-box.updates-expanded .profile-orbit-wrap {
-        transform: translateY(18px) scale(0.96);
-      }
-    }
 
   </style>
 </head>
 
 <body>
   <div class="robotics-bg" aria-hidden="true">
-    <span class="bot-icon i1"><i class="uil uil-robot"></i></span>
-    <span class="bot-icon i2"><i class="uil uil-circuit"></i></span>
-    <span class="bot-icon i3"><i class="uil uil-processor"></i></span>
-    <span class="bot-icon i4"><i class="uil uil-setting"></i></span>
-    <span class="bot-icon i5"><i class="uil uil-microchip"></i></span>
-    <span class="bot-icon i6"><i class="uil uil-brain"></i></span>
-    <span class="bot-icon i7"><i class="uil uil-robot"></i></span>
-    <span class="bot-icon i8"><i class="uil uil-cog"></i></span>
-    <span class="bot-icon i9"><i class="uil uil-processor"></i></span>
-    <span class="bot-icon i10"><i class="uil uil-setting"></i></span>
-    <span class="bot-icon i11"><i class="uil uil-circuit"></i></span>
-    <span class="bot-icon i12"><i class="uil uil-robot"></i></span>
+    <span class="bot-icon i1">🤖</span>
+    <span class="bot-icon i2">🦾</span>
+    <span class="bot-icon i3">🖐️</span>
+    <span class="bot-icon i4">⚙️</span>
+    <span class="bot-icon i5">🔩</span>
+    <span class="bot-icon i6">✏️</span>
+    <span class="bot-icon i7">🖊️</span>
+    <span class="bot-icon i8">📐</span>
+    <span class="bot-icon i9">🦿</span>
+    <span class="bot-icon i10">🧠</span>
+    <span class="bot-icon i11">🔧</span>
+    <span class="bot-icon i12">🤖</span>
+    <span class="bot-icon i13">🦾</span>
+    <span class="bot-icon i14">✏️</span>
+    <span class="bot-icon i15">⚙️</span>
+    <span class="bot-icon i16">🖊️</span>
   </div>
 
   <div class="container">
@@ -1581,21 +1440,8 @@
         </div>
 
         <div class="featured-image">
-          <div class="profile-orbit-wrap">
-            <div class="orbit-ring orbit-ring-one" aria-hidden="true">
-              <span><i class="uil uil-robot"></i></span>
-              <span><i class="uil uil-processor"></i></span>
-              <span><i class="uil uil-circuit"></i></span>
-              <span><i class="uil uil-setting"></i></span>
-            </div>
-            <div class="orbit-ring orbit-ring-two" aria-hidden="true">
-              <span><i class="uil uil-brain"></i></span>
-              <span><i class="uil uil-microchip"></i></span>
-              <span><i class="uil uil-robot"></i></span>
-            </div>
-            <div class="image">
-              <img src="images/my-pic3.webp" alt="Aman Sharma profile photo" />
-            </div>
+          <div class="image">
+            <img src="images/my-pic3.webp" alt="Aman Sharma profile photo" />
           </div>
         </div>
       </section>
@@ -1823,15 +1669,15 @@
     }
 
     function robotics() {
-      window.location.href = "robotics.html";
+      window.location.href = "pages/robotics.html";
     }
 
     function sketches() {
-      window.location.href = "sketches.html";
+      window.location.href = "pages/sketches.html";
     }
 
     function designs() {
-      window.location.href = "designs.html";
+      window.location.href = "pages/designs.html";
     }
 
 
@@ -1881,20 +1727,8 @@
       if (leftUpdateArea) closeUpdatesDropdown();
     }
 
-    let lastScrollY = window.scrollY;
-    function moveRoboticsBackground() {
-      const bg = document.querySelector(".robotics-bg");
-      if (!bg) return;
-      const currentScroll = window.scrollY;
-      const scrollSpeed = Math.min(34, Math.abs(currentScroll - lastScrollY) * 0.32);
-      const shift = (currentScroll * 0.09 + scrollSpeed) % 90;
-      bg.style.setProperty("--robot-bg-shift", shift + "px");
-      lastScrollY = currentScroll;
-    }
-
     window.addEventListener("scroll", function () {
       autoCloseUpdatesOnLeave();
-      moveRoboticsBackground();
     }, { passive: true });
 
     const typingEffect = new Typed(".typedText", {
