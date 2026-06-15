@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -348,15 +349,16 @@
     .live-btn {
       background: var(--live);
       color: white;
-      padding: 12px 19px;
+      width: min(260px, 50%);
+      padding: 10px 16px;
       border-radius: 999px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 9px;
+      gap: 8px;
       font-weight: 600;
-      font-size: 14px;
-      min-height: 47px;
+      font-size: 13px;
+      min-height: 40px;
       transition: 0.3s ease;
       box-shadow: 0 9px 21px rgba(10, 102, 194, 0.28);
     }
@@ -631,9 +633,11 @@
       }
 
       .live-btn {
-        width: 100%;
+        width: 50%;
+        min-width: 160px;
         font-size: 11px;
-        padding: 12px 14px;
+        padding: 9px 12px;
+        min-height: 38px;
       }
 
       .bottom-drop-icon {
@@ -780,9 +784,9 @@
 
       block.innerHTML = `
         <div class="project-summary" role="button" tabindex="0">
-          <a href="${site.url}" target="_blank" class="thumb-box" aria-label="Open ${site.title}">
+          <div class="thumb-box" aria-label="Open ${site.title} preview">
             <iframe src="${site.url}" title="${site.title} Thumbnail" loading="lazy"></iframe>
-          </a>
+          </div>
 
           <div class="project-title">
             <h2>${site.title}</h2>
@@ -814,7 +818,7 @@
             <div class="post-buttons">
               <a href="${site.url}" target="_blank" class="live-btn">
                 <i class="uil uil-external-link-alt"></i>
-                Click to See Live Preview
+                Visit Live Site
               </a>
             </div>
 
@@ -919,4 +923,5 @@
   </script>
 
 </body>
+
 </html>
