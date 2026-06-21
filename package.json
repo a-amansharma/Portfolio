@@ -20,6 +20,7 @@
   "homepage": "https://github.com/a-amansharma/Portfolio#readme",
   "dependencies": {
     "chokidar": "^5.0.0",
-    "sharp": "^0.35.1"
+    "heic-convert": "^2.1.0",
+    "sharp": "^0.35.2"
   }
 }

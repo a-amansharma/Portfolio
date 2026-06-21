@@ -21,6 +21,7 @@
       --nav-bg: rgb(223, 223, 255);
       --radius: 11px;
       --linkedin: #0a66c2;
+      --instagram-gradient: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
     }
 
     * {
@@ -209,6 +210,29 @@
       box-shadow: 0 12px 24px rgba(10, 102, 194, 0.35);
     }
 
+    .summary-instagram-btn {
+      background: var(--instagram-gradient);
+      color: white;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: 0.3s ease;
+      box-shadow: 0 8px 17px rgba(221, 42, 123, 0.25);
+    }
+
+    .summary-instagram-btn i {
+      font-size: 23px;
+    }
+
+    .summary-instagram-btn:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 12px 24px rgba(221, 42, 123, 0.35);
+    }
+
     .drop-icon,
     .bottom-drop-icon {
       width: 48px;
@@ -249,7 +273,8 @@
       overflow: hidden;
     }
 
-    .project-block.open .summary-linkedin-btn {
+    .project-block.open .summary-linkedin-btn,
+    .project-block.open .summary-instagram-btn {
       opacity: 0;
       transform: scale(0.75);
       pointer-events: none;
@@ -380,6 +405,31 @@
       background: #004182;
       transform: translateY(-2px);
       box-shadow: 0 13px 27px rgba(10, 102, 194, 0.36);
+    }
+
+    .instagram-btn {
+      background: var(--instagram-gradient);
+      color: white;
+      padding: 12px 19px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      font-weight: 600;
+      font-size: 14px;
+      min-height: 47px;
+      transition: 0.3s ease;
+      box-shadow: 0 9px 21px rgba(221, 42, 123, 0.28);
+    }
+
+    .instagram-btn i {
+      font-size: 20px;
+    }
+
+    .instagram-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 13px 27px rgba(221, 42, 123, 0.38);
     }
 
     .more-projects {
@@ -547,12 +597,14 @@
     @media (min-width: 1000px) {
 
       .summary-linkedin-btn,
+      .summary-instagram-btn,
       .drop-icon {
         width: 50px;
         height: 50px;
       }
 
-      .summary-linkedin-btn i {
+      .summary-linkedin-btn i,
+      .summary-instagram-btn i {
         font-size: 24px;
       }
 
@@ -627,7 +679,8 @@
       }
 
       .drop-icon,
-      .summary-linkedin-btn {
+      .summary-linkedin-btn,
+      .summary-instagram-btn {
         width: 39px;
         height: 39px;
       }
@@ -636,7 +689,8 @@
         font-size: 25px;
       }
 
-      .summary-linkedin-btn i {
+      .summary-linkedin-btn i,
+      .summary-instagram-btn i {
         font-size: 20px;
       }
 
@@ -667,7 +721,8 @@
         margin-top: 16px;
       }
 
-      .linkedin-btn {
+      .linkedin-btn,
+      .instagram-btn {
         width: 100%;
         font-size: 13px;
         padding: 12px 14px;
@@ -690,6 +745,196 @@
         right: 14px;
       }
     }
+  
+
+    /* Updated open-card layout: closed cards stay original; open cards expand smoothly */
+
+    .project-title {
+      text-align: left;
+      align-self: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .project-title .project-short-desc {
+      display: block;
+      height: 0;
+      min-height: 0;
+      margin-top: 0;
+      overflow: hidden;
+      color: var(--muted);
+      font-size: 13.4px;
+      line-height: 1.5;
+      max-width: 980px;
+      opacity: 0;
+      visibility: hidden;
+      text-align: left;
+      transition: opacity 0.28s ease, height 0.38s ease, margin-top 0.38s ease;
+    }
+
+
+    .project-block:not(.open) .project-summary {
+      padding: 14px;
+      grid-template-columns: 105px 1fr auto;
+      gap: 16px;
+      align-items: center;
+      min-height: 0;
+    }
+
+    .project-block:not(.open) .project-title {
+      align-self: center;
+      justify-content: center;
+      transform: none;
+    }
+
+    .project-block:not(.open) .thumb-box {
+      width: 105px;
+      height: auto;
+      min-height: 0;
+      aspect-ratio: 3 / 4;
+      transform: none;
+    }
+
+    .project-block.open .project-summary {
+      grid-template-columns: minmax(140px, 17vw) 1fr;
+      gap: 20px;
+      padding: 18px;
+      align-items: stretch;
+      min-height: 205px;
+    }
+
+    .project-block.open .thumb-box {
+      width: 100%;
+      min-height: 100%;
+      height: auto;
+      border-radius: 11px;
+      transform: scale(1.015);
+      transition: transform 0.45s ease, width 0.45s ease, min-height 0.45s ease, border-radius 0.45s ease;
+    }
+
+    .project-block.open .project-title {
+      text-align: left;
+      transform: translateX(2px);
+      align-self: center;
+    }
+
+    .project-block.open .project-title h2 {
+      font-size: clamp(18px, 2.2vw, 25px);
+      transform: translateY(-2px);
+    }
+
+    .project-block.open .project-title .project-short-desc {
+      height: auto;
+      min-height: 50px;
+      margin-top: 9px;
+      overflow: visible;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .project-block.open .summary-actions {
+      display: none;
+    }
+
+    .project-block.open .project-title span {
+      display: none;
+    }
+
+    .bottom-close-wrap {
+      margin-top: 24px;
+    }
+
+    @media (max-width: 850px) {
+      .project-block:not(.open) .project-summary {
+        grid-template-columns: 92px 1fr auto;
+        gap: 12px;
+        padding: 14px;
+        align-items: center;
+        min-height: 0;
+      }
+
+      .project-block:not(.open) .project-title {
+        align-self: center;
+        justify-content: center;
+        transform: none;
+      }
+
+      .project-block:not(.open) .thumb-box {
+        width: 92px;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 3 / 4;
+        transform: none;
+      }
+
+      .project-block.open .project-summary {
+        grid-template-columns: 118px 1fr;
+        gap: 14px;
+        padding: 13px;
+        min-height: 185px;
+      }
+
+      .project-block.open .project-title h2 {
+        font-size: 15.8px;
+      }
+
+      .project-title .project-short-desc {
+        font-size: 12.2px;
+        line-height: 1.45;
+      }
+
+      .project-block.open .project-title .project-short-desc {
+        min-height: 74px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .project-block:not(.open) .project-summary {
+        grid-template-columns: 72px 1fr auto;
+        padding: 10px;
+        gap: 9px;
+        align-items: center;
+        min-height: 0;
+      }
+
+      .project-block:not(.open) .project-title {
+        align-self: center;
+        justify-content: center;
+        transform: none;
+      }
+
+      .project-block:not(.open) .thumb-box {
+        width: 72px;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 3 / 4;
+        transform: none;
+      }
+
+      .project-block.open .project-summary {
+        grid-template-columns: 96px 1fr;
+        gap: 11px;
+        padding: 11px;
+        min-height: 175px;
+      }
+
+      .project-block.open .project-title h2 {
+        font-size: 14.3px;
+        line-height: 1.25;
+      }
+
+      .project-title .project-short-desc {
+        font-size: 11.4px;
+        line-height: 1.42;
+      }
+
+      .project-block.open .project-title .project-short-desc {
+        min-height: 86px;
+        margin-top: 7px;
+      }
+    }
+
   </style>
 </head>
 
@@ -708,6 +953,79 @@
 
   <main class="projects-section">
 
+
+
+<section class="project-block">
+  <div class="project-summary" role="button" tabindex="0">
+    <div class="thumb-box">
+      <img src="../images/robotics/6WD/front.webp" alt="6WD UGV Thumbnail">
+    </div>
+
+    <div class="project-title">
+      <h2>6WD Unmanned Ground Vehicle (UGV) for Surveillance & Defence Applications</h2>
+      <span>Click to see details</span>
+      <p class="project-short-desc" data-full-desc="A self-built ESP32-based 6-wheel UGV developed in 11 versions, including joystick, gyro, BLE, voice, path drawing and AI-style command modes. In Version 7, the rover can be controlled through the internet from anywhere in the world using a custom web UI, with camera support, headlight and buzzer features."></p>
+    </div>
+
+    <div class="summary-actions">
+      <a href="https://www.linkedin.com/posts/a-amansharma_robotics-esp32-iot-ugcPost-7472598593208774658-eBWF/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMR2VIBzWcU732Hl1HiRdej_YmWsRI29oo"
+        target="_blank" class="summary-linkedin-btn" aria-label="Open LinkedIn post"
+        style="background:#0A66C2;">
+        <i class="uil uil-linkedin"></i>
+      </a>
+
+      <a href="https://www.instagram.com/reel/DZphmJVSS7A/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+        target="_blank" class="summary-instagram-btn" aria-label="Open Instagram reel">
+        <i class="uil uil-instagram"></i>
+      </a>
+
+      <button class="drop-icon" type="button" aria-label="Open project details">
+        <i class="uil uil-angle-down"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="project-content">
+    <div class="project-content-inner">
+      <div class="project-grid">
+        <div class="project-card"><img src="../images/robotics/6WD/driver.webp" alt="6WD UGV Motor Driver Setup" onclick="openImage(this.src)"></div>
+        <div class="project-card"><img src="../images/robotics/6WD/front1.webp" alt="6WD UGV Front Build Stage" onclick="openImage(this.src)"></div>
+        <div class="project-card"><img src="../images/robotics/6WD/side.webp" alt="6WD UGV Side Build View" onclick="openImage(this.src)"></div>
+        <div class="project-card"><img src="../images/robotics/6WD/tyres.webp" alt="6WD UGV Wheels and Tyres" onclick="openImage(this.src)"></div>
+        <div class="project-card"><img src="../images/robotics/6WD/top.webp" alt="6WD UGV Top Wiring View" onclick="openImage(this.src)"></div>
+        <div class="project-card"><img src="../images/robotics/6WD/light+buzzer.webp" alt="6WD UGV Light and Buzzer Setup" onclick="openImage(this.src)"></div>
+        <div class="project-card"><img src="../images/robotics/6WD/cam.webp" alt="6WD UGV Camera Module" onclick="openImage(this.src)"></div>
+        <div class="project-card"><img src="../images/robotics/6WD/body.webp" alt="6WD UGV Body Assembly" onclick="openImage(this.src)"></div>
+        <div class="project-card"><img src="../images/robotics/6WD/body+phone.webp" alt="6WD UGV Body with Phone Control" onclick="openImage(this.src)"></div>
+        <div class="project-card"><img src="../images/robotics/6WD/ui_page1.webp" alt="6WD UGV Control UI Page 1" onclick="openImage(this.src)"></div>
+        <div class="project-card"><img src="../images/robotics/6WD/ui_page2.webp" alt="6WD UGV Control UI Page 2" onclick="openImage(this.src)"></div>
+        <div class="project-card"><img src="../images/robotics/6WD/versions.webp" alt="6WD Versions Overview" onclick="openImage(this.src)"></div>
+        <div class="project-card"><img src="../images/robotics/6WD/front.webp" alt="6WD UGV Final Front View" onclick="openImage(this.src)"></div>
+      </div>
+
+      <div class="post-buttons">
+        <a href="https://www.linkedin.com/posts/a-amansharma_robotics-esp32-iot-ugcPost-7472598593208774658-eBWF/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMR2VIBzWcU732Hl1HiRdej_YmWsRI29oo"
+          target="_blank" class="linkedin-btn">
+          <i class="uil uil-linkedin"></i> View LinkedIn Video Post
+        </a>
+
+        <a href="https://www.instagram.com/reel/DZphmJVSS7A/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+          target="_blank" class="instagram-btn">
+          <i class="uil uil-instagram"></i> View Instagram Reel
+        </a>
+      </div>
+
+      <div class="bottom-close-wrap">
+        <button class="bottom-drop-icon" type="button" aria-label="Close project details">
+          <i class="uil uil-angle-down"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+    
+
     <section class="project-block">
       <div class="project-summary" role="button" tabindex="0">
         <div class="thumb-box">
@@ -717,12 +1035,17 @@
         <div class="project-title">
           <h2>Quadruped Robot for Surveillance & Defence Support</h2>
           <span>Click to see details</span>
+          <p class="project-short-desc" data-full-desc="A 12-servo quadruped robot built using Arduino and PCA9685 servo control. It focuses on stable walking motion, leg coordination and surveillance-style robotic mobility for rough surface movement and defence-support concepts."></p>
         </div>
 
         <div class="summary-actions">
           <a href="https://www.linkedin.com/posts/a-amansharma_robotics-quadrupedrobot-defencetechnology-activity-7412072099575623680-b7em?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMR2VIBzWcU732Hl1HiRdej_YmWsRI29oo"
             target="_blank" class="summary-linkedin-btn" aria-label="Open LinkedIn post">
             <i class="uil uil-linkedin"></i>
+          </a>
+
+          <a href="https://www.instagram.com/reel/DS6qbmPEhON/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="summary-instagram-btn" aria-label="Open Instagram reel">
+            <i class="uil uil-instagram"></i>
           </a>
 
           <button class="drop-icon" type="button" aria-label="Open project details">
@@ -765,6 +1088,10 @@
               target="_blank" class="linkedin-btn">
               <i class="uil uil-linkedin"></i> View Video Post
             </a>
+
+            <a href="https://www.instagram.com/reel/DS6qbmPEhON/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="instagram-btn">
+              <i class="uil uil-instagram"></i> View Instagram Reel
+            </a>
           </div>
 
           <div class="bottom-close-wrap">
@@ -785,6 +1112,7 @@
         <div class="project-title">
           <h2>Human Gesture Replicating Robotic Hand</h2>
           <span>Click to see details</span>
+          <p class="project-short-desc" data-full-desc="A robotic hand that replicates human finger movement using MediaPipe hand tracking and Arduino-controlled servo motors. The system reads real hand landmarks from the camera and converts them into servo angles for gesture-based motion replication."></p>
         </div>
 
         <div class="summary-actions">
@@ -831,6 +1159,10 @@
               target="_blank" class="linkedin-btn">
               <i class="uil uil-linkedin"></i> View Video Post
             </a>
+
+            <a href="https://www.instagram.com/p/DPZOIejErI8/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="instagram-btn">
+              <i class="uil uil-instagram"></i> View Instagram Post
+            </a>
           </div>
 
           <div class="bottom-close-wrap">
@@ -851,9 +1183,14 @@
         <div class="project-title">
           <h2>Scale Model of F-22 Raptor</h2>
           <span>Click to see details</span>
+          <p class="project-short-desc" data-full-desc="A fully handmade F-22 Raptor scale model focused on aerodynamic body shaping, lightweight structure and clean aircraft finishing. The project helped me explore RC aircraft design, balancing and practical fabrication techniques."></p>
         </div>
 
         <div class="summary-actions">
+          <a href="https://www.instagram.com/p/DPZOIejErI8/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="summary-instagram-btn" aria-label="Open Instagram post">
+            <i class="uil uil-instagram"></i>
+          </a>
+
           <button class="drop-icon" type="button" aria-label="Open project details">
             <i class="uil uil-angle-down"></i>
           </button>
@@ -893,6 +1230,7 @@
         <div class="project-title">
           <h2>Custom Carbon-Fiber Drone with Aerial Filming Capability</h2>
           <span>Click to see details</span>
+          <p class="project-short-desc" data-full-desc="A custom-built carbon-fiber drone designed for aerial filming and stable flight. The project includes frame assembly, motor and ESC setup, flight-controller integration and practical testing for drone hardware understanding."></p>
         </div>
 
         <div class="summary-actions">
@@ -1001,6 +1339,33 @@
       }
     }
 
+    function typeProjectDescription(block) {
+      const desc = block.querySelector(".project-short-desc");
+      if (!desc) return;
+
+      const fullText = desc.dataset.fullDesc || "";
+      clearInterval(desc._typingTimer);
+      desc.textContent = "";
+
+      let index = 0;
+      desc._typingTimer = setInterval(() => {
+        desc.textContent = fullText.slice(0, index);
+        index += 3;
+
+        if (index > fullText.length + 2) {
+          desc.textContent = fullText;
+          clearInterval(desc._typingTimer);
+        }
+      }, 13);
+    }
+
+    function clearProjectDescription(block) {
+      const desc = block.querySelector(".project-short-desc");
+      if (!desc) return;
+      clearInterval(desc._typingTimer);
+      desc.textContent = "";
+    }
+
     function toggleProject(block) {
       const content = block.querySelector(".project-content");
 
@@ -1010,9 +1375,11 @@
         requestAnimationFrame(() => {
           content.style.maxHeight = "0px";
           block.classList.remove("open");
+          clearProjectDescription(block);
         });
       } else {
         block.classList.add("open");
+        typeProjectDescription(block);
         content.style.maxHeight = content.scrollHeight + "px";
 
         setTimeout(() => {
