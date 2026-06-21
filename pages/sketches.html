@@ -129,15 +129,15 @@
 
     .project-title h2 {
       font-size: clamp(16px, 2vw, 22px);
-      line-height: 1.25;
+      line-height: 1;
       font-weight: 650;
       color: var(--text);
-      transition: font-size 0.35s ease, transform 0.35s ease;
+      transition: all 0.35s ease;
     }
 
     .project-title span {
       display: inline-block;
-      margin-top: 5px;
+      margin-top: 10px;
       color: var(--muted);
       font-size: 12.5px;
       opacity: 1;
@@ -147,9 +147,33 @@
       transition: opacity 0.25s ease, transform 0.25s ease, max-height 0.25s ease, margin 0.25s ease;
     }
 
+
+    .project-date {
+      display: block;
+      margin-top: -15px;
+      color: #333333;
+      font-size: 12.5px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0.15px;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      transition: opacity 0.2s ease, max-height 0.2s ease;
+    }
+
+    .project-block.open .project-date {
+      opacity: 1;
+      max-height: 16px;
+    }
+
     .project-block.open .project-title h2 {
-      font-size: clamp(18px, 2.25vw, 25px);
-      transform: translateY(2px);
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 700;
+      line-height: 1.04;
+      margin-bottom: 0;
+      transform: none;
     }
 
     .project-block.open .project-title span {
@@ -655,16 +679,16 @@
 
       .project-title h2 {
         font-size: 13.5px;
-        line-height: 1.23;
+        line-height: 1;
       }
 
       .project-block.open .project-title h2 {
-        font-size: 15px;
+        font-size: 17px;
       }
 
       .project-title span {
         font-size: 11px;
-        margin-top: 3px;
+        margin-top: 5px;
       }
 
       .drop-icon {
@@ -731,6 +755,88 @@
 
   <main class="projects-section">
 
+
+
+    <section class="project-block">
+      <div class="project-summary" role="button" tabindex="0">
+        <div class="thumb-box">
+          <img src="../images/sketches/sorry/8.webp" alt="Sorry Sketch Thumbnail">
+        </div>
+
+        <div class="project-title">
+          <h2>Mythic Reverie</h2>
+          <span>Click to see details</span>
+          <div class="project-date" data-date="28 May 2026"></div>
+        </div>
+
+        <div class="summary-actions">
+          <a href="https://www.instagram.com/insights/media/3907708015604833090/" target="_blank"
+            class="summary-post-btn" aria-label="View Instagram Post">
+            <i class="uil uil-instagram"></i> Instagram Post
+          </a>
+
+          <div class="drop-icon">
+            <i class="uil uil-angle-down"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-content">
+        <div class="project-content-inner">
+          <div class="project-grid">
+            <div class="project-card">
+              <img src="../images/sketches/sorry/1.webp" alt="Sorry Sketch 1" onclick="openImage(this.src)">
+            </div>
+
+            <div class="project-card">
+              <img src="../images/sketches/sorry/2.webp" alt="Sorry Sketch 2" onclick="openImage(this.src)">
+            </div>
+
+            <div class="project-card">
+              <img src="../images/sketches/sorry/3.webp" alt="Sorry Sketch 3" onclick="openImage(this.src)">
+            </div>
+
+            <div class="project-card">
+              <img src="../images/sketches/sorry/4.webp" alt="Sorry Sketch 4" onclick="openImage(this.src)">
+            </div>
+
+            <div class="project-card">
+              <img src="../images/sketches/sorry/5.webp" alt="Sorry Sketch 5" onclick="openImage(this.src)">
+            </div>
+
+            <div class="project-card">
+              <img src="../images/sketches/sorry/6.webp" alt="Sorry Sketch 6" onclick="openImage(this.src)">
+            </div>
+
+            <div class="project-card">
+              <img src="../images/sketches/sorry/7.webp" alt="Sorry Sketch 7" onclick="openImage(this.src)">
+            </div>
+
+            <div class="project-card">
+              <img src="../images/sketches/sorry/8.webp" alt="Sorry Sketch 8" onclick="openImage(this.src)">
+            </div>
+          </div>
+
+          <div class="post-buttons">
+            <a href="https://www.instagram.com/p/DRe_vyGEn91/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+              target="_blank" class="instagram-btn">
+              <i class="uil uil-instagram"></i> View Instagram Post
+            </a>
+          </div>
+
+          <div class="bottom-close-wrap">
+            <button class="bottom-close-btn" type="button">
+              <i class="uil uil-angle-up"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
     <section class="project-block">
       <div class="project-summary" role="button" tabindex="0">
         <div class="thumb-box">
@@ -740,6 +846,7 @@
         <div class="project-title">
           <h2>La Casa De Papel</h2>
           <span>Click to see all sketches</span>
+          <div class="project-date" data-date="12 October 2025"></div>
         </div>
 
         <div class="summary-actions">
@@ -800,6 +907,7 @@
         <div class="project-title">
           <h2>Stranger Things</h2>
           <span>Click to see details</span>
+          <div class="project-date" data-date="25 March 2025"></div>
         </div>
 
         <div class="summary-actions">
@@ -913,10 +1021,38 @@
     let modalOpen = false;
     let pushedHistory = false;
 
+    function typeSketchDate(block) {
+      const dateEl = block.querySelector(".project-date");
+      if (!dateEl) return;
+
+      const fullDate = dateEl.dataset.date || "";
+      dateEl.textContent = "";
+      clearInterval(dateEl.typingTimer);
+
+      let index = 0;
+      dateEl.typingTimer = setInterval(() => {
+        dateEl.textContent = fullDate.slice(0, index + 1);
+        index++;
+
+        if (index >= fullDate.length) {
+          clearInterval(dateEl.typingTimer);
+        }
+      }, 95);
+    }
+
+    function clearSketchDate(block) {
+      const dateEl = block.querySelector(".project-date");
+      if (!dateEl) return;
+
+      clearInterval(dateEl.typingTimer);
+      dateEl.textContent = "";
+    }
+
     function toggleProject(block) {
       const content = block.querySelector(".project-content");
 
       if (block.classList.contains("open")) {
+        clearSketchDate(block);
         content.style.maxHeight = content.scrollHeight + "px";
 
         requestAnimationFrame(() => {
@@ -925,6 +1061,7 @@
         });
       } else {
         block.classList.add("open");
+        typeSketchDate(block);
         content.style.maxHeight = content.scrollHeight + "px";
 
         setTimeout(() => {
