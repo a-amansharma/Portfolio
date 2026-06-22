@@ -296,6 +296,7 @@
 
     .laptop-base {
       position: relative;
+      
       width: 106%;
       height: clamp(18px, 3.2vw, 34px);
       margin-left: -3%;
@@ -329,6 +330,43 @@
       filter: blur(6px);
       border-radius: 50%;
     }
+
+
+
+    /* Keep opened laptop preview always in front, even when base crosses the card border */
+    .project-block.open {
+      overflow: visible;
+      position: relative;
+      z-index: 20;
+    }
+
+    .project-block.open .project-content {
+      overflow: visible;
+      position: relative;
+      z-index: 30;
+    }
+
+    .project-block.open .project-content-inner {
+      position: relative;
+      z-index: 40;
+    }
+
+    .project-block.open .laptop-preview-wrap {
+      position: relative;
+      z-index: 999;
+      overflow: visible;
+    }
+
+    .project-block.open .laptop-screen {
+      position: relative;
+      z-index: 1000;
+    }
+
+    .project-block.open .laptop-base {
+      position: relative;
+      z-index: 1001;
+    }
+
 
     .website-info {
       margin-top: 22px;
