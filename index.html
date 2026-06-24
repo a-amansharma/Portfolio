@@ -542,7 +542,7 @@
 
     .updates-dropdown[open] .posts-panel,
     .updates-dropdown.is-opening .posts-panel {
-      max-height: min(82vh, 920px);
+      max-height: 5000px;
       opacity: 1;
       transform: translateY(0) scaleY(1);
     }
@@ -578,8 +578,8 @@
       grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
       gap: 16px;
       width: 100%;
-      max-height: min(78vh, 820px);
-      overflow-y: auto;
+      max-height: none;
+      overflow-y: visible;
       padding: 16px;
       background: linear-gradient(180deg, #fbfbff, #f6fbff);
     }
@@ -1764,7 +1764,7 @@
         grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
         gap: 12px;
         padding: 12px;
-        max-height: 58vh;
+        max-height: none;
       }
 
       .featured-box.updates-expanded .featured-image {
@@ -2314,20 +2314,25 @@
 
     window.addEventListener("resize", updateRoboticsBackgroundTarget);
 
-    const typingEffect = new Typed(".typedText", {
-      strings: ["Robotics Enthusiast", "Sketch Artist", "Student", "Developer", ""],
-      loop: true,
-      typeSpeed: 70,
-      backSpeed: 18,
-      backDelay: 1050,
-    });
+    if (window.Typed && document.querySelector(".typedText")) {
+      const typingEffect = new Typed(".typedText", {
+        strings: ["Robotics Enthusiast", "Sketch Artist", "Student", "Developer", ""],
+        loop: true,
+        typeSpeed: 70,
+        backSpeed: 18,
+        backDelay: 1050,
+      });
+    }
 
-    const sr = ScrollReveal({
-      origin: "left",
-      distance: "120px",
-      duration: 1000,
-      reset: true,
-    });
+    const canReveal = window.ScrollReveal && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (canReveal) {
+      const sr = ScrollReveal({
+        origin: "left",
+        distance: "120px",
+        duration: 1000,
+        reset: false,
+      });
 
     sr.reveal(".featured-text-card", {});
     sr.reveal(".featured-name", { delay: 70 });
@@ -2340,25 +2345,26 @@
     sr.reveal(".top-header", {});
     sr.reveal(".linkedin-card", { interval: 100 });
 
-    const srLeft = ScrollReveal({
-      origin: "left",
-      distance: "80px",
-      duration: 1000,
-      reset: true,
-    });
+      const srLeft = ScrollReveal({
+        origin: "left",
+        distance: "80px",
+        duration: 1000,
+        reset: false,
+      });
 
     srLeft.reveal(".about-info", { delay: 70 });
     srLeft.reveal(".contact-info", { delay: 70 });
 
-    const srRight = ScrollReveal({
-      origin: "right",
-      distance: "80px",
-      duration: 1000,
-      reset: true,
-    });
+      const srRight = ScrollReveal({
+        origin: "right",
+        distance: "80px",
+        duration: 1000,
+        reset: false,
+      });
 
-    sr.reveal(".skills-grid", { delay: 90 });
-    srRight.reveal(".form-control", { delay: 70 });
+      sr.reveal(".skills-grid", { delay: 90 });
+      srRight.reveal(".form-control", { delay: 70 });
+    }
 
     const sections = document.querySelectorAll("section[id]");
 
@@ -2383,24 +2389,26 @@
 
     window.addEventListener("scroll", scrollActive);
 
-    (function () {
+    const contactForm = document.getElementById("contact-form");
+
+    if (window.emailjs && contactForm) {
       emailjs.init("a8Y-fuzicejHF5mYl");
-    })();
 
-    document.getElementById("contact-form").addEventListener("submit", function (e) {
-      e.preventDefault();
+      contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-      emailjs.sendForm("service_smfvkky", "template_ttio5xw", this).then(
-        function () {
-          alert("Message sent successfully!");
-          document.getElementById("contact-form").reset();
-        },
-        function (error) {
-          alert("Failed to send message!");
-          console.log(error);
-        }
-      );
-    });
+        emailjs.sendForm("service_smfvkky", "template_ttio5xw", this).then(
+          function () {
+            alert("Message sent successfully!");
+            contactForm.reset();
+          },
+          function (error) {
+            alert("Failed to send message!");
+            console.log(error);
+          }
+        );
+      });
+    }
   </script>
 </body>
 
