@@ -226,13 +226,46 @@
       padding-left: 20px;
     }
 
-    .featured-text-card span {
+    .featured-text-card {
+      width: 230px;
+      height: 59px;
+      perspective: 900px;
+    }
+
+    .name-flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .featured-text-card:hover .name-flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .name-flip-front,
+    .name-flip-back {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
       background: var(--third-color);
       color: var(--color-white);
       padding: 7px 14px;
       font-size: 30px;
       font-weight: 400;
       border-radius: 10px;
+      white-space: nowrap;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .name-flip-back {
+      transform: rotateY(180deg);
     }
 
     .featured-name {
@@ -334,6 +367,10 @@
     }
 
     .icon:nth-child(3) {
+      background: #ff0000;
+    }
+
+    .icon:nth-child(4) {
       background: #24292e;
     }
 
@@ -371,6 +408,18 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), filter 0.38s ease;
+      will-change: transform;
+    }
+
+    .image:hover {
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.22), 0 18px 38px rgba(0, 201, 255, 0.22);
+      filter: drop-shadow(0 24px 28px rgba(110, 87, 224, 0.24));
+    }
+
+    .image:hover img {
+      transform: scale(1.06);
+      filter: brightness(1.04) saturate(1.04);
     }
 
     @keyframes imgFloat {
@@ -1438,7 +1487,13 @@
         gap: 25px;
       }
 
-      .featured-text-card span {
+      .featured-text-card {
+        width: 145px;
+        height: 40px;
+      }
+
+      .name-flip-front,
+      .name-flip-back {
         font-size: 1rem;
       }
 
@@ -1900,7 +1955,10 @@
       <section class="featured-box" id="home">
         <div class="featured-text">
           <div class="featured-text-card">
-            <span>Aman Sharma</span>
+            <div class="name-flip-inner">
+              <span class="name-flip-front">Aman Sharma</span>
+              <span class="name-flip-back">Rishi Sharma</span>
+            </div>
           </div>
 
           <div class="featured-name">
@@ -1924,6 +1982,8 @@
                   class="uil uil-instagram"></i></a></div>
             <div class="icon"><a href="https://www.linkedin.com/in/a-amansharma/" target="_blank"><i
                   class="uil uil-linkedin-alt"></i></a></div>
+            <div class="icon"><a href="https://www.youtube.com/@a-amansharma" target="_blank"><i
+                  class="uil uil-youtube"></i></a></div>
             <div class="icon"><a href="https://github.com/a-amansharma" target="_blank"><i
                   class="uil uil-github-alt"></i></a></div>
           </div>
@@ -2171,6 +2231,8 @@
               class="uil uil-instagram"></i></a></div>
         <div class="icon"><a href="https://www.linkedin.com/in/a-amansharma/" target="_blank"><i
               class="uil uil-linkedin-alt"></i></a></div>
+        <div class="icon"><a href="https://www.youtube.com/@a-amansharma" target="_blank"><i
+              class="uil uil-youtube"></i></a></div>
         <div class="icon"><a href="https://github.com/a-amansharma" target="_blank"><i
               class="uil uil-github-alt"></i></a></div>
       </div>
@@ -2419,6 +2481,7 @@
         );
       });
     }
+
   </script>
   <!-- Cloudflare Web Analytics -->
   <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js'

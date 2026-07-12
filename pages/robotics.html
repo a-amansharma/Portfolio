@@ -30,6 +30,7 @@
       --nav-bg: rgb(223, 223, 255);
       --radius: 11px;
       --linkedin: #0a66c2;
+      --github: #24292e;
       --instagram-gradient: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
     }
 
@@ -219,6 +220,30 @@
       box-shadow: 0 12px 24px rgba(10, 102, 194, 0.35);
     }
 
+    .summary-github-btn {
+      background: var(--github);
+      color: white;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: 0.3s ease;
+      box-shadow: 0 8px 17px rgba(36, 41, 46, 0.25);
+    }
+
+    .summary-github-btn i {
+      font-size: 23px;
+    }
+
+    .summary-github-btn:hover {
+      background: #000000;
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 12px 24px rgba(36, 41, 46, 0.35);
+    }
+
     .summary-instagram-btn {
       background: var(--instagram-gradient);
       color: white;
@@ -283,7 +308,8 @@
     }
 
     .project-block.open .summary-linkedin-btn,
-    .project-block.open .summary-instagram-btn {
+    .project-block.open .summary-instagram-btn,
+    .project-block.open .summary-github-btn {
       opacity: 0;
       transform: scale(0.75);
       pointer-events: none;
@@ -443,6 +469,32 @@
       box-shadow: 0 13px 27px rgba(221, 42, 123, 0.38);
     }
 
+    .github-btn {
+      background: var(--github);
+      color: white;
+      padding: 12px 19px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      font-weight: 600;
+      font-size: 14px;
+      min-height: 47px;
+      transition: 0.3s ease;
+      box-shadow: 0 9px 21px rgba(36, 41, 46, 0.28);
+    }
+
+    .github-btn i {
+      font-size: 20px;
+    }
+
+    .github-btn:hover {
+      background: #000000;
+      transform: translateY(-2px);
+      box-shadow: 0 13px 27px rgba(36, 41, 46, 0.36);
+    }
+
     .more-projects {
       text-align: center;
       padding: clamp(32px, 5vw, 48px);
@@ -600,6 +652,10 @@
       background: #24292e;
     }
 
+    .icon:nth-child(4) {
+      background: #ff0000;
+    }
+
     .icon:hover {
       transform: scale(1.12) translateY(-3px);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.28);
@@ -610,13 +666,15 @@
 
       .summary-linkedin-btn,
       .summary-instagram-btn,
+      .summary-github-btn,
       .drop-icon {
         width: 50px;
         height: 50px;
       }
 
       .summary-linkedin-btn i,
-      .summary-instagram-btn i {
+      .summary-instagram-btn i,
+      .summary-github-btn i {
         font-size: 24px;
       }
 
@@ -692,7 +750,8 @@
 
       .drop-icon,
       .summary-linkedin-btn,
-      .summary-instagram-btn {
+      .summary-instagram-btn,
+      .summary-github-btn {
         width: 39px;
         height: 39px;
       }
@@ -702,7 +761,8 @@
       }
 
       .summary-linkedin-btn i,
-      .summary-instagram-btn i {
+      .summary-instagram-btn i,
+      .summary-github-btn i {
         font-size: 20px;
       }
 
@@ -734,7 +794,8 @@
       }
 
       .linkedin-btn,
-      .instagram-btn {
+      .instagram-btn,
+      .github-btn {
         width: 100%;
         font-size: 13px;
         padding: 12px 14px;
@@ -1078,6 +1139,11 @@
             <i class="uil uil-instagram"></i>
           </a>
 
+          <a href="https://github.com/a-amansharma/robotic-arm" target="_blank" class="summary-github-btn"
+            aria-label="Open GitHub repository">
+            <i class="uil uil-github-alt"></i>
+          </a>
+
           <button class="drop-icon" type="button" aria-label="Open project details">
             <i class="uil uil-angle-down"></i>
           </button>
@@ -1121,6 +1187,10 @@
               class="instagram-btn">
               <i class="uil uil-instagram"></i> View Instagram Reel
             </a>
+
+            <a href="https://github.com/a-amansharma/robotic-arm" target="_blank" class="github-btn">
+              <i class="uil uil-github-alt"></i> View GitHub Repository
+            </a>
           </div>
 
           <div class="bottom-close-wrap">
@@ -1157,6 +1227,11 @@
           <a href="https://www.instagram.com/reel/DZphmJVSS7A/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
             target="_blank" class="summary-instagram-btn" aria-label="Open Instagram reel">
             <i class="uil uil-instagram"></i>
+          </a>
+
+          <a href="https://github.com/a-amansharma/esp32-six-wheel-drive" target="_blank" class="summary-github-btn"
+            aria-label="Open GitHub repository">
+            <i class="uil uil-github-alt"></i>
           </a>
 
           <button class="drop-icon" type="button" aria-label="Open project details">
@@ -1206,6 +1281,10 @@
               target="_blank" class="instagram-btn">
               <i class="uil uil-instagram"></i> View Instagram Reel
             </a>
+
+            <a href="https://github.com/a-amansharma/esp32-six-wheel-drive" target="_blank" class="github-btn">
+              <i class="uil uil-github-alt"></i> View GitHub Repository
+            </a>
           </div>
 
           <div class="bottom-close-wrap">
@@ -1242,6 +1321,11 @@
           <a href="https://www.instagram.com/reel/DS6qbmPEhON/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
             target="_blank" class="summary-instagram-btn" aria-label="Open Instagram reel">
             <i class="uil uil-instagram"></i>
+          </a>
+
+          <a href="https://github.com/a-amansharma/defense-quadruped-robot" target="_blank" class="summary-github-btn"
+            aria-label="Open GitHub repository">
+            <i class="uil uil-github-alt"></i>
           </a>
 
           <button class="drop-icon" type="button" aria-label="Open project details">
@@ -1289,6 +1373,10 @@
               target="_blank" class="instagram-btn">
               <i class="uil uil-instagram"></i> View Instagram Reel
             </a>
+
+            <a href="https://github.com/a-amansharma/defense-quadruped-robot" target="_blank" class="github-btn">
+              <i class="uil uil-github-alt"></i> View GitHub Repository
+            </a>
           </div>
 
           <div class="bottom-close-wrap">
@@ -1328,6 +1416,11 @@
             target="_blank" class="summary-instagram-btn" aria-label="Open Instagram post">
             <i class="uil uil-instagram"></i>
           </a>
+          <a href="https://github.com/a-amansharma/robotic-hand-gesture-control" target="_blank"
+            class="summary-github-btn" aria-label="Open GitHub repository">
+            <i class="uil uil-github-alt"></i>
+          </a>
+
           <button class="drop-icon" type="button" aria-label="Open project details">
             <i class="uil uil-angle-down"></i>
           </button>
@@ -1364,6 +1457,10 @@
             <a href="https://www.instagram.com/p/DPZOIejErI8/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
               target="_blank" class="instagram-btn">
               <i class="uil uil-instagram"></i> View Instagram Post
+            </a>
+
+            <a href="https://github.com/a-amansharma/robotic-hand-gesture-control" target="_blank" class="github-btn">
+              <i class="uil uil-github-alt"></i> View GitHub Repository
             </a>
           </div>
 
@@ -1487,8 +1584,9 @@
     <div class="middle-footer">
       <ul class="footer-menu">
         <li class="footer_menu_list"><a href="../index.html#home">Home</a></li>
-        <li class="footer_menu_list"><a href="../index.html#about">About</a></li>
         <li class="footer_menu_list"><a href="../index.html#projects">Projects</a></li>
+        <li class="footer_menu_list"><a href="../index.html#about">About</a></li>
+        <li class="footer_menu_list"><a href="../index.html#skills">Skills</a></li>
         <li class="footer_menu_list"><a href="../index.html#contact">Contact</a></li>
       </ul>
     </div>
@@ -1507,10 +1605,18 @@
       </div>
 
       <div class="icon">
+        <a href="https://www.youtube.com/@a-amansharma" target="_blank">
+          <i class="uil uil-youtube"></i>
+        </a>
+      </div>
+
+      <div class="icon">
         <a href="https://github.com/a-amansharma" target="_blank">
           <i class="uil uil-github-alt"></i>
         </a>
       </div>
+
+
     </div>
   </footer>
 
