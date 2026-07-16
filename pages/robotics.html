@@ -244,6 +244,30 @@
       box-shadow: 0 12px 24px rgba(36, 41, 46, 0.35);
     }
 
+    .summary-youtube-btn {
+      background: #ff0000;
+      color: white;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: 0.3s ease;
+      box-shadow: 0 8px 17px rgba(255, 0, 0, 0.25);
+    }
+
+    .summary-youtube-btn i {
+      font-size: 23px;
+    }
+
+    .summary-youtube-btn:hover {
+      background: #cc0000;
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 12px 24px rgba(255, 0, 0, 0.35);
+    }
+
     .summary-instagram-btn {
       background: var(--instagram-gradient);
       color: white;
@@ -309,7 +333,8 @@
 
     .project-block.open .summary-linkedin-btn,
     .project-block.open .summary-instagram-btn,
-    .project-block.open .summary-github-btn {
+    .project-block.open .summary-github-btn,
+    .project-block.open .summary-youtube-btn {
       opacity: 0;
       transform: scale(0.75);
       pointer-events: none;
@@ -495,6 +520,32 @@
       box-shadow: 0 13px 27px rgba(36, 41, 46, 0.36);
     }
 
+    .youtube-btn {
+      background: #ff0000;
+      color: white;
+      padding: 12px 19px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      font-weight: 600;
+      font-size: 14px;
+      min-height: 47px;
+      transition: 0.3s ease;
+      box-shadow: 0 9px 21px rgba(255, 0, 0, 0.28);
+    }
+
+    .youtube-btn i {
+      font-size: 20px;
+    }
+
+    .youtube-btn:hover {
+      background: #cc0000;
+      transform: translateY(-2px);
+      box-shadow: 0 13px 27px rgba(255, 0, 0, 0.36);
+    }
+
     .more-projects {
       text-align: center;
       padding: clamp(32px, 5vw, 48px);
@@ -667,6 +718,7 @@
       .summary-linkedin-btn,
       .summary-instagram-btn,
       .summary-github-btn,
+      .summary-youtube-btn,
       .drop-icon {
         width: 50px;
         height: 50px;
@@ -674,7 +726,8 @@
 
       .summary-linkedin-btn i,
       .summary-instagram-btn i,
-      .summary-github-btn i {
+      .summary-github-btn i,
+      .summary-youtube-btn i {
         font-size: 24px;
       }
 
@@ -751,7 +804,8 @@
       .drop-icon,
       .summary-linkedin-btn,
       .summary-instagram-btn,
-      .summary-github-btn {
+      .summary-github-btn,
+      .summary-youtube-btn {
         width: 39px;
         height: 39px;
       }
@@ -762,7 +816,8 @@
 
       .summary-linkedin-btn i,
       .summary-instagram-btn i,
-      .summary-github-btn i {
+      .summary-github-btn i,
+      .summary-youtube-btn i {
         font-size: 20px;
       }
 
@@ -795,7 +850,8 @@
 
       .linkedin-btn,
       .instagram-btn,
-      .github-btn {
+      .github-btn,
+      .youtube-btn {
         width: 100%;
         font-size: 13px;
         padding: 12px 14px;
@@ -817,6 +873,30 @@
         top: 14px;
         right: 14px;
       }
+    }
+
+
+
+
+    .project-tech-stack {
+      display: block;
+      height: 0;
+      margin-top: 0;
+      overflow: hidden;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.5;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.28s ease, height 0.38s ease, margin-top 0.38s ease;
+    }
+
+    .project-block.open .project-tech-stack {
+      height: auto;
+      margin-top: 10px;
+      overflow: visible;
+      opacity: 1;
+      visibility: visible;
     }
 
 
@@ -957,6 +1037,11 @@
         line-height: 1.45;
       }
 
+      .project-tech-stack {
+        font-size: 11.8px;
+        line-height: 1.42;
+      }
+
       .project-block.open .project-title .project-short-desc {
         min-height: 74px;
       }
@@ -1000,6 +1085,11 @@
       .project-title .project-short-desc {
         font-size: 11.4px;
         line-height: 1.42;
+      }
+
+      .project-tech-stack {
+        font-size: 10.8px;
+        line-height: 1.38;
       }
 
       .project-block.open .project-title .project-short-desc {
@@ -1048,6 +1138,11 @@
       .project-title .project-short-desc {
         font-size: 15px;
         line-height: 1.58;
+      }
+
+      .project-tech-stack {
+        font-size: 14px;
+        line-height: 1.55;
       }
 
       .project-block.open .project-title .project-short-desc {
@@ -1111,6 +1206,120 @@
   </nav>
 
   <main class="projects-section">
+
+
+
+    <section class="project-block">
+      <div class="project-summary" role="button" tabindex="0">
+        <div class="thumb-box">
+          <img src="../images/robotics/Manipulator/main.webp" alt="Mobile Robotic Manipulator Thumbnail">
+        </div>
+
+        <div class="project-title">
+          <h2>Mobile Robotic Manipulator</h2>
+          <span>Click to see details</span>
+          <p class="project-short-desc"
+            data-full-desc="Designed and built a fully custom wireless 6-DOF Mobile Robotic Manipulator integrating a six-wheel drive rover with a real-time master-slave robotic arm. The system utilizes ESP-NOW for low-latency communication between multiple microcontrollers and features smooth motion control, obstacle detection, IMU-based safety monitoring, OLED status display, and intelligent speed regulation for reliable remote operation.">
+          </p>
+          <strong class="project-tech-stack">ESP32 • ESP-NOW • STM32 • C++ • PCA9685 • MPU6050 • Ultrasonic Sensor • IBT-2 Motor Driver • SSD1306 OLED • Embedded Systems • Robotics</strong>
+        </div>
+
+        <div class="summary-actions">
+          <a href="https://www.instagram.com/reel/Da2mxi2NOQt/?igsh=aHlwa3Z0cmtsMnRv" target="_blank"
+            class="summary-instagram-btn" aria-label="Open Instagram reel">
+            <i class="uil uil-instagram"></i>
+          </a>
+
+          <a href="https://youtube.com/shorts/GGAdY5_cBDA?si=bJ0fZUDWR9pNGFOL" target="_blank"
+            class="summary-youtube-btn" aria-label="Open YouTube Short">
+            <i class="uil uil-youtube"></i>
+          </a>
+
+          <a href="https://github.com/a-amansharma/Mobile-Robotic-Manipulator" target="_blank"
+            class="summary-github-btn" aria-label="Open GitHub repository">
+            <i class="uil uil-github-alt"></i>
+          </a>
+
+          <button class="drop-icon" type="button" aria-label="Open project details">
+            <i class="uil uil-angle-down"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="project-content">
+        <div class="project-content-inner">
+          <div class="project-grid">
+            <div class="project-card"><img src="../images/robotics/Manipulator/soildering.webp"
+                alt="Mobile Robotic Manipulator Soldering" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/wires.webp"
+                alt="Mobile Robotic Manipulator Wiring" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/on-table.webp"
+                alt="Mobile Robotic Manipulator on Table" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/on-grass.webp"
+                alt="Mobile Robotic Manipulator on Grass" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/grip.webp"
+                alt="Mobile Robotic Manipulator Gripper" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/manipulator.webp"
+                alt="Mobile Robotic Manipulator Full View" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/angle-view.webp"
+                alt="Mobile Robotic Manipulator Angle View" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/side-view.webp"
+                alt="Mobile Robotic Manipulator Side View" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/side-view1.webp"
+                alt="Mobile Robotic Manipulator Alternate Side View" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/close-arm-side.webp"
+                alt="Mobile Robotic Manipulator Close Arm Side View" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/close-arm.webp"
+                alt="Mobile Robotic Manipulator Close Arm View" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/close-arm1.webp"
+                alt="Mobile Robotic Manipulator Arm Detail" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/base-at90.webp"
+                alt="Mobile Robotic Manipulator Base at 90 Degrees" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/both1.webp"
+                alt="Mobile Robotic Manipulator Master and Slave Setup 1" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/both2.webp"
+                alt="Mobile Robotic Manipulator Master and Slave Setup 2" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/both3.webp"
+                alt="Mobile Robotic Manipulator Master and Slave Setup 3" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/ball1.webp"
+                alt="Mobile Robotic Manipulator Object Handling" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/ultrasonic.webp"
+                alt="Mobile Robotic Manipulator Ultrasonic Sensor" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/setup.webp"
+                alt="Mobile Robotic Manipulator Control Setup" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/ip1.webp"
+                alt="Mobile Robotic Manipulator Image 1" onclick="openImage(this.src)"></div>
+            <div class="project-card"><img src="../images/robotics/Manipulator/main.webp"
+                alt="Mobile Robotic Manipulator Image 2" onclick="openImage(this.src)"></div>
+          </div>
+
+          <div class="post-buttons">
+            <a href="https://www.instagram.com/reel/Da2mxi2NOQt/?igsh=aHlwa3Z0cmtsMnRv" target="_blank"
+              class="instagram-btn">
+              <i class="uil uil-instagram"></i> View Instagram Reel
+            </a>
+
+            <a href="https://youtube.com/shorts/GGAdY5_cBDA?si=bJ0fZUDWR9pNGFOL" target="_blank"
+              class="youtube-btn">
+              <i class="uil uil-youtube"></i> View YouTube Short
+            </a>
+
+            <a href="https://github.com/a-amansharma/Mobile-Robotic-Manipulator" target="_blank"
+              class="github-btn">
+              <i class="uil uil-github-alt"></i> View GitHub Repository
+            </a>
+          </div>
+
+          <div class="bottom-close-wrap">
+            <button class="bottom-drop-icon" type="button" aria-label="Close project details">
+              <i class="uil uil-angle-down"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
 
 
 
@@ -1187,6 +1396,7 @@
               class="instagram-btn">
               <i class="uil uil-instagram"></i> View Instagram Reel
             </a>
+
 
             <a href="https://github.com/a-amansharma/robotic-arm" target="_blank" class="github-btn">
               <i class="uil uil-github-alt"></i> View GitHub Repository
