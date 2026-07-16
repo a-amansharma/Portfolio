@@ -830,8 +830,26 @@
         font-size: 30px;
       }
 
+      /* Smartphone only: keep a maximum of two circular controls per row. */
       .summary-actions {
+        width: 86px;
+        display: grid;
+        grid-template-columns: repeat(2, 39px);
         gap: 8px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* When the number of social links is odd, center the final link. */
+      .summary-actions > a:nth-last-child(2):nth-child(odd) {
+        grid-column: 1 / -1;
+        justify-self: center;
+      }
+
+      /* Keep the dropdown control on its own centered row. */
+      .summary-actions > .drop-icon {
+        grid-column: 1 / -1;
+        justify-self: center;
       }
 
       .project-content-inner {
