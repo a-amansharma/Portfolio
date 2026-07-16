@@ -801,24 +801,19 @@
         margin-top: 3px;
       }
 
-      .drop-icon,
       .summary-linkedin-btn,
       .summary-instagram-btn,
       .summary-github-btn,
       .summary-youtube-btn {
-        width: 39px;
-        height: 39px;
-      }
-
-      .drop-icon i {
-        font-size: 25px;
+        width: 33px;
+        height: 33px;
       }
 
       .summary-linkedin-btn i,
       .summary-instagram-btn i,
       .summary-github-btn i,
       .summary-youtube-btn i {
-        font-size: 20px;
+        font-size: 17px;
       }
 
       .bottom-drop-icon {
@@ -830,26 +825,23 @@
         font-size: 30px;
       }
 
-      /* Smartphone only: keep a maximum of two circular controls per row. */
+      /* Smartphone only: three links stay in one row. */
       .summary-actions {
-        width: 86px;
+        width: auto;
         display: grid;
-        grid-template-columns: repeat(2, 39px);
-        gap: 8px;
+        grid-template-columns: repeat(3, 33px);
+        gap: 6px;
         align-items: center;
         justify-content: center;
       }
 
-      /* When the number of social links is odd, center the final link. */
-      .summary-actions > a:nth-last-child(2):nth-child(odd) {
-        grid-column: 1 / -1;
-        justify-self: center;
+      /* Four links are arranged as two icons on each row. */
+      .summary-actions:has(> a:nth-child(4)) {
+        grid-template-columns: repeat(2, 33px);
       }
 
-      /* Keep the dropdown control on its own centered row. */
-      .summary-actions > .drop-icon {
-        grid-column: 1 / -1;
-        justify-self: center;
+      .summary-actions:empty {
+        display: none;
       }
 
       .project-content-inner {
@@ -1257,10 +1249,6 @@
             class="summary-github-btn" aria-label="Open GitHub repository">
             <i class="uil uil-github-alt"></i>
           </a>
-
-          <button class="drop-icon" type="button" aria-label="Open project details">
-            <i class="uil uil-angle-down"></i>
-          </button>
         </div>
       </div>
 
@@ -1370,10 +1358,6 @@
             aria-label="Open GitHub repository">
             <i class="uil uil-github-alt"></i>
           </a>
-
-          <button class="drop-icon" type="button" aria-label="Open project details">
-            <i class="uil uil-angle-down"></i>
-          </button>
         </div>
       </div>
 
@@ -1461,10 +1445,6 @@
             aria-label="Open GitHub repository">
             <i class="uil uil-github-alt"></i>
           </a>
-
-          <button class="drop-icon" type="button" aria-label="Open project details">
-            <i class="uil uil-angle-down"></i>
-          </button>
         </div>
       </div>
 
@@ -1555,10 +1535,6 @@
             aria-label="Open GitHub repository">
             <i class="uil uil-github-alt"></i>
           </a>
-
-          <button class="drop-icon" type="button" aria-label="Open project details">
-            <i class="uil uil-angle-down"></i>
-          </button>
         </div>
       </div>
 
@@ -1648,10 +1624,6 @@
             class="summary-github-btn" aria-label="Open GitHub repository">
             <i class="uil uil-github-alt"></i>
           </a>
-
-          <button class="drop-icon" type="button" aria-label="Open project details">
-            <i class="uil uil-angle-down"></i>
-          </button>
         </div>
       </div>
       <div class="project-content">
@@ -1714,9 +1686,6 @@
           </p>
         </div>
         <div class="summary-actions">
-          <button class="drop-icon" type="button" aria-label="Open project details">
-            <i class="uil uil-angle-down"></i>
-          </button>
         </div>
       </div>
       <div class="project-content">
@@ -1758,9 +1727,6 @@
         </div>
 
         <div class="summary-actions">
-          <button class="drop-icon" type="button" aria-label="Open project details">
-            <i class="uil uil-angle-down"></i>
-          </button>
         </div>
       </div>
 
