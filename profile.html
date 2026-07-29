@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Collage Animation</title>
+<style>
+  /* ============================================================
+     HERO COLLAGE — combined single file
+     Pure white background, floating portrait collage around a
+     bigger, border-less, shadow-only central profile photo.
+     ============================================================ */
+
+  :root {
+    /* ---- sizing tokens (tweak to resize the whole collage) ---- */
+    --collage-size: 640px;
+    --profile-size: 270px;      /* bigger profile so it overlaps 2-3 cards */
+    --card-radius: 22px;
+    --card-shadow: 0 18px 40px -12px rgba(15, 23, 42, 0.22),
+                   0 4px 12px -4px rgba(15, 23, 42, 0.10);
+    --float-ease: cubic-bezier(0.45, 0.05, 0.35, 1);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  }
+
+  /* ------------------------------------------------------------
+     HERO SECTION — swap/remove this wrapper freely; only
+     .hero-collage and its children are required for the effect.
+     ------------------------------------------------------------ */
+  .hero {
+    width: 100%;
+    min-height: 100vh;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+
+  /* ------------------------------------------------------------
+     COLLAGE CONTAINER
+     ------------------------------------------------------------ */
+  .hero-collage {
+    position: relative;
+    width: var(--collage-size);
+    height: var(--collage-size);
+    max-width: 100%;
+    background: #ffffff;
+  }
+
+  .cards-layer {
+    position: absolute;
+    inset: 0;
+  }
+
+  /* ------------------------------------------------------------
+     PROFILE PICTURE (center, highest z-index, no border,
+     shadow-only 3D floating effect)
+     ------------------------------------------------------------ */
+  .profile-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--profile-size);
+    height: var(--profile-size);
+    transform: translate3d(-50%, -50%, 0) scale(0.6);
+    border-radius: 50%;
+    z-index: 50;
+    opacity: 0;
+    will-change: transform, opacity, border-radius, box-shadow;
+    animation:
+      profileEnter 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.05s forwards,
+      profileFloat 7s var(--float-ease) 1.5s infinite;
+  }
+
+  .profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+    border: none;
+    display: block;
+    background: #f2f2f2;
+  }
+
+  @keyframes profileEnter {
+    0%   { opacity: 0; transform: translate3d(-50%, -50%, 0) scale(0.55); }
+    100% { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1); }
+  }
+
+  /* shadow-only 3D float — no border, just depth via box-shadow/drop-shadow */
+  @keyframes profileFloat {
+    0%, 100% {
+      transform: translate3d(-50%, -50%, 0) translateY(0) scale(1);
+      border-radius: 50%;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16), 0 10px 28px rgba(0, 201, 255, 0.14);
+      filter: drop-shadow(0 14px 18px rgba(110, 87, 224, 0.16));
+    }
+    50% {
+      transform: translate3d(-50%, -50%, 0) translateY(-14px) scale(1.03);
+      border-radius: 50%;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.20), 0 18px 36px rgba(0, 201, 255, 0.20);
+      filter: drop-shadow(0 24px 26px rgba(110, 87, 224, 0.24));
+    }
+  }
+
+  /* ------------------------------------------------------------
+     PROJECT CARDS
+     Each card = .card wrapper (position/rotation/size/entrance)
+     containing .card-inner (the perpetual float animation), so
+     the two transforms never fight each other. No borders —
+     shadow only, sitting visually beneath the profile photo.
+     ------------------------------------------------------------ */
+  .card {
+    position: absolute;
+    border-radius: var(--card-radius);
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+  }
+
+  .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--card-radius);
+    border: none;
+    box-shadow: var(--card-shadow);
+    background: #f2f2f2;
+  }
+
+  /* ---- entrance keyframes (direction depends on data-enter) ---- */
+  @keyframes enterFromTop {
+    0%   { opacity: 0; transform: translate3d(0, -70px, 0) scale(0.85) rotate(var(--rot)); }
+    100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1) rotate(var(--rot)); }
+  }
+  @keyframes enterFromBottom {
+    0%   { opacity: 0; transform: translate3d(0, 70px, 0) scale(0.85) rotate(var(--rot)); }
+    100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1) rotate(var(--rot)); }
+  }
+  @keyframes enterFromLeft {
+    0%   { opacity: 0; transform: translate3d(-80px, 0, 0) scale(0.85) rotate(var(--rot)); }
+    100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1) rotate(var(--rot)); }
+  }
+  @keyframes enterFromRight {
+    0%   { opacity: 0; transform: translate3d(80px, 0, 0) scale(0.85) rotate(var(--rot)); }
+    100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1) rotate(var(--rot)); }
+  }
+
+  .card[data-enter="top"]    { animation-name: enterFromTop; }
+  .card[data-enter="bottom"] { animation-name: enterFromBottom; }
+  .card[data-enter="left"]   { animation-name: enterFromLeft; }
+  .card[data-enter="right"]  { animation-name: enterFromRight; }
+
+  .card {
+    animation-duration: 0.85s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-fill-mode: forwards;
+    /* animation-delay is set inline per-card by JS */
+  }
+
+  /* ---- perpetual float, applied to .card-inner after entrance ---- */
+  .card-inner {
+    animation-name: floatDrift;
+    animation-timing-function: var(--float-ease);
+    animation-iteration-count: infinite;
+    /* duration / delay set inline per-card by JS via CSS vars */
+    animation-duration: var(--float-dur, 6.5s);
+    animation-delay: var(--float-delay, 0s);
+  }
+
+  @keyframes floatDrift {
+    0%   { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+    25%  { transform: translate3d(var(--dx, 6px), calc(var(--dy, -12px) * -1), 0) rotate(var(--dr, 1deg)) scale(var(--ds, 1.01)); }
+    50%  { transform: translate3d(calc(var(--dx, 6px) * -0.6), var(--dy, -12px), 0) rotate(calc(var(--dr, 1deg) * -1)) scale(1); }
+    75%  { transform: translate3d(var(--dx, 6px), calc(var(--dy, -12px) * -0.5), 0) rotate(var(--dr, 1deg)) scale(var(--ds, 1.01)); }
+    100% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+  }
+
+  /* respect reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .profile-wrap, .card, .card-inner {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .profile-wrap { transform: translate3d(-50%, -50%, 0) !important; }
+  }
+
+  /* ------------------------------------------------------------
+     RESPONSIVE SCALING
+     ------------------------------------------------------------ */
+  @media (max-width: 1024px) {
+    :root {
+      --collage-size: 480px;
+      --profile-size: 210px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    :root {
+      --collage-size: 340px;
+      --profile-size: 160px;
+      --card-radius: 16px;
+    }
+    .hero { padding: 24px; }
+  }
+
+  @media (max-width: 380px) {
+    :root {
+      --collage-size: 290px;
+      --profile-size: 135px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============================================
+       HERO COLLAGE
+       Central circular profile photo surrounded by
+       floating portrait project cards.
+       Replace image URLs inside the IMAGE_DATA object
+       in the <script> below.
+       ============================================ -->
+  <section class="hero">
+    <div class="hero-collage" id="heroCollage">
+
+      <!-- Profile picture (injected by JS, defined in IMAGE_DATA.profile) -->
+      <div class="profile-wrap" id="profileWrap">
+        <img class="profile-img" id="profileImg" src="" alt="Profile picture" />
+      </div>
+
+      <!-- Project cards get injected here -->
+      <div class="cards-layer" id="cardsLayer"></div>
+
+    </div>
+  </section>
+
+<script>
+  /* ============================================================
+     REPLACE IMAGE URLS IN "IMAGE_DATA" BELOW WHEN READY
+     ============================================================ */
+
+  const IMAGE_DATA = {
+    // Center circular photo
+    profile: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&q=80&auto=format&fit=crop",
+
+    // 8 surrounding project cards — swap "url" for your own images.
+    cards: [
+      { label: "Robotics",    url: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=500&q=80&auto=format&fit=crop" },
+      { label: "UI/UX",       url: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=500&q=80&auto=format&fit=crop" },
+      { label: "Sketching",   url: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&q=80&auto=format&fit=crop" },
+      { label: "Technology",  url: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&q=80&auto=format&fit=crop" },
+      { label: "Engineering", url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&q=80&auto=format&fit=crop" },
+      { label: "Drones",      url: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=500&q=80&auto=format&fit=crop" },
+      { label: "Coding",      url: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=500&q=80&auto=format&fit=crop" },
+      { label: "Electronics", url: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=500&q=80&auto=format&fit=crop" }
+    ]
+  };
+
+  /* ------------------------------------------------------------
+     LAYOUT DATA — % positions inside the collage box, so they
+     scale automatically with --collage-size. Two sets: desktop
+     (organic scatter, a few pieces bleed off-edge) and mobile
+     (pulled inward so nothing clips awkwardly).
+     ------------------------------------------------------------ */
+
+  const LAYOUT_DESKTOP = [
+    { top: 4,  left: 40, w: 132, h: 168, rot: -14, z: 40, enter: "top",    dx: 8,  dy: 14, dr: 2, ds: 1.02, dur: 6.4, delay: 0.55 },
+    { top: 10, left: 68, w: 116, h: 148, rot: 9,   z: 30, enter: "right",  dx: 10, dy: 10, dr: 2, ds: 1.02, dur: 7.1, delay: 0.75 },
+    { top: 36, left: 82, w: 124, h: 158, rot: -6,  z: 42, enter: "right",  dx: 7,  dy: 12, dr: 1, ds: 1.01, dur: 5.8, delay: 0.35 },
+    { top: 64, left: 74, w: 138, h: 176, rot: 13,  z: 33, enter: "bottom", dx: 9,  dy: 15, dr: 2, ds: 1.02, dur: 7.6, delay: 0.9  },
+    { top: 70, left: 40, w: 128, h: 164, rot: -8,  z: 44, enter: "bottom", dx: 6,  dy: 11, dr: 1, ds: 1.01, dur: 6.9, delay: 0.45 },
+    { top: 58, left: 6,  w: 118, h: 150, rot: 11,  z: 28, enter: "left",   dx: 9,  dy: 13, dr: 2, ds: 1.02, dur: 6.1, delay: 1.0  },
+    { top: 30, left: 2,  w: 122, h: 156, rot: -12, z: 38, enter: "left",   dx: 7,  dy: 10, dr: 1, ds: 1.01, dur: 7.3, delay: 0.6  },
+    { top: 2,  left: 12, w: 108, h: 138, rot: 7,   z: 25, enter: "top",    dx: 8,  dy: 12, dr: 2, ds: 1.02, dur: 5.6, delay: 0.85 }
+  ];
+
+  const LAYOUT_MOBILE = [
+    { top: 2,  left: 30, w: 90,  h: 114, rot: -11, z: 40, enter: "top",    dx: 5, dy: 8, dr: 1, ds: 1.02, dur: 6.4, delay: 0.55 },
+    { top: 8,  left: 58, w: 80,  h: 102, rot: 8,   z: 30, enter: "right",  dx: 6, dy: 7, dr: 1, ds: 1.02, dur: 7.1, delay: 0.75 },
+    { top: 34, left: 70, w: 84,  h: 108, rot: -6,  z: 42, enter: "right",  dx: 5, dy: 8, dr: 1, ds: 1.01, dur: 5.8, delay: 0.35 },
+    { top: 62, left: 62, w: 92,  h: 120, rot: 12,  z: 33, enter: "bottom", dx: 6, dy: 9, dr: 1, ds: 1.02, dur: 7.6, delay: 0.9  },
+    { top: 68, left: 30, w: 88,  h: 112, rot: -8,  z: 44, enter: "bottom", dx: 4, dy: 7, dr: 1, ds: 1.01, dur: 6.9, delay: 0.45 },
+    { top: 56, left: 4,  w: 82,  h: 104, rot: 10,  z: 28, enter: "left",   dx: 6, dy: 8, dr: 1, ds: 1.02, dur: 6.1, delay: 1.0  },
+    { top: 30, left: 2,  w: 84,  h: 106, rot: -10, z: 38, enter: "left",   dx: 5, dy: 6, dr: 1, ds: 1.01, dur: 7.3, delay: 0.6  },
+    { top: 4,  left: 10, w: 76,  h: 96,  rot: 6,   z: 25, enter: "top",    dx: 5, dy: 7, dr: 1, ds: 1.02, dur: 5.6, delay: 0.85 }
+  ];
+
+  const MOBILE_BREAKPOINT = 640;
+
+  function buildCollage() {
+    const cardsLayer = document.getElementById("cardsLayer");
+    const profileImg = document.getElementById("profileImg");
+
+    profileImg.src = IMAGE_DATA.profile;
+    cardsLayer.innerHTML = "";
+
+    const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+    const layout = isMobile ? LAYOUT_MOBILE : LAYOUT_DESKTOP;
+
+    IMAGE_DATA.cards.forEach((card, i) => {
+      const pos = layout[i % layout.length];
+
+      const wrap = document.createElement("div");
+      wrap.className = "card";
+      wrap.dataset.enter = pos.enter;
+      wrap.dataset.cardIndex = i;
+
+      wrap.style.top = pos.top + "%";
+      wrap.style.left = pos.left + "%";
+      wrap.style.width = pos.w + "px";
+      wrap.style.height = pos.h + "px";
+      wrap.style.zIndex = pos.z;
+      wrap.style.setProperty("--rot", pos.rot + "deg");
+      wrap.style.animationDelay = pos.delay + "s"; // entrance stagger
+
+      const inner = document.createElement("div");
+      inner.className = "card-inner";
+      inner.style.setProperty("--dx", pos.dx + "px");
+      inner.style.setProperty("--dy", pos.dy + "px");
+      inner.style.setProperty("--dr", pos.dr + "deg");
+      inner.style.setProperty("--ds", pos.ds);
+      inner.style.setProperty("--float-dur", pos.dur + "s");
+      // start the float loop only after the ~1.5s entrance sequence finishes
+      inner.style.setProperty("--float-delay", (1.5 + pos.delay * 0.4) + "s");
+
+      const img = document.createElement("img");
+      img.className = "card-img";
+      img.src = card.url;
+      img.alt = card.label || "Project image";
+      img.loading = "lazy";
+      img.draggable = false;
+
+      inner.appendChild(img);
+      wrap.appendChild(inner);
+      cardsLayer.appendChild(wrap);
+    });
+  }
+
+  /* rebuild layout when crossing the mobile breakpoint (debounced) */
+  let lastIsMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+  let resizeTimer = null;
+
+  function handleResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const nowMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+      if (nowMobile !== lastIsMobile) {
+        lastIsMobile = nowMobile;
+        buildCollage();
+      }
+    }, 150);
+  }
+
+  window.addEventListener("resize", handleResize);
+  document.addEventListener("DOMContentLoaded", buildCollage);
+</script>
+</body>
+</html>

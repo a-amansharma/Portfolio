@@ -20,7 +20,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="images/my-pic3.webp" />
 
+  <script>
+    (function () {
+      var saved = localStorage.getItem("theme");
+      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
   <style>
     :root {
       --body-color: rgb(250, 250, 250);
@@ -36,6 +46,48 @@
       --footer-bg: #f4eeff;
       --header-height: 90px;
       --header-height-small: 70px;
+      --card-bg: #ffffff;
+      --card-border: rgba(0, 181, 231, 0.12);
+      --input-border: #aaa;
+      --scrollbar-track: #f1f1f1;
+      --scrollbar-thumb: #ccc;
+      --scrollbar-thumb-hover: #bbb;
+      --updates-bg: rgba(255, 255, 255, 0.92);
+      --posts-bg: linear-gradient(180deg, #fbfbff, #f6fbff);
+      --linkedin-bg: #ffffff;
+      --linkedin-content: linear-gradient(135deg, #ffffff, #f6f5ff);
+      --skills-card-bg: rgba(255, 255, 255, 0.88);
+      --nav-mobile-bg: rgba(255, 255, 255, 0.88);
+      --card-img-bg: transparent;
+      --moon-color: #ffd43b;
+      --sun-color: #ff8c00;
+    }
+
+    [data-theme="dark"] {
+      --body-color: #0f0f1a;
+      --color-white: #1a1a2e;
+      --text-color-second: #c8c8d4;
+      --text-color-third: #4dd0e1;
+      --first-color: #9b8eff;
+      --first-color-hover: #7c6ef0;
+      --second-color: #00bcd4;
+      --third-color: #e0c859;
+      --first-shadow-color: rgba(0, 0, 0, 0.5);
+      --nav-bg: #16162a;
+      --footer-bg: #13132a;
+      --card-bg: #1e1e36;
+      --card-border: rgba(155, 142, 255, 0.18);
+      --input-border: #555;
+      --scrollbar-track: #1a1a2e;
+      --scrollbar-thumb: #333;
+      --scrollbar-thumb-hover: #444;
+      --updates-bg: rgba(22, 22, 42, 0.95);
+      --posts-bg: linear-gradient(180deg, #1a1a30, #16162e);
+      --linkedin-bg: #1e1e36;
+      --linkedin-content: linear-gradient(135deg, #1e1e36, #1a1a34);
+      --skills-card-bg: rgba(30, 30, 54, 0.92);
+      --nav-mobile-bg: rgba(22, 22, 42, 0.95);
+      --card-img-bg: rgba(30, 30, 54, 0.6);
     }
 
     * {
@@ -58,6 +110,7 @@
       overflow-x: hidden;
       background: var(--body-color);
       color: var(--text-color-second);
+      transition: background 0.4s ease, color 0.4s ease;
     }
 
     ::-webkit-scrollbar {
@@ -66,16 +119,16 @@
     }
 
     ::-webkit-scrollbar-track {
-      background: #f1f1f1;
+      background: var(--scrollbar-track);
     }
 
     ::-webkit-scrollbar-thumb {
-      background: #ccc;
+      background: var(--scrollbar-thumb);
       border-radius: 30px;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-      background: #bbb;
+      background: var(--scrollbar-thumb-hover);
     }
 
     a {
@@ -98,7 +151,12 @@
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      transition: 0.3s ease;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+
+    [data-theme="dark"] .btn {
+      background: #2a2a4a;
+      color: var(--text-color-second);
     }
 
     .btn>i {
@@ -122,7 +180,7 @@
       line-height: var(--header-height);
       padding-inline: 10vw;
       background: var(--nav-bg);
-      transition: 0.35s ease;
+      transition: background 0.4s ease, height 0.35s ease;
       z-index: 1000;
     }
 
@@ -200,7 +258,8 @@
     }
 
     .top-header span {
-      color: #999;
+      color: var(--text-color-second);
+      opacity: 0.6;
     }
 
     h3 {
@@ -276,31 +335,11 @@
     .typedText {
       text-transform: capitalize;
       color: rgb(81, 81, 255);
-
-      text-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.9),
-        0 2px 4px rgba(0, 0, 0, 0.12),
-        0 6px 12px rgba(0, 0, 0, 0.08);
-
-      animation: typedShadowPulse 2.4s ease-in-out infinite;
+      text-shadow: 0 0 0 transparent;
     }
 
-    @keyframes typedShadowPulse {
-
-      0%,
-      100% {
-        text-shadow:
-          0 1px 0 rgba(255, 255, 255, 0.9),
-          0 2px 4px rgba(0, 0, 0, 0.12),
-          0 6px 12px rgba(0, 0, 0, 0.08);
-      }
-
-      50% {
-        text-shadow:
-          0 1px 0 rgba(255, 255, 255, 0.9),
-          0 4px 8px rgba(0, 0, 0, 0.16),
-          0 10px 18px rgba(0, 0, 0, 0.10);
-      }
+    [data-theme="dark"] .typedText {
+      text-shadow: 0 1px 3px rgba(255, 255, 255, 0.12);
     }
 
 
@@ -378,9 +417,10 @@
 
     .featured-image {
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
       align-items: center;
       width: 50%;
+      min-height: 520px;
       transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), padding-top 0.65s cubic-bezier(0.22, 1, 0.36, 1);
       will-change: transform;
     }
@@ -389,50 +429,179 @@
       transform: translateY(54px);
     }
 
-    .image {
-      width: 400px;
-      height: 400px;
-      border-radius: 65% 55% 65% 55%;
-      overflow: hidden;
-      animation: imgFloat 4s ease-in-out infinite;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.14), 0 10px 28px rgba(0, 201, 255, 0.14);
-      filter: drop-shadow(0 14px 18px rgba(110, 87, 224, 0.16));
+    :root {
+      --collage-size: 640px;
+      --profile-size: 300px;
+      --card-radius: 22px;
+      --card-shadow: none;
+      --float-ease: cubic-bezier(0.45, 0.05, 0.35, 1);
     }
 
-    .image img {
+    .hero-collage {
+      position: relative;
+      width: var(--collage-size);
+      height: var(--collage-size);
+      max-width: 100%;
+    }
+
+    .cards-layer {
+      position: absolute;
+      inset: 0;
+    }
+
+    .profile-wrap {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: var(--profile-size);
+      height: var(--profile-size);
+      transform: translate3d(-50%, -50%, 0) scale(0.6);
+      z-index: 50;
+      opacity: 0;
+      border-radius: 60% 55% 60% 55%;
+      will-change: transform, opacity;
+      animation:
+        profileEnter 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.05s forwards,
+        imgFloat 7s ease-in-out 1.5s infinite;
+      cursor: pointer;
+    }
+
+    .profile-wrap:hover {
+      animation-play-state: paused;
+    }
+
+    .profile-wrap:hover .profile-img {
+      transform: scale(1.05);
+    }
+
+    .profile-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: inherit;
+      border: none;
       display: block;
-      transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), filter 0.38s ease;
-      will-change: transform;
+      background: #f2f2f2;
+      transition: transform 0.3s ease;
     }
 
-    .image:hover {
-      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.22), 0 18px 38px rgba(0, 201, 255, 0.22);
-      filter: drop-shadow(0 24px 28px rgba(110, 87, 224, 0.24));
+    [data-theme="dark"] .profile-img {
+      background: #2a2a4a;
     }
 
-    .image:hover img {
-      transform: scale(1.06);
-      filter: brightness(1.04) saturate(1.04);
+    @keyframes profileEnter {
+      0%   { opacity: 0; transform: translate3d(-50%, -50%, 0) scale(0.55); }
+      100% { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1); }
     }
 
     @keyframes imgFloat {
-
-      0%,
-      100% {
-        transform: translateY(0);
+      0%, 100% {
+        transform: translate3d(-50%, -50%, 0) translateY(0);
         border-radius: 65% 55% 65% 55%;
         box-shadow: 0 18px 45px rgba(0, 0, 0, 0.14), 0 10px 28px rgba(0, 201, 255, 0.14);
         filter: drop-shadow(0 14px 18px rgba(110, 87, 224, 0.16));
       }
-
       50% {
-        transform: translateY(15px);
+        transform: translate3d(-50%, -50%, 0) translateY(15px);
         border-radius: 55% 65% 55% 65%;
         box-shadow: 0 26px 55px rgba(0, 0, 0, 0.18), 0 16px 34px rgba(0, 201, 255, 0.18);
         filter: drop-shadow(0 22px 24px rgba(110, 87, 224, 0.22));
+      }
+    }
+
+    .card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 110px;
+      height: 136px;
+      border-radius: var(--card-radius);
+      opacity: 0;
+      will-change: transform, opacity;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.3s ease;
+    }
+
+    .card.reveal {
+      opacity: 1;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      will-change: transform;
+      animation-name: floatDrift;
+      animation-timing-function: var(--float-ease);
+      animation-iteration-count: infinite;
+      animation-duration: var(--float-dur, 6.5s);
+      animation-delay: var(--float-delay, 0s);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: var(--card-radius);
+      border: none;
+      object-fit: contain;
+      background: transparent;
+      padding: 4px;
+    }
+
+    [data-theme="dark"] .card-img {
+      filter: invert(1);
+    }
+
+    @keyframes floatDrift {
+      0%   { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+      25%  { transform: translate3d(var(--dx, 6px), calc(var(--dy, -12px) * -1), 0) rotate(var(--dr, 1deg)) scale(var(--ds, 1.01)); }
+      50%  { transform: translate3d(calc(var(--dx, 6px) * -0.6), var(--dy, -12px), 0) rotate(calc(var(--dr, 1deg) * -1)) scale(1); }
+      75%  { transform: translate3d(var(--dx, 6px), calc(var(--dy, -12px) * -0.5), 0) rotate(var(--dr, 1deg)) scale(var(--ds, 1.01)); }
+      100% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .profile-wrap, .card, .card-inner {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .profile-wrap { transform: translate3d(-50%, -50%, 0) !important; }
+    }
+
+    @media (max-width: 1024px) {
+      :root {
+        --collage-size: 480px;
+        --profile-size: 230px;
+      }
+      .featured-image {
+        min-height: 480px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .featured-image {
+        min-height: auto;
+        padding: 20px 0;
+      }
+      :root {
+        --collage-size: 400px;
+        --profile-size: 195px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      :root {
+        --collage-size: 340px;
+        --profile-size: 170px;
+        --card-radius: 16px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      :root {
+        --collage-size: 290px;
+        --profile-size: 145px;
       }
     }
 
@@ -479,13 +648,13 @@
       width: min(100%, 980px);
       margin: 0 auto;
       position: relative;
-      background: rgba(255, 255, 255, 0.92);
+      background: var(--updates-bg);
       border-radius: 24px;
       box-shadow: 0 16px 38px rgba(110, 87, 224, 0.16), 0 6px 18px rgba(0, 201, 255, 0.12);
       overflow: hidden;
       border: 1px solid rgba(110, 87, 224, 0.18);
       isolation: isolate;
-      transition: box-shadow 0.35s ease, transform 0.35s ease;
+      transition: background 0.4s ease, box-shadow 0.35s ease, transform 0.35s ease;
     }
 
     .updates-dropdown[open],
@@ -517,7 +686,7 @@
       padding: 18px 22px;
       font-weight: 700;
       color: var(--text-color-second);
-      background: radial-gradient(circle at top left, rgba(0, 201, 255, 0.16), transparent 34%), linear-gradient(135deg, #ffffff, #f0efff);
+      background: var(--updates-bg);
     }
 
     .updates-dropdown summary::-webkit-details-marker {
@@ -554,7 +723,7 @@
       margin-top: 6px;
       font-size: 13px;
       font-weight: 500;
-      color: #666;
+      color: var(--text-color-second);
     }
 
     .updates-arrow {
@@ -635,7 +804,7 @@
       max-height: none;
       overflow-y: visible;
       padding: 16px;
-      background: linear-gradient(180deg, #fbfbff, #f6fbff);
+      background: var(--posts-bg);
     }
 
     .linkedin-card {
@@ -644,10 +813,10 @@
       overflow: hidden;
       text-decoration: none;
       color: var(--text-color-second);
-      background: var(--color-white);
+      background: var(--linkedin-bg);
       border-radius: 18px;
       box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
-      transition: 0.3s ease;
+      transition: background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, transform 0.3s ease;
       min-height: 100%;
       border: 1px solid rgba(0, 201, 255, 0.14);
     }
@@ -672,7 +841,7 @@
     .linkedin-card-content {
       padding: 13px 14px 14px;
       text-align: center;
-      background: linear-gradient(135deg, #ffffff, #f6f5ff);
+      background: var(--linkedin-content);
     }
 
     .linkedin-card-content p {
@@ -709,15 +878,16 @@
       flex-direction: column;
       padding: 30px 20px 70px;
       width: 100%;
-      background: var(--color-white);
+      background: var(--card-bg);
       box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
       border-radius: 20px;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
     }
 
     .about-info p {
       text-align: center;
       font-size: 15px;
-      color: #777;
+      color: var(--text-color-second);
       line-height: 1.8;
     }
 
@@ -765,13 +935,14 @@
       align-items: center;
       flex-direction: column;
       min-height: 235px;
-      background: var(--color-white);
+      background: var(--card-bg);
       border-radius: 22px;
       box-shadow: 1px 8px 18px 2px var(--first-shadow-color);
       overflow: hidden;
       text-align: center;
       padding: 20px 16px;
-      border: 1px solid rgba(0, 181, 231, 0.12);
+      border: 1px solid var(--card-border);
+      transition: background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
     }
 
     .project-box>* {
@@ -782,7 +953,7 @@
 
     .project-box>i {
       font-size: 58px;
-      color: #00b5e7;
+      color: var(--second-color);
       margin-bottom: 14px;
     }
 
@@ -798,7 +969,7 @@
 
     .project-box label {
       font-size: 15px;
-      color: #777;
+      color: var(--text-color-second);
       margin-bottom: 8px;
       font-weight: 500;
     }
@@ -832,6 +1003,27 @@
       background: linear-gradient(135deg, var(--second-color), var(--first-color));
       transition: 0.4s ease;
       z-index: 1;
+    }
+
+    .project-box.click-animate::after {
+      bottom: 0;
+    }
+
+    .project-box.click-animate {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
+    }
+
+    .project-box.click-animate i,
+    .project-box.click-animate h3,
+    .project-box.click-animate label,
+    .project-box.click-animate span {
+      color: var(--color-white) !important;
+    }
+
+    .project-box.click-animate .project-cta {
+      background: rgba(255, 255, 255, 0.2);
+      color: var(--color-white);
     }
 
     .project-box:hover {
@@ -872,11 +1064,12 @@
     }
 
     .skills-card {
-      background: rgba(255, 255, 255, 0.88);
+      background: var(--skills-card-bg);
       padding: 18px;
       border-radius: 18px;
       box-shadow: 1px 6px 14px 1px rgba(0, 0, 0, 0.08);
       border: 1px solid rgba(110, 87, 224, 0.12);
+      transition: background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
     }
 
     .contact-info {
@@ -951,7 +1144,7 @@
       width: 50%;
       height: 50px;
       background: transparent;
-      border: 2px solid #aaa;
+      border: 2px solid var(--input-border);
       border-radius: 10px;
       padding-inline: 20px;
       outline: none;
@@ -962,7 +1155,7 @@
       width: 100%;
       height: 190px;
       background: transparent;
-      border: 2px solid #aaa;
+      border: 2px solid var(--input-border);
       border-radius: 10px;
       padding: 15px 20px;
       outline: none;
@@ -995,6 +1188,7 @@
       row-gap: 20px;
       background: var(--footer-bg);
       padding-block: 40px;
+      transition: background 0.4s ease;
     }
 
     .top-footer p {
@@ -1029,7 +1223,7 @@
     }
 
     .bottom-footer {
-      color: #9a9a9a;
+      color: var(--text-color-second);
       font-size: 13px;
       text-align: center;
       position: relative;
@@ -1071,6 +1265,10 @@
       filter: grayscale(100%);
       user-select: none;
       -webkit-user-drag: none;
+    }
+
+    [data-theme="dark"] .bot-icon img {
+      filter: grayscale(100%) brightness(1.3);
     }
 
     .bot-icon:nth-child(3n) {
@@ -1291,6 +1489,56 @@
       letter-spacing: 0.15px;
     }
 
+    .theme-switch-wrap {
+      position: relative;
+      top: auto;
+      right: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-color-second);
+      transition: color 0.4s ease, opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .theme-switch {
+      position: relative;
+      width: 48px;
+      height: 26px;
+      background: #ccc;
+      border-radius: 13px;
+      cursor: pointer;
+      transition: background 0.35s ease;
+      flex-shrink: 0;
+    }
+
+    [data-theme="dark"] .theme-switch {
+      background: #555;
+    }
+
+    .theme-switch::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.55, 1), background 0.35s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    [data-theme="dark"] .theme-switch::after {
+      transform: translateX(22px);
+      background: #222;
+    }
+
+    .theme-switch:hover {
+      box-shadow: 0 0 0 3px rgba(110, 87, 224, 0.25);
+    }
+
     @media only screen and (max-width: 1024px) {
 
       .wrapper,
@@ -1330,7 +1578,7 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: stretch;
-        background: rgba(255, 255, 255, 0.88);
+        background: var(--nav-mobile-bg);
         backdrop-filter: blur(22px);
         width: min(64vw, 255px);
         height: auto;
@@ -1363,8 +1611,11 @@
         background: rgba(110, 87, 224, 0.08);
       }
 
+      [data-theme="dark"] .nav-link {
+        background: rgba(155, 142, 255, 0.1);
+      }
 
-      .nav-menu-btn {
+    .nav-menu-btn {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1454,6 +1705,27 @@
         transform: translateY(24px);
       }
 
+      .theme-switch-wrap {
+        font-size: 11px;
+        gap: 6px;
+      }
+
+      .theme-switch {
+        width: 40px;
+        height: 22px;
+      }
+
+      .theme-switch::after {
+        width: 16px;
+        height: 16px;
+        top: 3px;
+        left: 3px;
+      }
+
+      [data-theme="dark"] .theme-switch::after {
+        transform: translateX(18px);
+      }
+
       .linkedin-card-content p {
         font-size: 14px;
       }
@@ -1481,6 +1753,27 @@
       .featured-box {
         padding-top: 100px;
         gap: 25px;
+      }
+
+      .theme-switch-wrap {
+        font-size: 10px;
+        gap: 5px;
+      }
+
+      .theme-switch {
+        width: 36px;
+        height: 20px;
+      }
+
+      .theme-switch::after {
+        width: 14px;
+        height: 14px;
+        top: 3px;
+        left: 3px;
+      }
+
+      [data-theme="dark"] .theme-switch::after {
+        transform: translateX(16px);
       }
 
       .featured-text-card {
@@ -1528,7 +1821,7 @@
           font-size: 64px;
           margin: 0;
           border-radius: 18px;
-          background: rgba(0, 181, 231, 0.1);
+          background: color-mix(in srgb, var(--second-color) 15%, transparent);
         }
 
         .project-text {
@@ -1945,6 +2238,10 @@
       <div class="nav-menu-btn">
         <i class="uil uil-bars" id="menuIcon" onclick="myMenuFunction()"></i>
       </div>
+
+      <div class="theme-switch-wrap" id="themeToggleWrap">
+        <div class="theme-switch" id="themeToggle" onclick="toggleTheme()"></div>
+      </div>
     </nav>
 
     <main class="wrapper">
@@ -2042,8 +2339,11 @@
         </div>
 
         <div class="featured-image">
-          <div class="image">
-            <img src="images/my-pic3.webp" alt="Aman Sharma profile photo" />
+          <div class="hero-collage" id="heroCollage">
+            <div class="profile-wrap" id="profileWrap">
+              <img class="profile-img" id="profileImg" src="images/my-pic3.webp" alt="Profile picture" loading="eager" fetchpriority="high" />
+            </div>
+            <div class="cards-layer" id="cardsLayer"></div>
           </div>
         </div>
       </section>
@@ -2056,7 +2356,7 @@
         </div>
 
         <div class="project-container">
-          <div class="project-box" onclick="robotics()">
+          <div class="project-box" onclick="projectNavigate('pages/robotics.html', this)">
             <i class="uil uil-robot"></i>
             <div class="project-text">
               <h3>Robotics</h3>
@@ -2066,7 +2366,7 @@
             </div>
           </div>
 
-          <div class="project-box" onclick="sketches()">
+          <div class="project-box" onclick="projectNavigate('pages/sketches.html', this)">
             <i class="uil uil-edit"></i>
             <div class="project-text">
               <h3>Sketches</h3>
@@ -2076,7 +2376,7 @@
             </div>
           </div>
 
-          <div class="project-box" onclick="websites()">
+          <div class="project-box" onclick="projectNavigate('pages/website.html', this)">
             <i class="uil uil-window"></i>
             <div class="project-text">
               <h3>Webpages</h3>
@@ -2086,7 +2386,7 @@
             </div>
           </div>
 
-          <div class="project-box" onclick="designs()">
+          <div class="project-box" onclick="projectNavigate('pages/designs.html', this)">
             <i class="uil uil-award"></i>
             <div class="project-text">
               <h3>Designs</h3>
@@ -2253,6 +2553,13 @@
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
   <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.getAttribute("data-theme") === "dark";
+      html.setAttribute("data-theme", isDark ? "light" : "dark");
+      localStorage.setItem("theme", isDark ? "light" : "dark");
+    }
+
     function myMenuFunction() {
       const menuBtn = document.getElementById("myNavMenu");
       const menuIcon = document.getElementById("menuIcon");
@@ -2304,20 +2611,11 @@
       window.open("assets/Aman_Sharma.pdf", "_blank");
     }
 
-    function robotics() {
-      window.location.href = "pages/robotics.html";
-    }
-
-    function sketches() {
-      window.location.href = "pages/sketches.html";
-    }
-
-    function websites() {
-      window.location.href = "pages/website.html";
-    }
-
-    function designs() {
-      window.location.href = "pages/designs.html";
+    function projectNavigate(url, el) {
+      el.classList.add("click-animate");
+      setTimeout(() => {
+        window.location.href = url;
+      }, 420);
     }
 
 
@@ -2417,7 +2715,6 @@
       sr.reveal(".featured-text-btn", { delay: 100 });
       sr.reveal(".social_icons", { delay: 100 });
       sr.reveal(".home-updates", { delay: 130 });
-      sr.reveal(".featured-image", { delay: 200 });
       sr.reveal(".project-box", { interval: 100 });
       sr.reveal(".top-header", {});
       sr.reveal(".linkedin-card", { interval: 100 });
@@ -2487,8 +2784,138 @@
       });
     }
 
+    const IMAGE_DATA = {
+      profile: "images/my-pic3.webp",
+      cards: [
+        { label: "Robotic Arm", url: "images/collage-icons/arm.png" },
+        { label: "Designs",     url: "images/collage-icons/grip.png" },
+        { label: "Sketches",    url: "images/collage-icons/face.png" },
+        { label: "UGV",         url: "images/collage-icons/ugv.png" },
+        { label: "Quadruped",   url: "images/collage-icons/spot.png" }
+      ]
+    };
+
+    const CARD_DATA = [
+      { angle: 10,  dist: 190, w: 86,  h: 107, rot: -7,  z: 55, delay: 0.3  },
+      { angle: 82,  dist: 210, w: 77,  h: 96,  rot: 10,  z: 35, delay: 0.5  },
+      { angle: 150, dist: 180, w: 90,  h: 110, rot: -5,  z: 55, delay: 0.4  },
+      { angle: 220, dist: 215, w: 75,  h: 94,  rot: 7,   z: 35, delay: 0.6  },
+      { angle: 295, dist: 200, w: 86,  h: 107, rot: 8,   z: 55, delay: 0.35 }
+    ];
+
+    const CARD_DATA_MOBILE = [
+      { angle: 12,  dist: 105, w: 58, h: 70,  rot: -6,  z: 55, delay: 0.3  },
+      { angle: 84,  dist: 115, w: 52, h: 62,  rot: 8,   z: 35, delay: 0.5  },
+      { angle: 152, dist: 100, w: 60, h: 72,  rot: -4,  z: 55, delay: 0.4  },
+      { angle: 222, dist: 120, w: 50, h: 62,  rot: 6,   z: 35, delay: 0.6  },
+      { angle: 296, dist: 110, w: 58, h: 70,  rot: 7,   z: 55, delay: 0.35 }
+    ];
+
+    const MOBILE_BREAKPOINT = 640;
+
+    let orbitRAF = null;
+    let orbitStartTime = 0;
+
+    function buildCollage() {
+      const cardsLayer = document.getElementById("cardsLayer");
+      const profileImg = document.getElementById("profileImg");
+
+      if (orbitRAF) { cancelAnimationFrame(orbitRAF); orbitRAF = null; }
+
+      profileImg.src = IMAGE_DATA.profile;
+      cardsLayer.innerHTML = "";
+
+      const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+      const data = isMobile ? CARD_DATA_MOBILE : CARD_DATA;
+
+      IMAGE_DATA.cards.forEach((card, i) => {
+        const pos = data[i % data.length];
+
+        const orbitItem = document.createElement("div");
+        orbitItem.className = "orbit-item";
+        orbitItem.dataset.dist = pos.dist;
+        orbitItem.dataset.initialAngle = pos.angle;
+        orbitItem.dataset.speed = "6";
+
+        const wrap = document.createElement("div");
+        wrap.className = "card";
+        wrap.dataset.cardIndex = i;
+        wrap.dataset.rot = pos.rot;
+        wrap.style.width = pos.w + "px";
+        wrap.style.height = pos.h + "px";
+        wrap.style.zIndex = pos.z;
+        wrap.style.opacity = "0";
+
+        const inner = document.createElement("div");
+        inner.className = "card-inner";
+        inner.style.setProperty("--float-dur", (5.5 + Math.random() * 2) + "s");
+        inner.style.setProperty("--float-delay", (1.5 + pos.delay * 0.4) + "s");
+        inner.style.setProperty("--dx", (3 + Math.random() * 4) + "px");
+        inner.style.setProperty("--dy", (4 + Math.random() * 6) + "px");
+        inner.style.setProperty("--dr", (Math.random() * 2 - 1) + "deg");
+        inner.style.setProperty("--ds", (1.01 + Math.random() * 0.02).toFixed(3));
+
+        const img = document.createElement("img");
+        img.className = "card-img";
+        img.src = card.url;
+        img.alt = card.label || "Project image";
+        img.loading = "lazy";
+        img.draggable = false;
+
+        inner.appendChild(img);
+        wrap.appendChild(inner);
+        orbitItem.appendChild(wrap);
+        cardsLayer.appendChild(orbitItem);
+
+        setTimeout(() => {
+          const r = pos.angle * Math.PI / 180;
+          wrap.style.transform = `translate(-50%, -50%) translate(${Math.sin(r) * pos.dist}px, ${-Math.cos(r) * pos.dist}px) rotate(${pos.rot}deg)`;
+          wrap.style.transition = "opacity 0.6s ease";
+          wrap.style.opacity = "1";
+        }, pos.delay * 1000);
+      });
+
+      orbitStartTime = Date.now();
+      orbitRAF = requestAnimationFrame(updateOrbit);
+    }
+
+    function updateOrbit() {
+      const elapsed = (Date.now() - orbitStartTime) / 1000;
+
+      document.querySelectorAll(".orbit-item").forEach((item) => {
+        const card = item.querySelector(".card");
+        const dist = parseFloat(item.dataset.dist);
+        const initialAngle = parseFloat(item.dataset.initialAngle);
+        const speed = parseFloat(item.dataset.speed);
+        const rot = parseFloat(card.dataset.rot);
+        const currentAngle = (initialAngle + elapsed * speed) % 360;
+        const rad = currentAngle * Math.PI / 180;
+        const x = Math.sin(rad) * dist;
+        const y = -Math.cos(rad) * dist;
+
+        card.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px) rotate(${rot}deg)`;
+      });
+
+      orbitRAF = requestAnimationFrame(updateOrbit);
+    }
+
+    let lastIsMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+    let resizeTimer = null;
+
+    function handleResize() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const nowMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+        if (nowMobile !== lastIsMobile) {
+          lastIsMobile = nowMobile;
+          buildCollage();
+        }
+      }, 150);
+    }
+
+    window.addEventListener("resize", handleResize);
+    document.addEventListener("DOMContentLoaded", buildCollage);
   </script>
-  <!-- Cloudflare Web Analytics -->
   <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js'
     data-cf-beacon='{"token": "29bc4054433a44f788160bb33797cf92"}'></script><!-- End Cloudflare Web Analytics -->
 </body>

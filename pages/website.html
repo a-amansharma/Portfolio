@@ -11,6 +11,13 @@
 
     gtag('config', 'G-208C0H1YJH');
   </script>
+  <script>
+    (function () {
+      var s = localStorage.getItem("theme");
+      var p = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (s === "dark" || (!s && p)) document.documentElement.setAttribute("data-theme", "dark");
+    })();
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio - Websites</title>
@@ -32,6 +39,72 @@
       --live: #0a66c2;
     }
 
+    [data-theme="dark"] {
+      --bg: #0f0f1a;
+      --white: #1a1a2e;
+      --text: #c8c8d4;
+      --muted: #999;
+      --primary: #4dd0e1;
+      --nav-bg: #16162a;
+    }
+
+    .nav-end {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-left: auto;
+    }
+
+    .theme-switch-wrap {
+      position: relative;
+      top: auto;
+      right: auto;
+      display: flex;
+      align-items: center;
+    }
+    .theme-switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      background: #bbb;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.35s ease;
+    }
+    [data-theme="dark"] .theme-switch {
+      background: #555;
+    }
+    .theme-switch::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 18px;
+      height: 18px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.55, 1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    [data-theme="dark"] .theme-switch::after {
+      transform: translateX(20px);
+      background: #222;
+    }
+    .theme-switch:hover {
+      box-shadow: 0 0 0 3px rgba(110, 87, 224, 0.25);
+    }
+    @media (max-width: 850px) {
+      .theme-switch { width: 38px; height: 20px; }
+      .theme-switch::after { width: 14px; height: 14px; top: 3px; left: 3px; }
+      [data-theme="dark"] .theme-switch::after { transform: translateX(18px); }
+    }
+    @media (max-width: 620px) {
+      .theme-switch { width: 34px; height: 18px; }
+      .theme-switch::after { width: 12px; height: 12px; top: 3px; left: 3px; }
+      [data-theme="dark"] .theme-switch::after { transform: translateX(16px); }
+    }
+
+
     * {
       margin: 0;
       padding: 0;
@@ -47,6 +120,7 @@
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
+      transition: background 0.4s ease, color 0.4s ease;
     }
 
     a {
@@ -102,6 +176,7 @@
 
     .projects-section {
       padding: 112px 8% 50px;
+      padding-top: 88px;
     }
 
     .project-block {
@@ -776,6 +851,36 @@
         height: 36px;
       }
     }
+    [data-theme="dark"] .project-block {
+      background: var(--white);
+    }
+    [data-theme="dark"] .thumb-box {
+      background: var(--bg);
+    }
+    [data-theme="dark"] .drop-icon {
+      background: var(--bg);
+    }
+    [data-theme="dark"] .more-projects p {
+      color: var(--muted);
+    }
+    [data-theme="dark"] footer {
+      background: var(--nav-bg);
+    }
+    [data-theme="dark"] .bottom-footer {
+      color: var(--muted);
+    }
+    [data-theme="dark"] ::-webkit-scrollbar-track {
+      background: #1a1a2e;
+    }
+    [data-theme="dark"] ::-webkit-scrollbar-thumb {
+      background: #333;
+    }
+    [data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+      background: #444;
+    }
+    [data-theme="dark"] .project-block.open {
+      background: linear-gradient(135deg, #1a1a2e, #1a1a2e) padding-box, linear-gradient(135deg, #49c7ff, #7b5cff, #e9c35b) border-box;
+    }
   </style>
 </head>
 
@@ -789,7 +894,12 @@
       </p>
     </div>
 
-    <a class="home-link" href="../index.html">Home</a>
+    <div class="nav-end">
+      <a class="home-link" href="../index.html">Home</a>
+      <div class="theme-switch-wrap">
+        <div class="theme-switch" onclick="toggleTheme()"></div>
+      </div>
+    </div>
   </nav>
 
   <main class="projects-section" id="websiteContainer"></main>
@@ -841,6 +951,13 @@
   </footer>
 
   <script>
+    function toggleTheme() {
+      var h = document.documentElement;
+      var d = h.getAttribute("data-theme") === "dark";
+      h.setAttribute("data-theme", d ? "light" : "dark");
+      localStorage.setItem("theme", d ? "light" : "dark");
+    }
+
     const websites = [
       {
         title: "Personal Portfolio Website",
