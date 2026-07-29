@@ -325,13 +325,15 @@
 
     .name-flip-back {
       transform: rotateY(180deg);
-}
+    }
+
     .featured-name {
       font-size: 40px;
       font-weight: 600;
       color: var(--text-color-second);
       margin-block: 25px 10px;
     }
+
     .typedText {
       text-transform: capitalize;
       color: rgb(81, 81, 255);
@@ -490,17 +492,27 @@
     }
 
     @keyframes profileEnter {
-      0%   { opacity: 0; transform: translate3d(-50%, -50%, 0) scale(0.55); }
-      100% { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1); }
+      0% {
+        opacity: 0;
+        transform: translate3d(-50%, -50%, 0) scale(0.55);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translate3d(-50%, -50%, 0) scale(1);
+      }
     }
 
     @keyframes imgFloat {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translate3d(-50%, -50%, 0) translateY(0);
         border-radius: 65% 55% 65% 55%;
         box-shadow: 0 18px 45px rgba(0, 0, 0, 0.14), 0 10px 28px rgba(0, 201, 255, 0.14);
         filter: drop-shadow(0 14px 18px rgba(110, 87, 224, 0.16));
       }
+
       50% {
         transform: translate3d(-50%, -50%, 0) translateY(15px);
         border-radius: 55% 65% 55% 65%;
@@ -553,20 +565,40 @@
     }
 
     @keyframes floatDrift {
-      0%   { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
-      25%  { transform: translate3d(var(--dx, 6px), calc(var(--dy, -12px) * -1), 0) rotate(var(--dr, 1deg)) scale(var(--ds, 1.01)); }
-      50%  { transform: translate3d(calc(var(--dx, 6px) * -0.6), var(--dy, -12px), 0) rotate(calc(var(--dr, 1deg) * -1)) scale(1); }
-      75%  { transform: translate3d(var(--dx, 6px), calc(var(--dy, -12px) * -0.5), 0) rotate(var(--dr, 1deg)) scale(var(--ds, 1.01)); }
-      100% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+      0% {
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+      }
+
+      25% {
+        transform: translate3d(var(--dx, 6px), calc(var(--dy, -12px) * -1), 0) rotate(var(--dr, 1deg)) scale(var(--ds, 1.01));
+      }
+
+      50% {
+        transform: translate3d(calc(var(--dx, 6px) * -0.6), var(--dy, -12px), 0) rotate(calc(var(--dr, 1deg) * -1)) scale(1);
+      }
+
+      75% {
+        transform: translate3d(var(--dx, 6px), calc(var(--dy, -12px) * -0.5), 0) rotate(var(--dr, 1deg)) scale(var(--ds, 1.01));
+      }
+
+      100% {
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .profile-wrap, .card, .card-inner {
+
+      .profile-wrap,
+      .card,
+      .card-inner {
         animation: none !important;
         opacity: 1 !important;
         transform: none !important;
       }
-      .profile-wrap { transform: translate3d(-50%, -50%, 0) !important; }
+
+      .profile-wrap {
+        transform: translate3d(-50%, -50%, 0) !important;
+      }
     }
 
     @media (max-width: 1024px) {
@@ -574,6 +606,7 @@
         --collage-size: 480px;
         --profile-size: 230px;
       }
+
       .featured-image {
         min-height: 480px;
       }
@@ -584,6 +617,7 @@
         min-height: auto;
         padding: 20px 0;
       }
+
       :root {
         --collage-size: 400px;
         --profile-size: 195px;
@@ -1492,8 +1526,8 @@
     .theme-switch-wrap {
       position: relative;
       top: auto;
-      right: auto;
       display: flex;
+
       align-items: center;
       gap: 10px;
       font-size: 13px;
@@ -1503,9 +1537,11 @@
     }
 
     .theme-switch {
+      margin-right: 20px;
       position: relative;
       width: 48px;
       height: 26px;
+      right: 0px;
       background: #ccc;
       border-radius: 13px;
       cursor: pointer;
@@ -1615,7 +1651,7 @@
         background: rgba(155, 142, 255, 0.1);
       }
 
-    .nav-menu-btn {
+      .nav-menu-btn {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -2233,17 +2269,17 @@
           <li class="nav_list"><a href="#skills" class="nav-link">Skills</a></li>
           <li class="nav_list"><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
+                <div class="theme-switch-wrap" id="themeToggleWrap">
+          <div class="theme-switch" id="themeToggle" onclick="toggleTheme()"></div>
+        </div>
       </div>
-
       <div class="nav-menu-btn">
+        <div class="theme-switch-wrap" id="themeToggleWrap">
+          <div class="theme-switch" id="themeToggle" onclick="toggleTheme()"></div>
+        </div>
         <i class="uil uil-bars" id="menuIcon" onclick="myMenuFunction()"></i>
       </div>
-
-      <div class="theme-switch-wrap" id="themeToggleWrap">
-        <div class="theme-switch" id="themeToggle" onclick="toggleTheme()"></div>
-      </div>
     </nav>
-
     <main class="wrapper">
       <section class="featured-box" id="home">
         <div class="featured-text">
@@ -2341,7 +2377,8 @@
         <div class="featured-image">
           <div class="hero-collage" id="heroCollage">
             <div class="profile-wrap" id="profileWrap">
-              <img class="profile-img" id="profileImg" src="images/my-pic3.webp" alt="Profile picture" loading="eager" fetchpriority="high" />
+              <img class="profile-img" id="profileImg" src="images/my-pic3.webp" alt="Profile picture" loading="eager"
+                fetchpriority="high" />
             </div>
             <div class="cards-layer" id="cardsLayer"></div>
           </div>
@@ -2788,27 +2825,27 @@
       profile: "images/my-pic3.webp",
       cards: [
         { label: "Robotic Arm", url: "images/collage-icons/arm.png" },
-        { label: "Designs",     url: "images/collage-icons/grip.png" },
-        { label: "Sketches",    url: "images/collage-icons/face.png" },
-        { label: "UGV",         url: "images/collage-icons/ugv.png" },
-        { label: "Quadruped",   url: "images/collage-icons/spot.png" }
+        { label: "Designs", url: "images/collage-icons/grip.png" },
+        { label: "Sketches", url: "images/collage-icons/face.png" },
+        { label: "UGV", url: "images/collage-icons/ugv.png" },
+        { label: "Quadruped", url: "images/collage-icons/spot.png" }
       ]
     };
 
     const CARD_DATA = [
-      { angle: 10,  dist: 190, w: 86,  h: 107, rot: -7,  z: 55, delay: 0.3  },
-      { angle: 82,  dist: 210, w: 77,  h: 96,  rot: 10,  z: 35, delay: 0.5  },
-      { angle: 150, dist: 180, w: 90,  h: 110, rot: -5,  z: 55, delay: 0.4  },
-      { angle: 220, dist: 215, w: 75,  h: 94,  rot: 7,   z: 35, delay: 0.6  },
-      { angle: 295, dist: 200, w: 86,  h: 107, rot: 8,   z: 55, delay: 0.35 }
+      { angle: 10, dist: 190, w: 86, h: 107, rot: -7, z: 55, delay: 0.3 },
+      { angle: 82, dist: 210, w: 77, h: 96, rot: 10, z: 35, delay: 0.5 },
+      { angle: 150, dist: 180, w: 90, h: 110, rot: -5, z: 55, delay: 0.4 },
+      { angle: 220, dist: 215, w: 75, h: 94, rot: 7, z: 35, delay: 0.6 },
+      { angle: 295, dist: 200, w: 86, h: 107, rot: 8, z: 55, delay: 0.35 }
     ];
 
     const CARD_DATA_MOBILE = [
-      { angle: 12,  dist: 105, w: 58, h: 70,  rot: -6,  z: 55, delay: 0.3  },
-      { angle: 84,  dist: 115, w: 52, h: 62,  rot: 8,   z: 35, delay: 0.5  },
-      { angle: 152, dist: 100, w: 60, h: 72,  rot: -4,  z: 55, delay: 0.4  },
-      { angle: 222, dist: 120, w: 50, h: 62,  rot: 6,   z: 35, delay: 0.6  },
-      { angle: 296, dist: 110, w: 58, h: 70,  rot: 7,   z: 55, delay: 0.35 }
+      { angle: 12, dist: 105, w: 58, h: 70, rot: -6, z: 55, delay: 0.3 },
+      { angle: 84, dist: 115, w: 52, h: 62, rot: 8, z: 35, delay: 0.5 },
+      { angle: 152, dist: 100, w: 60, h: 72, rot: -4, z: 55, delay: 0.4 },
+      { angle: 222, dist: 120, w: 50, h: 62, rot: 6, z: 35, delay: 0.6 },
+      { angle: 296, dist: 110, w: 58, h: 70, rot: 7, z: 55, delay: 0.35 }
     ];
 
     const MOBILE_BREAKPOINT = 640;
