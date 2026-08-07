@@ -1223,6 +1223,149 @@
       rotate: -45deg;
     }
 
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 2000;
+    }
+
+    .modal-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-box {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+      padding: 36px 28px 32px;
+      text-align: center;
+      transform: scale(0.85) translateY(20px);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .modal-overlay.show .modal-box {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(110, 87, 224, 0.1);
+      color: var(--text-color-second);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: var(--first-color);
+      color: var(--color-white);
+      transform: rotate(90deg);
+    }
+
+    .modal-check {
+      width: 74px;
+      height: 74px;
+      margin: 0 auto 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--second-color), var(--first-color));
+      border-radius: 50%;
+      box-shadow: 0 10px 24px rgba(0, 201, 255, 0.35);
+    }
+
+    .modal-box h3 {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text-color-second);
+      margin-bottom: 8px;
+    }
+
+    .modal-sub {
+      font-size: 14px;
+      color: var(--text-color-second);
+      opacity: 0.75;
+      margin-bottom: 18px;
+    }
+
+    .modal-divider {
+      width: 56px;
+      height: 3px;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--second-color), var(--first-color));
+      margin: 0 auto 20px;
+    }
+
+    .modal-call-label {
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--text-color-second);
+      opacity: 0.6;
+      margin-bottom: 8px;
+    }
+
+    .modal-number {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-color-third);
+      letter-spacing: 1px;
+      margin-bottom: 22px;
+    }
+
+    .modal-call-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 34px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--second-color), var(--first-color));
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 10px 24px rgba(110, 87, 224, 0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .modal-call-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(110, 87, 224, 0.45);
+    }
+
+    .modal-call-btn i {
+      font-size: 20px;
+    }
+
     footer {
       display: flex;
       justify-content: center;
@@ -2543,7 +2686,6 @@
               <p>or</p>
               <p><i class="uil uil-envelope"></i> Email: <a href="mailto:amanxrishi@gmail.com">amanxrishi@gmail.com</a>
               </p>
-              <p><i class="uil uil-phone"></i> Tel: <a href="tel:+919005283713">+91 90052 83713</a></p>
             </div>
           </div>
 
@@ -2595,6 +2737,24 @@
         <p>© 2026 Aman Sharma Portfolio. All rights reserved.</p>
       </div>
     </footer>
+
+    <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-label="Message sent">
+      <div class="modal-box">
+        <button type="button" class="modal-close" id="modal-close" aria-label="Close">
+          <i class="uil uil-multiply"></i>
+        </button>
+        <div class="modal-check"><i class="uil uil-check"></i></div>
+        <h3>Message sent!</h3>
+        <p class="modal-sub">Thanks for reaching out. I'll get back to you soon.</p>
+        <div class="modal-divider"></div>
+        <p class="modal-call-label">Prefer to talk?</p>
+        <p class="modal-number">+91 90052 83713</p>
+        <a class="modal-call-btn" href="tel:+919005283713">
+          <i class="uil uil-phone-alt"></i>
+          Call me
+        </a>
+      </div>
+    </div>
   </div>
 
   <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
@@ -2813,6 +2973,25 @@
     window.addEventListener("scroll", scrollActive);
 
     const contactForm = document.getElementById("contact-form");
+    const modalOverlay = document.getElementById("modal-overlay");
+
+    function showModal() {
+      modalOverlay.classList.add("show");
+    }
+
+    function hideModal() {
+      modalOverlay.classList.remove("show");
+    }
+
+    document.getElementById("modal-close").addEventListener("click", hideModal);
+
+    modalOverlay.addEventListener("click", function (e) {
+      if (e.target === modalOverlay) hideModal();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") hideModal();
+    });
 
     if (window.emailjs && contactForm) {
       emailjs.init("a8Y-fuzicejHF5mYl");
@@ -2822,7 +3001,7 @@
 
         emailjs.sendForm("service_smfvkky", "template_ttio5xw", this).then(
           function () {
-            alert("Message sent successfully!");
+            showModal();
             contactForm.reset();
           },
           function (error) {
