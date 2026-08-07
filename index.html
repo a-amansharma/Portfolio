@@ -1146,12 +1146,16 @@
       color: var(--color-white);
       margin-block: 5px;
       text-align: center;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      white-space: nowrap;
     }
 
     .contact-info a {
       color: inherit;
       text-decoration: none;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .contact-info p>i {
@@ -1166,6 +1170,70 @@
     .contact-info:hover p,
     .contact-info:hover i {
       color: #777;
+    }
+
+    .copy-mail-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      width: 24px;
+      height: 24px;
+      margin-left: 6px;
+      background: rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 13px;
+      vertical-align: middle;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+
+    .copy-mail-btn:hover {
+      background: rgba(255, 255, 255, 0.45);
+      transform: scale(1.12);
+    }
+
+    .contact-info:hover .copy-mail-btn {
+      background: rgba(0, 0, 0, 0.08);
+      color: #777;
+    }
+
+    .copy-mail-btn.copied {
+      background: rgba(46, 213, 115, 0.35);
+      color: #ffffff;
+      transform: scale(1.12);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transform: translateX(-50%) translateY(20px);
+      background: linear-gradient(135deg, var(--second-color), var(--first-color));
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+      z-index: 3000;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
     }
 
     .form-control {
@@ -2256,6 +2324,13 @@
       .contact-info {
         padding-inline: 15px;
       }
+
+      .copy-mail-btn {
+        width: 20px;
+        height: 20px;
+        font-size: 11px;
+        margin-left: 4px;
+      }
     }
 
     @media only screen and (max-height: 520px) and (orientation: landscape) {
@@ -2703,11 +2778,16 @@
               <h2>Find Me <i class="uil uil-corner-right-down"></i></h2>
               <p><i class="uil uil-envelope"></i> Email: <a
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=amanxrishi@icloud.com"
-                  target="_blank" rel="noopener">amanxrishi@icloud.com</a></p>
+                  target="_blank" rel="noopener">amanxrishi@icloud.com</a>
+                <button type="button" class="copy-mail-btn" data-copy="amanxrishi@icloud.com"
+                  aria-label="Copy email"><i class="uil uil-copy"></i></button>
+              </p>
               <p>or</p>
               <p><i class="uil uil-envelope"></i> Email: <a
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=amanxrishi@gmail.com"
                   target="_blank" rel="noopener">amanxrishi@gmail.com</a>
+                <button type="button" class="copy-mail-btn" data-copy="amanxrishi@gmail.com"
+                  aria-label="Copy email"><i class="uil uil-copy"></i></button>
               </p>
             </div>
           </div>
@@ -2777,6 +2857,8 @@
         </a>
       </div>
     </div>
+
+    <div class="toast" id="toast">Mail copied to clipboard</div>
   </div>
 
   <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
@@ -3032,6 +3114,48 @@
       modalNumber.href = "tel:" + PHONE_NUMBER;
       modalNumber.textContent = "+91 90052 83713";
       modalCallBtn.parentNode.insertBefore(modalNumber, modalCallBtn);
+    });
+
+    const toast = document.getElementById("toast");
+    let toastTimer;
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () {
+        toast.classList.remove("show");
+      }, 1800);
+    }
+
+    function copyEmail(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text);
+      } else {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+      }
+      showToast("Mail copied to clipboard");
+    }
+
+    document.querySelectorAll(".copy-mail-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const icon = btn.querySelector("i");
+        copyEmail(btn.dataset.copy);
+        icon.className = "uil uil-check";
+        btn.classList.add("copied");
+        clearTimeout(btn._copyTimer);
+        btn._copyTimer = setTimeout(function () {
+          btn.classList.remove("copied");
+          icon.className = "uil uil-copy";
+        }, 1600);
+      });
     });
 
     if (window.emailjs && contactForm) {
