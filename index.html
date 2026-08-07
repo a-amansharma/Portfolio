@@ -1341,19 +1341,22 @@
       margin-bottom: 22px;
       cursor: pointer;
       opacity: 0;
-      visibility: hidden;
-      transform: translateY(6px);
-      transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
-    }
-
-    .modal-number.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
+      animation: modal-number-reveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.05s forwards;
     }
 
     .modal-number:hover {
       text-decoration: underline;
+    }
+
+    @keyframes modal-number-reveal {
+      from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     .modal-call-btn {
@@ -2765,7 +2768,6 @@
         <p class="modal-sub">Thanks for reaching out. I'll get back to you soon.</p>
         <div class="modal-divider"></div>
         <p class="modal-call-label">Prefer to talk?</p>
-        <a class="modal-number" id="modal-number" href="tel:+919005283713">+91 90052 83713</a>
         <a class="modal-call-btn" id="modal-call-btn" href="tel:+919005283713">
           <i class="uil uil-phone-alt"></i>
           <span id="modal-call-btn-text">Call me</span>
@@ -3011,8 +3013,6 @@
     });
 
     const modalCallBtn = document.getElementById("modal-call-btn");
-    const modalCallBtnText = document.getElementById("modal-call-btn-text");
-    const modalNumber = document.getElementById("modal-number");
     const PHONE_NUMBER = "+919005283713";
     const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
 
@@ -3021,12 +3021,14 @@
 
       e.preventDefault();
 
-      if (!modalNumber.classList.contains("show")) {
-        modalNumber.classList.add("show");
-        modalCallBtnText.textContent = "Open dialer";
-      } else {
-        window.location.href = "tel:" + PHONE_NUMBER;
-      }
+      if (document.getElementById("modal-number")) return;
+
+      const modalNumber = document.createElement("a");
+      modalNumber.id = "modal-number";
+      modalNumber.className = "modal-number";
+      modalNumber.href = "tel:" + PHONE_NUMBER;
+      modalNumber.textContent = "+91 90052 83713";
+      modalCallBtn.parentNode.insertBefore(modalNumber, modalCallBtn);
     });
 
     if (window.emailjs && contactForm) {
