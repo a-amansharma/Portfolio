@@ -1332,11 +1332,28 @@
     }
 
     .modal-number {
+      display: inline-block;
       font-size: 26px;
       font-weight: 700;
       color: var(--text-color-third);
       letter-spacing: 1px;
+      text-decoration: none;
       margin-bottom: 22px;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+    }
+
+    .modal-number.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .modal-number:hover {
+      text-decoration: underline;
     }
 
     .modal-call-btn {
@@ -2748,10 +2765,10 @@
         <p class="modal-sub">Thanks for reaching out. I'll get back to you soon.</p>
         <div class="modal-divider"></div>
         <p class="modal-call-label">Prefer to talk?</p>
-        <p class="modal-number">+91 90052 83713</p>
-        <a class="modal-call-btn" href="tel:+919005283713">
+        <a class="modal-number" id="modal-number" href="tel:+919005283713">+91 90052 83713</a>
+        <a class="modal-call-btn" id="modal-call-btn" href="tel:+919005283713">
           <i class="uil uil-phone-alt"></i>
-          Call me
+          <span id="modal-call-btn-text">Call me</span>
         </a>
       </div>
     </div>
@@ -2991,6 +3008,25 @@
 
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") hideModal();
+    });
+
+    const modalCallBtn = document.getElementById("modal-call-btn");
+    const modalCallBtnText = document.getElementById("modal-call-btn-text");
+    const modalNumber = document.getElementById("modal-number");
+    const PHONE_NUMBER = "+919005283713";
+    const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+
+    modalCallBtn.addEventListener("click", function (e) {
+      if (isCoarsePointer) return;
+
+      e.preventDefault();
+
+      if (!modalNumber.classList.contains("show")) {
+        modalNumber.classList.add("show");
+        modalCallBtnText.textContent = "Open dialer";
+      } else {
+        window.location.href = "tel:" + PHONE_NUMBER;
+      }
     });
 
     if (window.emailjs && contactForm) {
