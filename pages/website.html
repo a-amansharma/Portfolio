@@ -882,6 +882,190 @@
     [data-theme="dark"] .project-block.open {
       background: linear-gradient(135deg, #1a1a2e, #1a1a2e) padding-box, linear-gradient(135deg, #49c7ff, #7b5cff, #e9c35b) border-box;
     }
+
+    .more-projects {
+      text-align: center;
+      padding: clamp(32px, 5vw, 48px);
+      margin: 0 8% 60px;
+      border: 2px dashed #cfcfcf;
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .more-projects h2 {
+      font-size: clamp(22px, 4vw, 28px);
+      margin-bottom: 8px;
+    }
+
+    .more-projects p {
+      color: var(--muted);
+    }
+
+    .more-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .more-btn {
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #fda64d, #ff6a88, #d55bd8);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      box-shadow: 0 12px 28px rgba(255, 106, 136, 0.35);
+      transition: transform .3s ease, box-shadow .3s ease;
+      animation: moreWiggle 3.5s ease-in-out infinite;
+    }
+
+    .more-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 18px 36px rgba(255, 106, 136, 0.45);
+    }
+
+    .more-count {
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .more-label {
+      font-size: 15px;
+      line-height: 1.1;
+    }
+
+    @keyframes moreWiggle {
+      0%, 100% { transform: rotate(0deg); }
+      5% { transform: rotate(-2deg); }
+      10% { transform: rotate(2deg); }
+      15% { transform: rotate(-2deg); }
+      20% { transform: rotate(0deg); }
+      60% { transform: rotate(0deg); }
+    }
+
+    .buy-coffee-btn {
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 26px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ffd86f, #fc8b4a);
+      color: #4a2c00;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      box-shadow: 0 12px 28px rgba(252, 139, 74, 0.35);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .buy-coffee-btn i {
+      font-size: 20px;
+    }
+
+    .buy-coffee-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 18px 36px rgba(252, 139, 74, 0.45);
+    }
+
+    .qr-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .3s ease, visibility .3s ease;
+    }
+
+    .qr-modal.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .qr-modal-box {
+      position: relative;
+      width: min(90vw, 360px);
+      background: var(--white);
+      border-radius: 22px;
+      padding: 28px 22px 24px;
+      text-align: center;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+      transform: scale(0.6) translateY(40px);
+      opacity: 0;
+      transition: transform .45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity .35s ease;
+    }
+
+    .qr-modal.open .qr-modal-box {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+
+    .qr-modal-box h3 {
+      font-size: 20px;
+      color: var(--text);
+    }
+
+    .qr-modal-box p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    .qr-modal-box img {
+      width: 100%;
+      max-width: 260px;
+      margin: 14px auto 0;
+      border-radius: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.15);
+    }
+
+    .qr-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 34px;
+      height: 34px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.08);
+      color: var(--text);
+      font-size: 20px;
+      line-height: 34px;
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    .qr-close:hover {
+      background: rgba(0, 0, 0, 0.18);
+      transform: rotate(90deg);
+    }
+
+    @media (max-width: 620px) {
+      .more-projects {
+        margin: 0 4% 40px;
+      }
+    }
   </style>
 </head>
 
@@ -905,6 +1089,33 @@
   </div>
 
   <main class="projects-section" id="websiteContainer"></main>
+
+  <section class="more-projects">
+    <h2>More Websites</h2>
+    <p>Coming soon...</p>
+
+    <div class="more-actions">
+      <button class="more-btn" type="button" aria-label="3+ more websites">
+        <span class="more-count">3+</span>
+        <span class="more-label">More Websites</span>
+      </button>
+
+      <button class="buy-coffee-btn" type="button" onclick="openQR()">
+        <i class="uil uil-coffee"></i>
+        <span>Buy me a coffee</span>
+        <i class="uil uil-qrcode-scan"></i>
+      </button>
+    </div>
+  </section>
+
+  <div class="qr-modal" id="qrModal">
+    <div class="qr-modal-box">
+      <button class="qr-close" type="button" onclick="closeQR()" aria-label="Close">×</button>
+      <h3>Buy me a coffee</h3>
+      <img src="../images/my-qr.webp" alt="Buy me a coffee QR code">
+      <p>Scan to support my work</p>
+    </div>
+  </div>
 
   <footer>
     <div class="top-footer">
@@ -1148,6 +1359,26 @@
     });
 
     window.addEventListener("load", fitLaptopPreviews);
+
+    function openQR() {
+      document.getElementById("qrModal").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeQR() {
+      document.getElementById("qrModal").classList.remove("open");
+      document.body.style.overflow = "auto";
+    }
+
+    document.getElementById("qrModal").addEventListener("click", function (e) {
+      if (e.target === this) closeQR();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && document.getElementById("qrModal").classList.contains("open")) {
+        closeQR();
+      }
+    });
   </script>
 
 </body>
