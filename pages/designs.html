@@ -234,8 +234,8 @@
 
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
     }
 
     .project-card {
@@ -409,18 +409,18 @@
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.28);
     }
 
-    @media (max-width: 950px) {
+    @media (max-width: 1150px) {
       nav {
         height: 78px;
-        padding: 0 6%;
+        padding: 0 5%;
       }
 
       .projects-section {
-        padding: 115px 5% 45px;
+        padding: 115px 4% 45px;
       }
 
       .project-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
       }
     }
 
@@ -451,8 +451,8 @@
       }
 
       .project-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
       }
 
       .project-desc,
@@ -983,19 +983,21 @@
 
     @media (max-width: 620px) {
       .model-hint { display: none; }
-      .model-viewer-top { padding: 14px 14px; }
+      .model-viewer-top { padding: 12px 12px; }
       .cad-card .overlay {
-        padding: 10px 12px;
+        padding: 8px 10px;
+        gap: 6px;
       }
       .view3d-btn {
-        padding: 10px 14px;
-        font-size: 13px;
+        padding: 8px 12px;
+        font-size: 12px;
+        gap: 6px;
         flex: 1;
         justify-content: center;
         text-align: center;
       }
       .view3d-btn i {
-        font-size: 15px;
+        font-size: 13px;
       }
       .btn-row {
         width: 100%;
@@ -1005,11 +1007,11 @@
         aspect-ratio: 4 / 3;
       }
       .project-head h2 {
-        font-size: 20px;
+        font-size: 19px;
       }
       .project-desc,
       .project-note {
-        font-size: 13.5px;
+        font-size: 13px;
         line-height: 1.5;
       }
       .cad-tags {
@@ -1044,44 +1046,53 @@
 
     @media (max-width: 420px) {
       .cad-tag {
-        font-size: 11.5px;
-        padding: 5px 10px;
-        gap: 5px;
+        font-size: 11px;
+        padding: 4px 9px;
+        gap: 4px;
       }
 
       .cad-tag i {
-        font-size: 13px;
+        font-size: 12px;
       }
 
       .cad-tags {
-        gap: 6px;
+        gap: 5px;
       }
 
       .project-head h2 {
-        font-size: 18px;
+        font-size: 17px;
       }
 
       .project-desc,
       .project-note {
-        font-size: 12.5px;
+        font-size: 12px;
       }
 
       .view3d-btn {
-        padding: 8px 10px;
-        font-size: 12px;
-        gap: 5px;
+        padding: 7px 9px;
+        font-size: 11px;
+        gap: 4px;
       }
 
       .view3d-btn i {
-        font-size: 13px;
+        font-size: 12px;
       }
 
       .cad-name {
-        font-size: 13px;
+        font-size: 12px;
+        margin-bottom: 6px;
       }
 
       .project-grid {
-        gap: 12px;
+        gap: 10px;
+      }
+
+      .project-container {
+        padding: 14px;
+      }
+
+      .btn-row {
+        gap: 6px;
       }
     }
   </style>
