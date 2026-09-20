@@ -784,6 +784,22 @@
       color: #7fe0ef;
     }
 
+    .cad-tag-highlight {
+      background: linear-gradient(135deg, #1e9fab, #2bbfce);
+      color: #fff !important;
+      border: none !important;
+      box-shadow: 0 4px 14px rgba(30, 159, 171, 0.4);
+    }
+
+    .cad-tag-highlight i {
+      color: #fff;
+    }
+
+    [data-theme="dark"] .cad-tag-highlight {
+      background: linear-gradient(135deg, #1e9fab, #4dd0e1);
+      color: #fff !important;
+    }
+
     .model-viewer {
       position: fixed;
       inset: 0;
@@ -1228,11 +1244,11 @@
         folder: 'idCard-Project-1',
         name: 'Smart ID Card',
         desc: 'Complete 3D CAD project — a working RFID ID-card holder that I designed and 3D printed.',
-        note: 'Every file below is a real STL exported from CAD and rendered live in your browser with Three.js. The first card shows the <strong>full assembled</strong> Smart ID Card, the rest are its individual 3D-printed parts.',
+        note: 'I designed and developed this Smart ID Card during my mechanical design internship at <strong>Beckkon Design</strong>, placed on-site in the <strong>IIT BHU</strong> ecosystem. Working within one of India\'s premier engineering campuses gave me real exposure to how design thinking, precision manufacturing, and rapid prototyping come together in practice.<br/><br/>Every file below is a genuine STL exported directly from CAD and rendered live in your browser with Three.js — the first card shows the <strong>full assembled</strong> model, while the rest break it down into the individual parts that were 3D-printed and fit-tested on-site.',
         tags: [
           { icon: 'uil-settings', text: 'Mechanical Design' },
-          { icon: 'uil-map-marker', text: 'Beckton Design, IIT BHU (On-site)' },
-          { icon: 'uil-spinner', text: '3D Printed' }
+          { icon: 'uil-briefcase-alt', text: 'Internship', highlight: true },
+          { icon: 'uil-map-marker', text: 'Beckkon Design, IIT BHU (On-site)' }
         ],
         parts: [
           { file: 'assembled5.stl', name: 'Full Assembly', color: '#ffffff' },
@@ -1240,7 +1256,7 @@
           { file: 'Bottom5.stl', name: 'Bottom Cover', color: '#8f7bff' },
           { file: 'cap5.stl', name: 'Battery Cap', color: '#ffb84d' },
           { file: 'pvcCard4.stl', name: 'PVC ID Card', color: '#a5d8ff' },
-          { file: 'cr2032x4-5.stl', name: 'CR2032 x4 Battery Holder', color: '#ff8fa3' }
+          { file: 'cr2032x4-5.stl', name: 'CR2032 x4 demo Battery', color: '#ff8fa3' }
         ]
       }
     ];
@@ -1250,7 +1266,7 @@
       if (!host) return;
       host.innerHTML = CAD_PROJECTS.map(function (project) {
         var tags = project.tags.map(function (t) {
-          return '<span class="cad-tag"><i class="uil ' + t.icon + '"></i> ' + t.text + '</span>';
+          return '<span class="cad-tag' + (t.highlight ? ' cad-tag-highlight' : '') + '"><i class="uil ' + t.icon + '"></i> ' + t.text + '</span>';
         }).join('');
 
         var cards = project.parts.map(function (part) {
