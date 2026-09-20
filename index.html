@@ -2936,14 +2936,13 @@
 
     document.querySelectorAll(".project-box[data-url]").forEach(function (box) {
       var url = box.getAttribute("data-url");
-      var fired = false;
       var startX = 0;
       var startY = 0;
       var moved = false;
 
       function dispatch() {
-        if (fired) return;
-        fired = true;
+        if (box.__fired || box.__navigating) return;
+        box.__fired = true;
         projectNavigate(url, box);
       }
 
@@ -2989,6 +2988,16 @@
 
       box.addEventListener("click", dispatch);
     });
+
+    function resetProjectCards() {
+      document.querySelectorAll(".project-box[data-url]").forEach(function (box) {
+        box.__fired = false;
+        box.__navigating = false;
+        box.classList.remove("click-animate");
+      });
+    }
+
+    window.addEventListener("pageshow", resetProjectCards);
 
 
     const updatesDropdown = document.querySelector(".updates-dropdown");
