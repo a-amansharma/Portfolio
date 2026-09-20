@@ -13,7 +13,7 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio - Designs</title>
+  <title>Portfolio - 3D CAD and Designs</title>
 
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
   <link rel="shortcut icon" href="../images/my-pic3.webp" type="image/webp">
@@ -643,6 +643,326 @@
       background: rgba(0, 0, 0, 0.18);
       transform: rotate(90deg);
     }
+
+    .cad-card {
+      cursor: default;
+      background: linear-gradient(135deg, #dbe7ff, #eae6ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 4 / 3;
+    }
+
+    [data-theme="dark"] .cad-card {
+      background: linear-gradient(135deg, #14142a, #1e1e3a);
+    }
+
+    .cad-card canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .cad-card .cad-loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      transition: opacity .3s ease;
+    }
+
+    .cad-card .cad-loading .spinner {
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(0, 0, 0, 0.15);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: cadSpin 0.9s linear infinite;
+    }
+
+    [data-theme="dark"] .cad-card .cad-loading .spinner {
+      border-color: rgba(255, 255, 255, 0.2);
+      border-top-color: var(--primary);
+    }
+
+    @keyframes cadSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    .cad-card .cad-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.55);
+      margin-bottom: 10px;
+      letter-spacing: 0.3px;
+    }
+
+    .cad-card .overlay {
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.28) 45%, transparent);
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      cursor: default;
+    }
+
+    .view3d-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      cursor: pointer;
+      padding: 12px 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #1e9fab, #4dd0e1);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 6px 18px rgba(30, 159, 171, 0.45);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .view3d-btn i {
+      font-size: 17px;
+    }
+
+    .view3d-btn:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 12px 26px rgba(30, 159, 171, 0.6);
+    }
+
+    .cad-card:hover img { transform: none; filter: none; }
+
+    .project-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .project-head h2 {
+      margin-bottom: 6px;
+    }
+
+    .project-head .project-desc {
+      margin-bottom: 0;
+    }
+
+    .cad-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding-top: 6px;
+    }
+
+    .cad-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(30, 159, 171, 0.12);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid rgba(30, 159, 171, 0.25);
+    }
+
+    [data-theme="dark"] .cad-tag {
+      background: rgba(77, 208, 225, 0.14);
+      color: #7fe0ef;
+    }
+
+    .model-viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 100000;
+      display: flex;
+      flex-direction: column;
+      background: rgba(10, 10, 20, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .3s ease, visibility .3s ease;
+    }
+
+    .model-viewer.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .model-viewer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 20px clamp(16px, 4vw, 40px);
+      flex-wrap: wrap;
+    }
+
+    .model-viewer-title {
+      font-size: clamp(18px, 3vw, 26px);
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .model-viewer-meta {
+      color: rgba(255,255,255,0.6);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .model-viewer-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .mv-btn {
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      transition: background .3s ease, transform .3s ease;
+    }
+
+    .mv-btn:hover {
+      background: rgba(255,255,255,0.22);
+      transform: translateY(-2px);
+    }
+
+    .mv-btn.active {
+      background: linear-gradient(135deg, #1e9fab, #4dd0e1);
+    }
+
+    .mv-close {
+      background: linear-gradient(135deg, #ff6a88, #d55bd8);
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .model-viewer-body {
+      flex: 1;
+      position: relative;
+      margin: 0 clamp(8px, 2vw, 28px);
+      border-radius: 18px;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 40%, #23233f, #0e0e1c);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    }
+
+    .model-viewer-body canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .model-hint {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      color: rgba(255,255,255,0.85);
+      font-size: 12px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .model-hint span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .model-hint i {
+      font-size: 15px;
+      color: var(--primary);
+    }
+
+    @media (max-width: 620px) {
+      .model-hint { display: none; }
+      .model-viewer-top { padding: 14px 14px; }
+      .cad-card .overlay {
+        padding: 12px 14px;
+      }
+      .view3d-btn {
+        padding: 12px 18px;
+        font-size: 14px;
+        width: 100%;
+        justify-content: center;
+      }
+      .cad-card {
+        aspect-ratio: 4 / 3;
+      }
+      .model-viewer-actions {
+        gap: 8px;
+        width: 100%;
+        justify-content: space-between;
+      }
+      .mv-btn {
+        padding: 9px 14px;
+        font-size: 12px;
+        flex: 1;
+        justify-content: center;
+      }
+      .mv-close {
+        flex: 0 0 40px;
+      }
+      .model-viewer-title {
+        font-size: 18px;
+      }
+      .model-viewer-meta {
+        font-size: 11px;
+      }
+      .project-head {
+        flex-direction: column;
+        gap: 4px;
+      }
+      .cad-tags {
+        padding-top: 0;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .cad-tag {
+        font-size: 11px;
+        padding: 6px 10px;
+      }
+    }
   </style>
 </head>
 
@@ -652,7 +972,7 @@
     <div class="nav-logo">
       <p class="nav-name" onclick="goBackToPortfolio()">
         <span class="back-btn">&lt;</span>
-        Designs
+        3D CAD and Designs
       </p>
     </div>
 
@@ -665,6 +985,8 @@
   </nav>
 
   <main class="projects-section">
+
+    <div id="cadProjects"></div>
 
     <section class="project-container">
       <h2>Canva</h2>
@@ -746,6 +1068,30 @@
 
   <div id="imageViewer" onclick="closeImage()">
     <img id="fullImage" alt="Full Preview">
+  </div>
+
+  <div class="model-viewer" id="modelViewer" aria-hidden="true">
+    <div class="model-viewer-top">
+      <div>
+        <div class="model-viewer-title" id="modelViewerTitle">3D Model</div>
+        <div class="model-viewer-meta" id="modelViewerMeta">Drag to rotate • Scroll to zoom • Right-drag to pan</div>
+      </div>
+      <div class="model-viewer-actions">
+        <button class="mv-btn" id="mvFit" type="button"><i class="uil uil-focus-target"></i> Fit View</button>
+        <button class="mv-btn" id="mvAuto" type="button"><i class="uil uil-sync"></i> Auto-Rotate</button>
+        <button class="mv-btn mv-close" type="button" onclick="closeModel()" aria-label="Close"><i class="uil uil-times"></i></button>
+      </div>
+    </div>
+<div class="model-viewer-body">
+      <canvas id="modelCanvas"></canvas>
+      <div class="model-hint">
+        <span><i class="uil uil-mouse-alt"></i> Drag to rotate</span>
+        <span><i class="uil uil-scroll"></i> Scroll to zoom</span>
+        <span><i class="uil uil-arrows-h"></i> Right-drag to pan</span>
+      </div>
+    </div>
+  </div>
+    </div>
   </div>
 
   <div class="qr-modal" id="qrModal">
@@ -858,6 +1204,398 @@
         closeImage();
       }
     });
+  </script>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.164.1/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.164.1/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { STLLoader } from 'three/addons/loaders/STLLoader.js';
+
+    // ---- CAD projects config ----
+    // To add Project 2: drop a new folder under ../images/designs/3D-CAD/
+    // and add one entry below with its part files.
+    var CAD_PROJECTS = [
+      {
+        folder: 'idCard-Project-1',
+        name: 'Smart ID Card',
+        desc: 'Complete 3D CAD project — a working RFID ID-card holder that I designed and 3D printed.',
+        note: 'Every file below is a real STL exported from CAD and rendered live in your browser with Three.js. The first card shows the <strong>full assembled</strong> Smart ID Card, the rest are its individual 3D-printed parts.',
+        tags: [
+          { icon: 'uil-settings', text: 'Mechanical Design' },
+          { icon: 'uil-map-marker', text: 'Beckton Design, IIT BHU (On-site)' },
+          { icon: 'uil-spinner', text: '3D Printed' }
+        ],
+        parts: [
+          { file: 'assembled5.stl', name: 'Full Assembly', color: '#ffffff' },
+          { file: 'Top4.stl', name: 'Top Cover', color: '#4dd0e1' },
+          { file: 'Bottom5.stl', name: 'Bottom Cover', color: '#8f7bff' },
+          { file: 'cap5.stl', name: 'Battery Cap', color: '#ffb84d' },
+          { file: 'pvcCard4.stl', name: 'PVC ID Card', color: '#a5d8ff' },
+          { file: 'cr2032x4-5.stl', name: 'CR2032 x4 Battery Holder', color: '#ff8fa3' }
+        ]
+      }
+    ];
+
+    function renderCadProjects() {
+      var host = document.getElementById('cadProjects');
+      if (!host) return;
+      host.innerHTML = CAD_PROJECTS.map(function (project) {
+        var tags = project.tags.map(function (t) {
+          return '<span class="cad-tag"><i class="uil ' + t.icon + '"></i> ' + t.text + '</span>';
+        }).join('');
+
+        var cards = project.parts.map(function (part) {
+          return (
+            '<div class="project-card cad-card" ' +
+            'data-stl="../images/designs/3D-CAD/' + project.folder + '/' + part.file + '" ' +
+            'data-name="' + part.name + '" data-color="' + part.color + '">' +
+            '<div class="cad-loading"><span class="spinner"></span><span>Loading 3D…</span></div>' +
+            '<canvas class="cad-thumb"></canvas>' +
+            '<div class="overlay">' +
+            '<div class="cad-name">' + part.name + '</div>' +
+            '<button class="view3d-btn" type="button"><i class="uil uil-cube"></i> View in 3D</button>' +
+            '</div></div>'
+          );
+        }).join('');
+
+        return (
+          '<section class="project-container project-box">' +
+          '<div class="project-head">' +
+          '<div><h2>' + project.name + '</h2>' +
+          '<p class="project-desc">' + project.desc + '</p></div>' +
+          '<div class="cad-tags">' + tags + '</div>' +
+          '</div>' +
+          '<div class="project-grid">' + cards + '</div>' +
+          '<div class="project-note">' + project.note + '</div>' +
+          '</section>'
+        );
+      }).join('');
+    }
+
+    renderCadProjects();
+
+    function fitObject(mesh, camera, aspect) {
+      const box = new THREE.Box3().setFromObject(mesh);
+      const sphere = box.getBoundingSphere(new THREE.Sphere());
+      const center = sphere.center;
+      mesh.position.sub(center);
+      const radius = sphere.radius || 1;
+      const fov = (camera.fov * Math.PI) / 180;
+      const dist = (radius / Math.tan(fov / 2)) * 1.25;
+      camera.position.set(0, 0, dist);
+      camera.near = dist / 100;
+      camera.far = dist * 100;
+      camera.aspect = aspect;
+      camera.updateProjectionMatrix();
+      return dist;
+    }
+
+    function buildScene(colorHex, parentEl) {
+      const scene = new THREE.Scene();
+
+      const hemi = new THREE.HemisphereLight(0xffffff, 0x202040, 0.85);
+      scene.add(hemi);
+
+      const key = new THREE.DirectionalLight(0xffffff, 1.6);
+      key.position.set(3, 5, 4);
+      scene.add(key);
+
+      const fill = new THREE.DirectionalLight(0x88ccff, 0.9);
+      fill.position.set(-4, 2, -3);
+      scene.add(fill);
+
+      const rim = new THREE.DirectionalLight(0xffd0a0, 0.7);
+      rim.position.set(0, -3, 5);
+      scene.add(rim);
+
+      const group = new THREE.Group();
+      scene.add(group);
+
+      const material = new THREE.MeshStandardMaterial({
+        color: new THREE.Color(colorHex),
+        roughness: 0.42,
+        metalness: 0.12
+      });
+
+      return { scene, group, material };
+    }
+
+    // ---------- Thumbnail previews ----------
+    const thumbs = [];
+
+    function setupThumbs() {
+      document.querySelectorAll('.cad-card').forEach(function (card) {
+        var canvas = card.querySelector('.cad-thumb');
+        var loader = card.querySelector('.cad-loading');
+        var url = card.getAttribute('data-stl');
+        var color = card.getAttribute('data-color') || '#4dd0e1';
+        if (!canvas || !loader || !url) return;
+
+        var renderer;
+        try {
+          renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+        } catch (e) {
+          loader.innerHTML = '<span>3D not supported</span>';
+          return;
+        }
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+        var scene = buildScene(color, card);
+        var camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+
+        var thumb = {
+          card: card,
+          loader: loader,
+          renderer: renderer,
+          scene: scene.scene,
+          group: scene.group,
+          camera: camera,
+          ready: false,
+          size: { w: 0, h: 0 }
+        };
+        thumbs.push(thumb);
+
+        new STLLoader().load(url, function (geometry) {
+          var mesh = new THREE.Mesh(geometry, scene.material);
+          thumb.group.add(mesh);
+
+          thumb.geoBox = new THREE.Box3().setFromObject(mesh);
+          thumb.geoSphere = thumb.geoBox.getBoundingSphere(new THREE.Sphere());
+          thumb.group.position.sub(thumb.geoSphere.center);
+          thumb.fit();
+          thumb.group.rotation.x = -0.35;
+          thumb.group.rotation.y = -0.6;
+
+          thumb.ready = true;
+          thumb.loader.style.opacity = '0';
+          setTimeout(function () { thumb.loader.style.display = 'none'; }, 350);
+        }, undefined, function () {
+          thumb.loader.innerHTML = '<span>Failed to load</span>';
+        });
+
+        function resize() {
+          var w = card.clientWidth;
+          var h = card.clientHeight;
+          if (!w || !h) return;
+          thumb.size.w = w;
+          thumb.size.h = h;
+          renderer.setSize(w, h, false);
+          thumb.camera.aspect = w / h;
+          thumb.camera.updateProjectionMatrix();
+          if (thumb.ready) thumb.fit();
+        }
+        thumb.fit = function () {
+          if (!thumb.geoSphere) return;
+          var radius = thumb.geoSphere.radius || 1;
+          var fov = (thumb.camera.fov * Math.PI) / 180;
+          var dist = (radius / Math.tan(fov / 2)) * 1.4;
+          thumb.camera.position.set(0, 0, dist);
+          thumb.camera.near = dist / 100;
+          thumb.camera.far = dist * 100;
+          thumb.camera.updateProjectionMatrix();
+        };
+        thumb.resize = resize;
+        thumb.visible = true;
+        resize();
+        window.addEventListener('resize', resize);
+      });
+      startThumbLoop();
+    }
+
+    var thumbRaf = 0;
+    var thumbLoopRunning = false;
+
+    function startThumbLoop() {
+      if (thumbLoopRunning) return;
+      thumbLoopRunning = true;
+      (function thumbTick() {
+        thumbRaf = requestAnimationFrame(thumbTick);
+        var t = Date.now() * 0.0004;
+        thumbs.forEach(function (thumb) {
+          if (!thumb.ready || !thumb.visible || viewer) return;
+          thumb.group.rotation.y = -0.6 + Math.sin(t * 0.55) * 0.55;
+          thumb.renderer.render(thumb.scene, thumb.camera);
+        });
+      })();
+    }
+
+    var thumbObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var idx = thumbs.findIndex(function (th) { return th.card === entry.target; });
+        if (idx >= 0) thumbs[idx].visible = entry.isIntersecting;
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.cad-card').forEach(function (card) {
+      thumbObserver.observe(card);
+    });
+
+    // ---------- Fullscreen viewer ----------
+    var viewer = null;
+    var viewerRaf = 0;
+    var viewerModel = null;
+
+    function openModel(card) {
+      var url = card.getAttribute('data-stl');
+      var name = card.getAttribute('data-name');
+      var color = card.getAttribute('data-color') || '#4dd0e1';
+      var userTouches = false;
+
+      document.getElementById('modelViewer').classList.add('open');
+      document.getElementById('modelViewerTitle').textContent = name;
+      document.body.style.overflow = 'hidden';
+
+      if (!viewer) {
+        var canvas = document.getElementById('modelCanvas');
+        var renderer;
+        try {
+          renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+        } catch (e) {
+          return;
+        }
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+        var scene = buildScene(color, canvas.parentElement);
+        var camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+        var controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.08;
+        controls.autoRotateSpeed = 3.2;
+        controls.minDistance = 0.01;
+        controls.maxDistance = 100000;
+        controls.target.set(0, 0, 0);
+        controls.update();
+
+        viewer = { renderer: renderer, scene: scene, camera: camera, controls: controls };
+
+        document.getElementById('mvFit').addEventListener('click', fitView);
+        document.getElementById('mvAuto').addEventListener('click', function () {
+          var btn = document.getElementById('mvAuto');
+          viewer.controls.autoRotate = !viewer.controls.autoRotate;
+          btn.classList.toggle('active', viewer.controls.autoRotate);
+        });
+
+        function resize() {
+          var body = document.querySelector('.model-viewer-body');
+          var w = body.clientWidth;
+          var h = body.clientHeight;
+          if (!w || !h) return;
+          renderer.setSize(w, h, false);
+          camera.aspect = w / h;
+          camera.updateProjectionMatrix();
+        }
+        viewer.resize = resize;
+        resize();
+        window.addEventListener('resize', resize);
+
+        function onMove() {
+          if (!userTouches) {
+            userTouches = true;
+            setTimeout(function () { userTouches = false; }, 2200);
+          }
+        }
+        var el = renderer.domElement;
+        el.addEventListener('pointerdown', onMove);
+        el.addEventListener('wheel', onMove);
+      }
+
+      function startLoop() {
+        cancelAnimationFrame(viewerRaf);
+        (function tick() {
+          viewerRaf = requestAnimationFrame(tick);
+          if (viewer.controls.autoRotate && userTouches) {
+            viewer.controls.autoRotate = false;
+            document.getElementById('mvAuto').classList.remove('active');
+          }
+          viewer.controls.update();
+          viewer.renderer.render(viewer.scene.scene, viewer.camera);
+        })();
+      }
+      startLoop();
+
+      viewerModel = null;
+      viewer.scene.material.color.set(color || '#4dd0e1');
+      viewer.controls.autoRotate = true;
+      viewer.controls.autoRotateSpeed = 3.2;
+      document.getElementById('mvAuto').classList.add('active');
+
+      new STLLoader().load(url, function (geometry) {
+        var mesh = new THREE.Mesh(geometry, viewer.scene.material);
+        viewer.scene.group.children.forEach(function (child) {
+          if (child.geometry) child.geometry.dispose();
+        });
+        viewer.scene.group.clear();
+        mesh.name = 'viewer-mesh';
+        viewer.scene.group.add(mesh);
+
+        viewer.scene.group.scale.setScalar(1);
+        fitObject(viewer.scene.group, viewer.camera, currentModelAspect());
+        viewer.controls.target.set(0, 0, 0);
+        viewer.controls.update();
+
+        viewer.scene.group.scale.setScalar(0.001);
+        viewerModel = { u: 0 };
+        (function grow() {
+          if (!viewerModel) return;
+          viewerModel.u = Math.min(viewerModel.u + 0.045, 1);
+          var e = 1 - Math.pow(1 - viewerModel.u, 3);
+          viewer.scene.group.scale.setScalar(Math.max(0.001, e));
+          if (viewerModel.u < 1) requestAnimationFrame(grow);
+        })();
+      }, undefined, function () {
+        document.getElementById('modelViewerMeta').textContent = 'Failed to load model';
+      });
+    }
+
+    function currentModelAspect() {
+      var body = document.querySelector('.model-viewer-body');
+      var w = body.clientWidth || 1;
+      var h = body.clientHeight || 1;
+      return w / h;
+    }
+
+    function fitView() {
+      if (!viewer) return;
+      fitObject(viewer.scene.group, viewer.camera, currentModelAspect());
+      viewer.controls.target.set(0, 0, 0);
+      viewer.controls.update();
+    }
+
+    window.openModel = openModel;
+
+    function closeModel() {
+      document.getElementById('modelViewer').classList.remove('open');
+      document.body.style.overflow = 'auto';
+      document.getElementById('modelViewerMeta').textContent = 'Drag to rotate • Scroll to zoom • Right-drag to pan';
+      document.getElementById('mvAuto').classList.remove('active');
+      if (viewer) {
+        viewer.controls.autoRotate = false;
+        cancelAnimationFrame(viewerRaf);
+      }
+      viewerModel = null;
+    }
+    window.closeModel = closeModel;
+
+    document.querySelectorAll('.cad-card .view3d-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        openModel(btn.closest('.cad-card'));
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && document.getElementById('modelViewer').classList.contains('open')) {
+        closeModel();
+      }
+    });
+
+    setupThumbs();
   </script>
 
 </body>
