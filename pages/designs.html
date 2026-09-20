@@ -1340,14 +1340,17 @@
         folder: 'Braces&Nuts',
         name: 'Braces & Nuts',
         desc: '3D CAD project — brackets and fasteners assembly, designed for 3D printing.',
-        note: 'This is a <strong>Braces &amp; Nuts</strong> assembly — brackets, base plate, and fasteners modeled in CAD. The bracket below is rendered live from its <strong>STL</strong> export.<br/><br/>The remaining files (<strong>BasePlate.f3d</strong>, <strong>Assemble.smt</strong>, <strong>Fastener.ipt</strong>) are the original CAD source files for this project.',
+        note: 'This is a <strong>Braces &amp; Nuts</strong> assembly — brackets, base plate, and fasteners modeled in CAD. Every file below is a genuine STL exported directly from CAD and rendered live in your browser with Three.js — the first card shows the <strong>full assembly</strong>, while the rest break it down into the individual parts.',
         tags: [
           { icon: 'uil-settings', text: 'Mechanical Design' },
           { icon: 'uil-layers-alt', text: 'AutoDesk Fusion 360' },
           { icon: 'uil-wrench', text: '3D Printed' }
         ],
         parts: [
-          { file: 'Brackets.stl', name: 'Brackets', color: '#4dd0e1' }
+          { file: 'Assemble.stl', name: 'Full Assembly', color: '#ffffff' },
+          { file: 'Brackets.stl', name: 'Brackets', color: '#4dd0e1' },
+          { file: 'BasePlate.stl', name: 'Base Plate', color: '#8f7bff' },
+          { file: 'Fashner.stl', name: 'Fastener', color: '#ffb84d' }
         ]
       }
     ];
