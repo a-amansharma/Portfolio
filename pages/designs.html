@@ -234,7 +234,7 @@
 
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
 
@@ -409,7 +409,7 @@
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.28);
     }
 
-    @media (max-width: 1150px) {
+    @media (max-width: 1000px) {
       nav {
         height: 78px;
         padding: 0 5%;
@@ -420,7 +420,7 @@
       }
 
       .project-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
@@ -451,8 +451,8 @@
       }
 
       .project-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        grid-template-columns: 1fr;
+        gap: 14px;
       }
 
       .project-desc,
@@ -670,10 +670,30 @@
       background: linear-gradient(135deg, #14142a, #1e1e3a);
     }
 
-    .cad-media {
+    .cad-card .cad-media {
       position: relative;
       aspect-ratio: 4 / 3;
       overflow: hidden;
+    }
+
+    .cad-card .cad-body {
+      padding: 10px 12px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .cad-card .cad-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      text-align: center;
+      letter-spacing: 0.3px;
+    }
+
+    [data-theme="dark"] .cad-card .cad-name {
+      color: var(--text);
     }
 
     .cad-card canvas {
@@ -711,21 +731,6 @@
 
     @keyframes cadSpin {
       to { transform: rotate(360deg); }
-    }
-
-    .cad-card .cad-name {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 12px 14px;
-      font-size: 15px;
-      font-weight: 600;
-      color: #fff;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.55);
-      background: linear-gradient(to top, rgba(0,0,0,0.72), transparent);
-      letter-spacing: 0.3px;
-      pointer-events: none;
     }
 
     .view3d-btn {
@@ -1003,7 +1008,6 @@
       }
       .cad-name {
         font-size: 13px;
-        padding: 10px 12px;
       }
       .project-head h2 {
         font-size: 19px;
@@ -1079,7 +1083,6 @@
 
       .cad-name {
         font-size: 12px;
-        margin-bottom: 6px;
       }
 
       .project-grid {
@@ -1461,11 +1464,13 @@
             '<div class="cad-media">' +
             '<div class="cad-loading"><span class="spinner"></span><span>Loading 3D…</span></div>' +
             '<canvas class="cad-thumb"></canvas>' +
-            '<div class="cad-name">' + part.name + '</div>' +
             '</div>' +
+            '<div class="cad-body">' +
+            '<div class="cad-name">' + part.name + '</div>' +
             '<div class="btn-row">' +
             '<button class="view3d-btn" type="button"><i class="uil uil-cube"></i> View</button>' +
             '<a class="view3d-btn dl-btn" download href="' + stlPath + '"><i class="uil uil-download-alt"></i> Download</a>' +
+            '</div>' +
             '</div>' +
             '</div>'
           );
