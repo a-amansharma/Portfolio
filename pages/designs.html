@@ -1261,6 +1261,7 @@
     import * as THREE from 'three';
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     import { STLLoader } from 'three/addons/loaders/STLLoader.js';
+    import { ThreeMFLoader } from 'three/addons/loaders/3MFLoader.js';
 
     // ---- CAD projects config ----
     // To add Project 2: drop a new folder under ../images/designs/3D-CAD/
@@ -1301,7 +1302,38 @@
           { file: 'Assembly.stl', name: 'Full Assembly', color: '#ffffff' },
           { file: 'Top+2.stl', name: 'Top Cover', color: '#4dd0e1' },
           { file: 'Bottom+2.stl', name: 'Bottom Cover', color: '#8f7bff' },
-          { file: 'PCB+Cap.stl', name: 'PCB + Cap', color: '#ffb84d' }
+          { file: 'PCB+Cap.stl', name: 'PCB + Cap', color: '#ffb84d' },
+          { file: 'Cap 3.stl', name: 'Battery Cap', color: '#a5d8ff' }
+        ]
+      },
+      {
+        folder: 'Robotic-arm',
+        name: 'Mini Robotic Arm',
+        desc: '3D CAD project — a mini robotic arm base and top assembly, designed for 3D printing.',
+        note: 'This is a <strong>Mini Robotic Arm</strong> build — a base platform and top assembly that fits together. Modeled in CAD and ready for 3D printing. Every file below is a genuine STL exported directly from CAD and rendered live in your browser with Three.js.',
+        tags: [
+          { icon: 'uil-settings', text: 'Mechanical Design' },
+          { icon: 'uil-layers-alt', text: 'AutoDesk Fusion 360' },
+          { icon: 'uil-wrench', text: '3D Printed' }
+        ],
+        parts: [
+          { file: 'Arm base.stl', name: 'Arm Base', color: '#4dd0e1' },
+          { file: 'Base top.stl', name: 'Base Top', color: '#8f7bff' }
+        ]
+      },
+      {
+        folder: 'Bulb & Bottle',
+        name: 'Bulb & Bottle',
+        desc: '3D CAD project — a decorative bulb and bottle set, modeled and ready for 3D printing.',
+        note: 'This is a <strong>Bulb &amp; Bottle</strong> design set. Every file below is a genuine model exported directly from CAD and rendered live in your browser with Three.js — the bottle is a <strong>.3MF</strong> file and the bulb a <strong>.STL</strong> file, so this project demonstrates both formats.',
+        tags: [
+          { icon: 'uil-settings', text: 'Mechanical Design' },
+          { icon: 'uil-layers-alt', text: 'AutoDesk Fusion 360' },
+          { icon: 'uil-wrench', text: '3D Printed' }
+        ],
+        parts: [
+          { file: 'Bulb.stl', name: 'Bulb', color: '#ffb84d' },
+          { file: 'Bottle.3mf', name: 'Bottle', color: '#a5d8ff' }
         ]
       }
     ];
@@ -1358,6 +1390,19 @@
       camera.aspect = aspect;
       camera.updateProjectionMatrix();
       return dist;
+    }
+
+    function loadModel(url, material, onLoad, onError) {
+      var ext = (url.split('#')[0].split('?')[0].split('.').pop() || '').toLowerCase();
+      if (ext === '3mf') {
+        new ThreeMFLoader().load(url, function (object) {
+          onLoad(object);
+        }, undefined, onError);
+      } else {
+        new STLLoader().load(url, function (geometry) {
+          onLoad(new THREE.Mesh(geometry, material));
+        }, undefined, onError);
+      }
     }
 
     function buildScene(colorHex, parentEl) {
@@ -1424,11 +1469,10 @@
         };
         thumbs.push(thumb);
 
-        new STLLoader().load(url, function (geometry) {
-          var mesh = new THREE.Mesh(geometry, scene.material);
-          thumb.group.add(mesh);
+        loadModel(url, scene.material, function (obj) {
+          thumb.group.add(obj);
 
-          thumb.geoBox = new THREE.Box3().setFromObject(mesh);
+          thumb.geoBox = new THREE.Box3().setFromObject(obj);
           thumb.geoSphere = thumb.geoBox.getBoundingSphere(new THREE.Sphere());
           thumb.group.position.sub(thumb.geoSphere.center);
           thumb.fit();
@@ -1438,7 +1482,7 @@
           thumb.ready = true;
           thumb.loader.style.opacity = '0';
           setTimeout(function () { thumb.loader.style.display = 'none'; }, 350);
-        }, undefined, function () {
+        }, function () {
           thumb.loader.innerHTML = '<span>Failed to load</span>';
         });
 
@@ -1587,14 +1631,13 @@
       viewer.controls.autoRotateSpeed = 3.2;
       document.getElementById('mvAuto').classList.add('active');
 
-      new STLLoader().load(url, function (geometry) {
-        var mesh = new THREE.Mesh(geometry, viewer.scene.material);
+      loadModel(url, viewer.scene.material, function (obj) {
         viewer.scene.group.children.forEach(function (child) {
           if (child.geometry) child.geometry.dispose();
         });
         viewer.scene.group.clear();
-        mesh.name = 'viewer-mesh';
-        viewer.scene.group.add(mesh);
+        obj.name = 'viewer-mesh';
+        viewer.scene.group.add(obj);
 
         viewer.scene.group.scale.setScalar(1);
         fitObject(viewer.scene.group, viewer.camera, currentModelAspect());
@@ -1610,7 +1653,7 @@
           viewer.scene.group.scale.setScalar(Math.max(0.001, e));
           if (viewerModel.u < 1) requestAnimationFrame(grow);
         })();
-      }, undefined, function () {
+      }, function () {
         document.getElementById('modelViewerMeta').textContent = 'Failed to load model';
       });
     }
