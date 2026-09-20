@@ -1764,6 +1764,31 @@
       });
     });
 
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('.cad-card .dl-btn');
+      if (!link) return;
+      e.preventDefault();
+      e.stopPropagation();
+      var url = link.getAttribute('href');
+      var name = decodeURIComponent(url.split('/').pop());
+      fetch(url).then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.blob();
+      }).then(function (blob) {
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = name;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function () {
+          URL.revokeObjectURL(a.href);
+          a.remove();
+        }, 2000);
+      }).catch(function () {
+        window.open(url, '_blank');
+      });
+    });
+
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && document.getElementById('modelViewer').classList.contains('open')) {
         closeModel();
