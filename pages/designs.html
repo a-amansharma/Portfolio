@@ -661,13 +661,19 @@
       cursor: default;
       background: linear-gradient(135deg, #dbe7ff, #eae6ff);
       display: flex;
-      align-items: center;
-      justify-content: center;
-      aspect-ratio: 4 / 3;
+      flex-direction: column;
+      border-radius: 14px;
+      overflow: hidden;
     }
 
     [data-theme="dark"] .cad-card {
       background: linear-gradient(135deg, #14142a, #1e1e3a);
+    }
+
+    .cad-media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
     }
 
     .cad-card canvas {
@@ -708,44 +714,40 @@
     }
 
     .cad-card .cad-name {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 12px 14px;
       font-size: 15px;
       font-weight: 600;
       color: #fff;
       text-shadow: 0 1px 6px rgba(0,0,0,0.55);
-      margin-bottom: 10px;
+      background: linear-gradient(to top, rgba(0,0,0,0.72), transparent);
       letter-spacing: 0.3px;
-    }
-
-    .cad-card .overlay {
-      bottom: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.28) 45%, transparent);
-      padding: 14px 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-end;
-      cursor: default;
+      pointer-events: none;
     }
 
     .view3d-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      gap: 6px;
       border: none;
       cursor: pointer;
-      padding: 12px 22px;
+      padding: 8px 14px;
       border-radius: 999px;
       background: linear-gradient(135deg, #1e9fab, #4dd0e1);
       color: #fff;
       font-family: 'Poppins', sans-serif;
-      font-size: 14px;
+      font-size: 12.5px;
       font-weight: 600;
       box-shadow: 0 6px 18px rgba(30, 159, 171, 0.45);
       transition: transform .3s ease, box-shadow .3s ease;
     }
 
     .view3d-btn i {
-      font-size: 17px;
+      font-size: 14px;
     }
 
     .view3d-btn:hover {
@@ -755,9 +757,12 @@
 
     .btn-row {
       display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 2px;
+      gap: 8px;
+      padding: 8px;
+    }
+
+    .btn-row .view3d-btn {
+      flex: 1;
     }
 
     .dl-btn {
@@ -984,27 +989,21 @@
     @media (max-width: 620px) {
       .model-hint { display: none; }
       .model-viewer-top { padding: 12px 12px; }
-      .cad-card .overlay {
-        padding: 8px 10px;
-        gap: 6px;
-      }
       .view3d-btn {
-        padding: 8px 12px;
-        font-size: 12px;
-        gap: 6px;
-        flex: 1;
-        justify-content: center;
-        text-align: center;
+        padding: 7px 10px;
+        font-size: 11.5px;
+        gap: 5px;
       }
       .view3d-btn i {
-        font-size: 13px;
+        font-size: 12px;
       }
       .btn-row {
-        width: 100%;
-        gap: 8px;
+        gap: 6px;
+        padding: 6px;
       }
-      .cad-card {
-        aspect-ratio: 4 / 3;
+      .cad-name {
+        font-size: 13px;
+        padding: 10px 12px;
       }
       .project-head h2 {
         font-size: 19px;
@@ -1459,15 +1458,16 @@
             '<div class="project-card cad-card" ' +
             'data-stl="' + stlPath + '" ' +
             'data-name="' + part.name + '" data-color="' + part.color + '">' +
+            '<div class="cad-media">' +
             '<div class="cad-loading"><span class="spinner"></span><span>Loading 3D…</span></div>' +
             '<canvas class="cad-thumb"></canvas>' +
-            '<div class="overlay">' +
             '<div class="cad-name">' + part.name + '</div>' +
+            '</div>' +
             '<div class="btn-row">' +
-            '<button class="view3d-btn" type="button"><i class="uil uil-cube"></i> View in 3D</button>' +
+            '<button class="view3d-btn" type="button"><i class="uil uil-cube"></i> View</button>' +
             '<a class="view3d-btn dl-btn" download href="' + stlPath + '"><i class="uil uil-download-alt"></i> Download</a>' +
             '</div>' +
-            '</div></div>'
+            '</div>'
           );
         }).join('');
 
