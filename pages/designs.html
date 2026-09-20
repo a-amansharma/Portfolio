@@ -792,24 +792,6 @@
       color: #fff;
     }
 
-    .cad-tag::before {
-      content: "";
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.22);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .cad-tag i {
-      margin-left: -31px;
-      position: relative;
-      z-index: 1;
-    }
-
     .cad-tag:nth-child(1) {
       background: linear-gradient(135deg, #ff7a6b, #ff5d8f);
       box-shadow: 0 8px 20px rgba(255, 93, 143, 0.4);
@@ -1047,15 +1029,6 @@
 
       .cad-tag i {
         font-size: 17px;
-      }
-
-      .cad-tag::before {
-        width: 28px;
-        height: 28px;
-      }
-
-      .cad-tag i {
-        margin-left: -25px;
       }
     }
   </style>
@@ -1326,6 +1299,7 @@
         note: 'I designed and developed this Smart ID Card during my mechanical design internship at <strong>Beckkon Design</strong>, placed on-site in the <strong>IIT BHU</strong> ecosystem. Working within one of India\'s premier engineering campuses gave me real exposure to how design thinking, precision manufacturing, and rapid prototyping come together in practice.<br/><br/>Every file below is a genuine STL exported directly from CAD and rendered live in your browser with Three.js — the first card shows the <strong>full assembled</strong> model, while the rest break it down into the individual parts that were 3D-printed and fit-tested on-site.',
         tags: [
           { icon: 'uil-settings', text: 'Mechanical Design' },
+          { icon: 'uil-layers-alt', text: 'AutoDesk Fusion 360' },
           { icon: 'uil-briefcase-alt', text: 'Internship', highlight: true },
           { icon: 'uil-map-marker', text: 'Beckkon Design, IIT BHU (On-site)' }
         ],
