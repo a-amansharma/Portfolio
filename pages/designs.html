@@ -761,7 +761,7 @@
 
     .cad-tags {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
       padding-top: 10px;
     }
@@ -777,75 +777,50 @@
       letter-spacing: 0.3px;
       color: #fff;
       border: none;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
-      transition: transform .3s ease, box-shadow .3s ease;
+      background: rgba(30, 159, 171, 0.15);
+      color: var(--primary);
+      box-shadow: none;
+      transition: none;
       cursor: default;
     }
 
     .cad-tag:hover {
-      transform: translateY(-3px) scale(1.04);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+      transform: none;
+      box-shadow: none;
     }
 
     .cad-tag i {
       font-size: 20px;
-      color: #fff;
-    }
-
-    .cad-tag:nth-child(1) {
-      background: linear-gradient(135deg, #ff7a6b, #ff5d8f);
-      box-shadow: 0 8px 20px rgba(255, 93, 143, 0.4);
-    }
-
-    .cad-tag:nth-child(2) {
-      background: linear-gradient(135deg, #1e9fab, #4dd0e1);
-      box-shadow: 0 8px 20px rgba(30, 159, 171, 0.45);
-    }
-
-    .cad-tag:nth-child(3) {
-      background: linear-gradient(135deg, #8f7bff, #6a5cff);
-      box-shadow: 0 8px 20px rgba(138, 123, 255, 0.45);
-    }
-
-    .cad-tag:nth-child(4) {
-      background: linear-gradient(135deg, #ffb84d, #ff8f3d);
-      box-shadow: 0 8px 20px rgba(255, 184, 77, 0.45);
-    }
-
-    .cad-tag:nth-child(5) {
-      background: linear-gradient(135deg, #5cbf7a, #2ea86a);
-      box-shadow: 0 8px 20px rgba(92, 191, 122, 0.45);
+      color: var(--primary);
     }
 
     [data-theme="dark"] .cad-tag {
-      color: #fff;
+      background: rgba(77, 208, 225, 0.14);
+      color: #7fe0ef;
+    }
+
+    [data-theme="dark"] .cad-tag i {
+      color: #7fe0ef;
     }
 
     .cad-tag-highlight {
-      position: relative;
-      overflow: hidden;
-      animation: highlightPulse 2.6s ease-in-out infinite;
+      background: rgba(30, 159, 171, 0.15);
+      color: var(--primary);
     }
 
-    .cad-tag-highlight::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(255, 255, 255, 0.14);
-      border-radius: inherit;
-      animation: highlightShine 2.6s ease-in-out infinite;
-      pointer-events: none;
+    .cad-tag-highlight i {
+      color: var(--primary);
     }
 
-    @keyframes highlightPulse {
-      0%, 100% { box-shadow: 0 8px 20px rgba(30, 159, 171, 0.45); transform: scale(1); }
-      50% { box-shadow: 0 12px 34px rgba(30, 159, 171, 0.85); transform: scale(1.05); }
+    [data-theme="dark"] .cad-tag-highlight {
+      background: rgba(77, 208, 225, 0.14);
+      color: #7fe0ef;
     }
 
-    @keyframes highlightShine {
-      0%, 100% { opacity: 0.25; }
-      50% { opacity: 0.55; }
+    [data-theme="dark"] .cad-tag-highlight i {
+      color: #7fe0ef;
     }
+  </style>
 
     .model-viewer {
       position: fixed;
