@@ -1048,6 +1048,7 @@
 
     .project-box.click-animate::after {
       bottom: 0;
+      transition-duration: 0.24s;
     }
 
     .project-box.click-animate {
@@ -2643,7 +2644,7 @@
         </div>
 
         <div class="project-container">
-          <div class="project-box" onclick="projectNavigate('pages/robotics.html', this)">
+          <div class="project-box" data-url="pages/robotics.html">
             <i class="uil uil-robot"></i>
             <div class="project-text">
               <h3>Robotics</h3>
@@ -2653,7 +2654,7 @@
             </div>
           </div>
 
-          <div class="project-box" onclick="projectNavigate('pages/designs.html', this)">
+          <div class="project-box" data-url="pages/designs.html">
             <i class="uil uil-cube"></i>
             <div class="project-text">
               <h3>3D CAD Modeling and Designs</h3>
@@ -2663,7 +2664,7 @@
             </div>
           </div>
 
-          <div class="project-box" onclick="projectNavigate('pages/sketches.html', this)">
+          <div class="project-box" data-url="pages/sketches.html">
             <i class="uil uil-edit"></i>
             <div class="project-text">
               <h3>Sketches</h3>
@@ -2673,7 +2674,7 @@
             </div>
           </div>
 
-          <div class="project-box" onclick="projectNavigate('pages/website.html', this)">
+          <div class="project-box" data-url="pages/website.html">
             <i class="uil uil-window"></i>
             <div class="project-text">
               <h3>Webpages</h3>
@@ -2925,11 +2926,69 @@
     }
 
     function projectNavigate(url, el) {
+      if (!el || el.__navigating) return;
+      el.__navigating = true;
       el.classList.add("click-animate");
       setTimeout(() => {
         window.location.href = url;
-      }, 420);
+      }, 250);
     }
+
+    document.querySelectorAll(".project-box[data-url]").forEach(function (box) {
+      var url = box.getAttribute("data-url");
+      var fired = false;
+      var startX = 0;
+      var startY = 0;
+      var moved = false;
+
+      function dispatch() {
+        if (fired) return;
+        fired = true;
+        projectNavigate(url, box);
+      }
+
+      function onStart(x, y) {
+        startX = x;
+        startY = y;
+        moved = false;
+      }
+
+      function onMove(x, y) {
+        if (!moved && (Math.abs(x - startX) > 10 || Math.abs(y - startY) > 10)) {
+          moved = true;
+        }
+      }
+
+      function onEnd() {
+        if (!moved) dispatch();
+      }
+
+      box.addEventListener("pointerdown", function (e) {
+        if (e.pointerType === "touch") onStart(e.clientX, e.clientY);
+      }, { passive: true });
+
+      box.addEventListener("pointermove", function (e) {
+        if (e.pointerType === "touch") onMove(e.clientX, e.clientY);
+      }, { passive: true });
+
+      box.addEventListener("pointerup", function (e) {
+        if (e.pointerType === "touch") onEnd();
+      }, { passive: true });
+
+      box.addEventListener("pointercancel", function () { moved = true; }, { passive: true });
+
+      box.addEventListener("touchstart", function (e) {
+        onStart(e.touches[0].clientX, e.touches[0].clientY);
+      }, { passive: true });
+
+      box.addEventListener("touchmove", function (e) {
+        onMove(e.touches[0].clientX, e.touches[0].clientY);
+      }, { passive: true });
+
+      box.addEventListener("touchend", onEnd, { passive: true });
+
+      box.addEventListener("click", dispatch);
+    });
 
 
     const updatesDropdown = document.querySelector(".updates-dropdown");
