@@ -740,6 +740,24 @@
       box-shadow: 0 12px 26px rgba(30, 159, 171, 0.6);
     }
 
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 2px;
+    }
+
+    .dl-btn {
+      background: linear-gradient(135deg, #8f7bff, #6a5cff);
+      box-shadow: 0 6px 18px rgba(138, 123, 255, 0.45);
+      text-decoration: none;
+    }
+
+    .dl-btn:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 12px 26px rgba(138, 123, 255, 0.6);
+    }
+
     .cad-card:hover img { transform: none; filter: none; }
 
     .project-head {
@@ -959,8 +977,12 @@
       .view3d-btn {
         padding: 12px 18px;
         font-size: 14px;
-        width: 100%;
+        flex: 1;
         justify-content: center;
+        text-align: center;
+      }
+      .btn-row {
+        width: 100%;
       }
       .cad-card {
         aspect-ratio: 4 / 3;
@@ -1322,7 +1344,7 @@
         ]
       },
       {
-        folder: 'Bulb & Bottle',
+        folder: 'Bulb&Bottle',
         name: 'Bulb & Bottle',
         desc: '3D CAD project — a decorative bulb and bottle set, modeled and ready for 3D printing.',
         note: 'This is a <strong>Bulb &amp; Bottle</strong> design set. Every file below is a genuine STL exported directly from CAD and rendered live in your browser with Three.js.',
@@ -1364,15 +1386,19 @@
         }).join('');
 
         var cards = project.parts.map(function (part) {
+          var stlPath = '../images/designs/3D-CAD/' + encodeURI(project.folder) + '/' + encodeURI(part.file).replace(/%2B/g, '+');
           return (
             '<div class="project-card cad-card" ' +
-            'data-stl="../images/designs/3D-CAD/' + project.folder + '/' + part.file + '" ' +
+            'data-stl="' + stlPath + '" ' +
             'data-name="' + part.name + '" data-color="' + part.color + '">' +
             '<div class="cad-loading"><span class="spinner"></span><span>Loading 3D…</span></div>' +
             '<canvas class="cad-thumb"></canvas>' +
             '<div class="overlay">' +
             '<div class="cad-name">' + part.name + '</div>' +
+            '<div class="btn-row">' +
             '<button class="view3d-btn" type="button"><i class="uil uil-cube"></i> View in 3D</button>' +
+            '<a class="view3d-btn dl-btn" download href="' + stlPath + '"><i class="uil uil-download-alt"></i> Download</a>' +
+            '</div>' +
             '</div></div>'
           );
         }).join('');
@@ -1463,28 +1489,55 @@
         var color = card.getAttribute('data-color') || '#4dd0e1';
         if (!canvas || !loader || !url) return;
 
-        var renderer;
-        try {
-          renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
-        } catch (e) {
-          loader.innerHTML = '<span>3D not supported</span>';
-          return;
-        }
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
         var scene = buildScene(color, card);
         var camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
 
         var thumb = {
           card: card,
+          canvas: canvas,
           loader: loader,
-          renderer: renderer,
+          renderer: null,
           scene: scene.scene,
           group: scene.group,
           camera: camera,
           ready: false,
+          visible: true,
           size: { w: 0, h: 0 }
         };
         thumbs.push(thumb);
+
+        function ensureRenderer() {
+          if (thumb.renderer) return;
+          try {
+            thumb.renderer = new THREE.WebGLRenderer({ canvas: thumb.canvas, antialias: true, alpha: true });
+          } catch (e) {
+            thumb.loader.innerHTML = '<span>3D not supported</span>';
+            return;
+          }
+          thumb.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+          sizeAll();
+          if (thumb.ready && thumb.geoSphere) thumb.fit();
+        }
+
+        function releaseRenderer() {
+          if (!thumb.renderer) return;
+          try { thumb.renderer.dispose(); } catch (e) {}
+          thumb.renderer = null;
+        }
+
+        function sizeAll() {
+          var w = card.clientWidth;
+          var h = card.clientHeight;
+          if (!w || !h) return;
+          thumb.size.w = w;
+          thumb.size.h = h;
+          if (thumb.renderer) thumb.renderer.setSize(w, h, false);
+          thumb.camera.aspect = w / h;
+          thumb.camera.updateProjectionMatrix();
+        }
+
+        thumb.ensureRenderer = ensureRenderer;
+        thumb.releaseRenderer = releaseRenderer;
 
         loadModel(url, scene.material, function (obj) {
           thumb.group.add(obj);
@@ -1504,13 +1557,9 @@
         });
 
         function resize() {
-          var w = card.clientWidth;
-          var h = card.clientHeight;
-          if (!w || !h) return;
-          thumb.size.w = w;
-          thumb.size.h = h;
-          renderer.setSize(w, h, false);
-          thumb.camera.aspect = w / h;
+          if (!thumb.size.w || !thumb.size.h) return;
+          if (thumb.renderer) thumb.renderer.setSize(thumb.size.w, thumb.size.h, false);
+          thumb.camera.aspect = thumb.size.w / thumb.size.h;
           thumb.camera.updateProjectionMatrix();
           if (thumb.ready) thumb.fit();
         }
@@ -1525,8 +1574,6 @@
           thumb.camera.updateProjectionMatrix();
         };
         thumb.resize = resize;
-        thumb.visible = true;
-        resize();
         window.addEventListener('resize', resize);
       });
       startThumbLoop();
@@ -1542,7 +1589,7 @@
         thumbRaf = requestAnimationFrame(thumbTick);
         var t = Date.now() * 0.0004;
         thumbs.forEach(function (thumb) {
-          if (!thumb.ready || !thumb.visible || viewer) return;
+          if (!thumb.ready || !thumb.visible || !thumb.renderer || viewer) return;
           thumb.group.rotation.y = -0.6 + Math.sin(t * 0.55) * 0.55;
           thumb.renderer.render(thumb.scene, thumb.camera);
         });
@@ -1552,7 +1599,14 @@
     var thumbObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         var idx = thumbs.findIndex(function (th) { return th.card === entry.target; });
-        if (idx >= 0) thumbs[idx].visible = entry.isIntersecting;
+        if (idx < 0) return;
+        var th = thumbs[idx];
+        th.visible = entry.isIntersecting;
+        if (entry.isIntersecting) {
+          th.ensureRenderer();
+        } else {
+          th.releaseRenderer();
+        }
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.cad-card').forEach(function (card) {
