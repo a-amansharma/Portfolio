@@ -761,43 +761,108 @@
 
     .cad-tags {
       display: flex;
-      gap: 8px;
+      gap: 12px;
       flex-wrap: wrap;
-      padding-top: 6px;
+      padding-top: 10px;
     }
 
     .cad-tag {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 7px 14px;
+      gap: 10px;
+      padding: 12px 22px;
       border-radius: 999px;
-      background: rgba(30, 159, 171, 0.12);
-      color: var(--primary);
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 600;
-      border: 1px solid rgba(30, 159, 171, 0.25);
+      letter-spacing: 0.3px;
+      color: #fff;
+      border: none;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+      transition: transform .3s ease, box-shadow .3s ease;
+      cursor: default;
     }
 
-    [data-theme="dark"] .cad-tag {
-      background: rgba(77, 208, 225, 0.14);
-      color: #7fe0ef;
+    .cad-tag:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
     }
 
-    .cad-tag-highlight {
-      background: linear-gradient(135deg, #1e9fab, #2bbfce);
-      color: #fff !important;
-      border: none !important;
-      box-shadow: 0 4px 14px rgba(30, 159, 171, 0.4);
-    }
-
-    .cad-tag-highlight i {
+    .cad-tag i {
+      font-size: 20px;
       color: #fff;
     }
 
-    [data-theme="dark"] .cad-tag-highlight {
+    .cad-tag::before {
+      content: "";
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.22);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .cad-tag i {
+      margin-left: -31px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cad-tag:nth-child(1) {
+      background: linear-gradient(135deg, #ff7a6b, #ff5d8f);
+      box-shadow: 0 8px 20px rgba(255, 93, 143, 0.4);
+    }
+
+    .cad-tag:nth-child(2) {
       background: linear-gradient(135deg, #1e9fab, #4dd0e1);
-      color: #fff !important;
+      box-shadow: 0 8px 20px rgba(30, 159, 171, 0.45);
+    }
+
+    .cad-tag:nth-child(3) {
+      background: linear-gradient(135deg, #8f7bff, #6a5cff);
+      box-shadow: 0 8px 20px rgba(138, 123, 255, 0.45);
+    }
+
+    .cad-tag:nth-child(4) {
+      background: linear-gradient(135deg, #ffb84d, #ff8f3d);
+      box-shadow: 0 8px 20px rgba(255, 184, 77, 0.45);
+    }
+
+    .cad-tag:nth-child(5) {
+      background: linear-gradient(135deg, #5cbf7a, #2ea86a);
+      box-shadow: 0 8px 20px rgba(92, 191, 122, 0.45);
+    }
+
+    [data-theme="dark"] .cad-tag {
+      color: #fff;
+    }
+
+    .cad-tag-highlight {
+      position: relative;
+      overflow: hidden;
+      animation: highlightPulse 2.6s ease-in-out infinite;
+    }
+
+    .cad-tag-highlight::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.14);
+      border-radius: inherit;
+      animation: highlightShine 2.6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes highlightPulse {
+      0%, 100% { box-shadow: 0 8px 20px rgba(30, 159, 171, 0.45); transform: scale(1); }
+      50% { box-shadow: 0 12px 34px rgba(30, 159, 171, 0.85); transform: scale(1.05); }
+    }
+
+    @keyframes highlightShine {
+      0%, 100% { opacity: 0.25; }
+      50% { opacity: 0.55; }
     }
 
     .model-viewer {
@@ -975,8 +1040,22 @@
 
     @media (max-width: 420px) {
       .cad-tag {
-        font-size: 11px;
-        padding: 6px 10px;
+        font-size: 13px;
+        padding: 10px 16px;
+        gap: 8px;
+      }
+
+      .cad-tag i {
+        font-size: 17px;
+      }
+
+      .cad-tag::before {
+        width: 28px;
+        height: 28px;
+      }
+
+      .cad-tag i {
+        margin-left: -25px;
       }
     }
   </style>
